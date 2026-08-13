@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Cine Dominicano</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --rojo-rd: #E50914;
@@ -51,18 +52,18 @@
             letter-spacing: 0.5px;
         }
 
+        /* BANDERA DOMINICANA CORRECTA */
         .logo-flag {
             width: 26px;
             height: 18px;
-            border-radius: 3px;
-            overflow: hidden;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
         }
 
-        .flag-band { flex: 1; }
-        .blue { background: var(--azul-rd); }
-        .white { background: var(--blanco-rd); }
-        .red { background: var(--rojo-rd); }
+        .flag-blue { background: var(--azul-rd); }
+        .flag-red { background: var(--rojo-rd); }
+        .flag-white { background: var(--blanco-rd); }
 
         .logo-text-main { font-size: 18px; }
         .logo-text-sub { font-size: 11px; color: var(--gris-claro); }
@@ -111,7 +112,7 @@
 
         .visible { display: block; }
 
-        /* PANTALLA INICIO */
+        /* PANTALLA INICIO CENTRADA */
         #pantallaInicio {
             display: flex;
             justify-content: center;
@@ -188,6 +189,7 @@
             text-align: center;
         }
 
+        /* CATÁLOGO CENTRADO */
         .peliculas-container {
             max-width: 1100px;
             width: 100%;
@@ -239,9 +241,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
         }
 
-        #pantallaAdmin {
-            display: none;
-        }
+        #pantallaAdmin { display: none; }
 
         .admin-contenido {
             max-width: 420px;
@@ -269,9 +269,10 @@
     <div class="header-inner">
         <div class="logo">
             <div class="logo-flag">
-                <div class="flag-band blue"></div>
-                <div class="flag-band white"></div>
-                <div class="flag-band red"></div>
+                <div class="flag-blue"></div>
+                <div class="flag-red"></div>
+                <div class="flag-white"></div>
+                <div class="flag-blue"></div>
             </div>
             <div>
                 <div class="logo-text-main">Cine Dominicano</div>
@@ -391,7 +392,15 @@
         });
     }
 
-    btnEntrar.addEventListener("click", () => {
+    // BOTÓN ENTRAR FUNCIONA
+    btnEntrar.addEventListener("click", entrar);
+
+    // ENTER TAMBIÉN FUNCIONA
+    nombreUsuarioInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") entrar();
+    });
+
+    function entrar() {
         const nombre = nombreUsuarioInput.value.trim();
         if (!nombre) {
             alert("Escribe tu nombre para entrar.");
@@ -403,7 +412,7 @@
         actualizarMenu();
         mostrarPantalla("pantallaApp");
         renderPeliculas();
-    });
+    }
 
     navInicio.addEventListener("click", () => mostrarPantalla("pantallaInicio"));
     navPeliculas.addEventListener("click", () => mostrarPantalla("pantallaApp"));
@@ -472,7 +481,7 @@
             poster.className = "pelicula-poster";
 
             const titulo = document.createElement("div");
-            titulo.textContent = p.titulo;
+            titulo.textContent = p.ttitulo;
 
             const meta = document.createElement("div");
             meta.textContent = p.meta;
