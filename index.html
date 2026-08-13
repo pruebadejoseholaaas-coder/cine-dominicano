@@ -10,19 +10,14 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <meta
-        name="theme-color"
-        content="#080808"
-    >
-
     <title>Cine RD 🇩🇴</title>
 
 
     <style>
 
-        /* ==================================================
+        /* =====================================================
            RESET
-        ================================================== */
+        ===================================================== */
 
         * {
             box-sizing: border-box;
@@ -38,7 +33,7 @@
 
         body {
             background: #080808;
-            color: #fff;
+            color: white;
             font-family:
                 Arial,
                 Helvetica,
@@ -52,7 +47,9 @@
 
 
         button,
-        input {
+        input,
+        textarea,
+        select {
             font-family: inherit;
         }
 
@@ -62,9 +59,9 @@
         }
 
 
-        /* ==================================================
+        /* =====================================================
            BIENVENIDA
-        ================================================== */
+        ===================================================== */
 
         .welcome {
 
@@ -85,9 +82,9 @@
             background:
                 radial-gradient(
                     circle at center,
-                    #42141a 0%,
-                    #18090b 35%,
-                    #080808 70%
+                    #451219 0%,
+                    #18090c 35%,
+                    #080808 75%
                 );
 
         }
@@ -100,13 +97,7 @@
 
         .welcome-box {
 
-            width: 100%;
-
-            max-width: 430px;
-
-            padding: 45px 35px;
-
-            text-align: center;
+            width: min(420px, 100%);
 
             background:
                 rgba(24,24,24,.98);
@@ -115,11 +106,15 @@
                 1px solid
                 rgba(255,255,255,.08);
 
+            padding: 45px 35px;
+
             border-radius: 14px;
 
+            text-align: center;
+
             box-shadow:
-                0 25px 80px
-                rgba(0,0,0,.8);
+                0 30px 100px
+                rgba(0,0,0,.85);
 
         }
 
@@ -152,9 +147,9 @@
 
             color: #aaa;
 
-            margin-bottom: 25px;
-
             line-height: 1.5;
+
+            margin-bottom: 22px;
 
         }
 
@@ -165,17 +160,19 @@
 
             padding: 15px;
 
-            margin-bottom: 14px;
+            background: #111;
 
-            background: #222;
-
-            border: 1px solid #444;
-
-            border-radius: 6px;
+            border:
+                1px solid
+                #444;
 
             color: white;
 
+            border-radius: 7px;
+
             outline: none;
+
+            margin-bottom: 15px;
 
             font-size: 15px;
 
@@ -186,6 +183,10 @@
 
             border-color: #e50914;
 
+            box-shadow:
+                0 0 0 3px
+                rgba(229,9,20,.12);
+
         }
 
 
@@ -195,29 +196,36 @@
 
             padding: 15px;
 
+            border: none;
+
+            border-radius: 7px;
+
             background: #e50914;
 
             color: white;
 
-            border: none;
-
-            border-radius: 6px;
-
-            font-weight: 900;
-
             font-size: 15px;
+
+            font-weight: 800;
+
+            transition:
+                .2s ease;
 
         }
 
 
         .welcome-button:hover {
+
             background: #f6121d;
+
+            transform: translateY(-1px);
+
         }
 
 
-        /* ==================================================
+        /* =====================================================
            NAVBAR
-        ================================================== */
+        ===================================================== */
 
         .navbar {
 
@@ -227,9 +235,9 @@
             left: 0;
             right: 0;
 
-            height: 70px;
+            height: 72px;
 
-            z-index: 1000;
+            z-index: 2000;
 
             display: flex;
 
@@ -241,24 +249,9 @@
                 linear-gradient(
                     to bottom,
                     rgba(0,0,0,.98),
-                    rgba(0,0,0,.65),
+                    rgba(0,0,0,.72),
                     transparent
                 );
-
-            transition:
-                background .3s ease;
-
-        }
-
-
-        .navbar.scrolled {
-
-            background:
-                rgba(8,8,8,.97);
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,.05);
 
         }
 
@@ -271,7 +264,7 @@
 
             font-weight: 900;
 
-            margin-right: 35px;
+            margin-right: 32px;
 
             white-space: nowrap;
 
@@ -282,14 +275,16 @@
 
             display: flex;
 
-            gap: 24px;
+            align-items: center;
+
+            gap: 22px;
 
         }
 
 
         .navbar nav a {
 
-            color: #ddd;
+            color: #ccc;
 
             text-decoration: none;
 
@@ -307,20 +302,26 @@
         }
 
 
-        .search-wrapper {
+        .navbar-right {
 
             margin-left: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
 
         }
 
 
         #search {
 
-            width: 210px;
+            width: 190px;
 
             padding: 10px 13px;
 
-            background: #111;
+            background: rgba(17,17,17,.95);
 
             border:
                 1px solid
@@ -342,20 +343,51 @@
         }
 
 
-        /* ==================================================
+        .admin-open-button {
+
+            width: auto;
+
+            padding: 10px 13px;
+
+            background: #222;
+
+            color: white;
+
+            border:
+                1px solid
+                #444;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+
+        }
+
+
+        .admin-open-button:hover {
+
+            background: #333;
+
+            border-color: #e50914;
+
+        }
+
+
+        /* =====================================================
            HERO
-        ================================================== */
+        ===================================================== */
 
         .hero {
 
-            min-height: 680px;
+            min-height: 650px;
 
             display: flex;
 
             align-items: center;
 
             padding:
-                110px 5%
+                110px
+                5%
                 70px;
 
             background:
@@ -363,21 +395,21 @@
                 linear-gradient(
                     90deg,
                     #080808 0%,
-                    rgba(8,8,8,.9) 32%,
-                    rgba(8,8,8,.35) 72%,
+                    rgba(8,8,8,.92) 30%,
+                    rgba(8,8,8,.45) 65%,
                     #080808 100%
                 ),
 
                 linear-gradient(
                     0deg,
                     #080808 0%,
-                    transparent 40%
+                    transparent 45%
                 ),
 
                 radial-gradient(
                     circle at 75% 35%,
-                    #74151c,
-                    #260d11 35%,
+                    #76151d,
+                    #2b0c11 35%,
                     #080808 75%
                 );
 
@@ -401,9 +433,9 @@
 
             border-radius: 4px;
 
-            font-size: 11px;
+            font-size: 12px;
 
-            font-weight: 900;
+            font-weight: 800;
 
             margin-bottom: 18px;
 
@@ -413,26 +445,26 @@
         .hero h1 {
 
             font-size:
-                clamp(45px, 7vw, 80px);
+                clamp(
+                    42px,
+                    6vw,
+                    76px
+                );
 
-            line-height: .94;
+            line-height: .95;
 
             margin-bottom: 22px;
-
-            letter-spacing: -2px;
 
         }
 
 
         .hero p {
 
-            max-width: 580px;
-
             color: #ccc;
 
             font-size: 17px;
 
-            line-height: 1.65;
+            line-height: 1.6;
 
             margin-bottom: 28px;
 
@@ -453,7 +485,8 @@
         .buttons button {
 
             padding:
-                13px 22px;
+                13px
+                22px;
 
             border: none;
 
@@ -484,7 +517,7 @@
 
         .list {
 
-            background: #555;
+            background: #444;
 
             color: white;
 
@@ -493,19 +526,20 @@
 
         .list:hover {
 
-            background: #666;
+            background: #555;
 
         }
 
 
-        /* ==================================================
+        /* =====================================================
            CATALOGO
-        ================================================== */
+        ===================================================== */
 
         .catalogo {
 
             padding:
-                25px 5%
+                25px
+                5%
                 80px;
 
             background: #080808;
@@ -515,7 +549,7 @@
 
         .movie-section {
 
-            margin-bottom: 55px;
+            margin-bottom: 50px;
 
         }
 
@@ -549,10 +583,6 @@
         }
 
 
-        /* ==================================================
-           FILAS
-        ================================================== */
-
         .movie-row {
 
             display: flex;
@@ -562,7 +592,8 @@
             overflow-x: auto;
 
             padding:
-                8px 5px
+                8px
+                5px
                 18px;
 
             scroll-behavior: smooth;
@@ -588,21 +619,10 @@
 
             background: #444;
 
-            border-radius: 10px;
+            border-radius: 20px;
 
         }
 
-
-        .movie-row::-webkit-scrollbar-thumb:hover {
-
-            background: #666;
-
-        }
-
-
-        /* ==================================================
-           TARJETAS
-        ================================================== */
 
         .movie-card {
 
@@ -612,8 +632,7 @@
             cursor: pointer;
 
             transition:
-                transform .25s ease,
-                filter .25s ease;
+                transform .25s ease;
 
         }
 
@@ -621,21 +640,16 @@
         .movie-card:hover {
 
             transform:
-                scale(1.055);
+                scale(1.06);
 
-            z-index: 10;
+            z-index: 5;
 
         }
 
 
-        /* ==================================================
-           PORTADA
-           
-           IMPORTANTE:
-           - aspect-ratio mantiene proporción 2:3
-           - overflow evita deformaciones
-           - img usa object-fit: cover
-        ================================================== */
+        /* =====================================================
+           PORTADAS
+        ===================================================== */
 
         .poster {
 
@@ -652,8 +666,8 @@
             background:
                 linear-gradient(
                     135deg,
-                    #421014,
-                    #161616
+                    #222,
+                    #111
                 );
 
             box-shadow:
@@ -665,27 +679,21 @@
 
         .poster img {
 
+            display: block;
+
             width: 100%;
 
             height: 100%;
 
-            display: block;
+            /*
+                IMPORTANTE:
+                Esto evita que la portada se estire.
+                cover mantiene la proporción original.
+            */
 
             object-fit: cover;
 
             object-position: center;
-
-            transition:
-                transform .35s ease;
-
-        }
-
-
-        .movie-card:hover
-        .poster img {
-
-            transform:
-                scale(1.035);
 
         }
 
@@ -704,8 +712,37 @@
                 linear-gradient(
                     to top,
                     rgba(0,0,0,.9),
-                    rgba(0,0,0,.08) 55%,
-                    transparent 75%
+                    rgba(0,0,0,0) 50%
+                );
+
+        }
+
+
+        .poster-placeholder {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #aaa;
+
+            font-size: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b0a0f,
+                    #1a0507
                 );
 
         }
@@ -717,9 +754,11 @@
 
             left: 12px;
 
+            right: 12px;
+
             bottom: 12px;
 
-            z-index: 2;
+            z-index: 3;
 
         }
 
@@ -730,7 +769,7 @@
 
             font-size: 13px;
 
-            font-weight: 900;
+            font-weight: 800;
 
         }
 
@@ -743,19 +782,21 @@
 
             left: 10px;
 
-            z-index: 3;
+            z-index: 4;
 
             background: #e50914;
 
             color: white;
 
-            padding: 5px 8px;
+            padding:
+                5px
+                8px;
 
             border-radius: 4px;
 
             font-size: 10px;
 
-            font-weight: 900;
+            font-weight: 800;
 
         }
 
@@ -786,35 +827,13 @@
         }
 
 
-        /* ==================================================
-           MENSAJE SIN RESULTADOS
-        ================================================== */
-
-        .no-results {
-
-            display: none;
-
-            padding: 50px 20px;
-
-            text-align: center;
-
-            color: #777;
-
-        }
-
-
-        .no-results.show {
-
-            display: block;
-
-        }
-
-
-        /* ==================================================
+        /* =====================================================
            FICHA
-        ================================================== */
+        ===================================================== */
 
         .movie-detail {
+
+            display: none;
 
             position: fixed;
 
@@ -822,15 +841,14 @@
 
             z-index: 5000;
 
-            display: none;
+            background:
+                rgba(0,0,0,.97);
 
             overflow-y: auto;
 
             padding:
-                40px 5%;
-
-            background:
-                rgba(0,0,0,.97);
+                40px
+                5%;
 
         }
 
@@ -857,16 +875,19 @@
             border-radius: 12px;
 
             background:
+
+                radial-gradient(
+                    circle at 80% 20%,
+                    #4d1118,
+                    transparent 40%
+                ),
+
                 linear-gradient(
                     135deg,
-                    #321014,
-                    #111 48%,
+                    #261014,
+                    #111 50%,
                     #080808
                 );
-
-            box-shadow:
-                0 30px 100px
-                rgba(0,0,0,.8);
 
         }
 
@@ -875,15 +896,15 @@
 
             position: fixed;
 
-            top: 20px;
+            top: 22px;
 
-            right: 25px;
+            right: 28px;
 
             z-index: 6000;
 
-            width: 45px;
+            width: 46px;
 
-            height: 45px;
+            height: 46px;
 
             border: none;
 
@@ -910,9 +931,10 @@
             display: grid;
 
             grid-template-columns:
-                250px 1fr;
+                240px
+                1fr;
 
-            gap: 40px;
+            gap: 45px;
 
             align-items: start;
 
@@ -921,15 +943,19 @@
 
         .detail-poster {
 
-            width: 250px;
+            width: 240px;
 
             aspect-ratio: 2 / 3;
 
-            overflow: hidden;
-
             border-radius: 8px;
 
-            background: #151515;
+            overflow: hidden;
+
+            background: #111;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.6);
 
         }
 
@@ -944,14 +970,16 @@
 
             object-fit: cover;
 
+            object-position: center;
+
         }
 
 
         .detail-content {
 
-            max-width: 680px;
+            max-width: 700px;
 
-            padding-top: 15px;
+            padding-top: 10px;
 
         }
 
@@ -959,12 +987,18 @@
         .detail-content h1 {
 
             font-size:
-                clamp(38px, 5vw, 60px);
+                clamp(
+                    38px,
+                    5vw,
+                    58px
+                );
 
             line-height: 1;
 
             margin:
-                18px 0;
+                15px
+                0
+                20px;
 
         }
 
@@ -988,7 +1022,7 @@
 
             color: #ffd700;
 
-            font-weight: 900;
+            font-weight: 800;
 
         }
 
@@ -997,7 +1031,7 @@
 
             color: #ccc;
 
-            line-height: 1.75;
+            line-height: 1.7;
 
             margin-bottom: 20px;
 
@@ -1010,21 +1044,14 @@
 
             line-height: 1.9;
 
-            margin-bottom: 28px;
-
-        }
-
-
-        .info strong {
-
-            color: #ddd;
+            margin-bottom: 25px;
 
         }
 
 
         .detail-body {
 
-            margin-top: 55px;
+            margin-top: 50px;
 
             padding-top: 30px;
 
@@ -1035,9 +1062,16 @@
         }
 
 
-        /* ==================================================
+        .detail-body h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* =====================================================
            ESTRELLAS
-        ================================================== */
+        ===================================================== */
 
         .stars {
 
@@ -1045,7 +1079,7 @@
 
             gap: 8px;
 
-            margin-bottom: 40px;
+            margin-bottom: 35px;
 
         }
 
@@ -1058,13 +1092,18 @@
 
             cursor: pointer;
 
-            transition:
-                color .2s;
+            transition: .15s;
 
         }
 
 
-        .star:hover,
+        .star:hover {
+
+            color: #777;
+
+        }
+
+
         .star.selected {
 
             color: #ffd700;
@@ -1072,9 +1111,9 @@
         }
 
 
-        /* ==================================================
+        /* =====================================================
            COMENTARIOS
-        ================================================== */
+        ===================================================== */
 
         .comment-box {
 
@@ -1093,17 +1132,17 @@
 
             min-width: 0;
 
-            padding: 13px;
-
             background: #222;
 
             border:
                 1px solid
                 #444;
 
-            border-radius: 6px;
-
             color: white;
+
+            padding: 13px;
+
+            border-radius: 6px;
 
             outline: none;
 
@@ -1115,15 +1154,16 @@
             width: auto;
 
             padding:
-                13px 20px;
-
-            border: none;
-
-            border-radius: 6px;
+                13px
+                20px;
 
             background: white;
 
             color: black;
+
+            border: none;
+
+            border-radius: 6px;
 
             font-weight: 800;
 
@@ -1156,16 +1196,18 @@
 
             color: #aaa;
 
-            line-height: 1.5;
+            margin: 0;
 
         }
 
 
-        /* ==================================================
+        /* =====================================================
            REPRODUCTOR
-        ================================================== */
+        ===================================================== */
 
         .player {
+
+            display: none;
 
             position: fixed;
 
@@ -1173,16 +1215,14 @@
 
             z-index: 10000;
 
-            display: none;
+            background:
+                rgba(0,0,0,.98);
 
             align-items: center;
 
             justify-content: center;
 
             padding: 20px;
-
-            background:
-                rgba(0,0,0,.98);
 
         }
 
@@ -1197,31 +1237,37 @@
         .player-box {
 
             width:
-                min(1050px, 100%);
+                min(
+                    1050px,
+                    100%
+                );
 
             background: #111;
 
-            border-radius: 8px;
+            border-radius: 9px;
 
             overflow: hidden;
 
             box-shadow:
                 0 30px 100px
-                rgba(0,0,0,.9);
+                rgba(0,0,0,.8);
 
         }
 
 
         .player-header {
 
-            display: flex;
+            min-height: 58px;
 
-            align-items: center;
+            padding:
+                12px
+                18px;
+
+            display: flex;
 
             justify-content: space-between;
 
-            padding:
-                14px 20px;
+            align-items: center;
 
             background: #181818;
 
@@ -1230,15 +1276,17 @@
 
         .close-player {
 
-            border: none;
+            width: auto;
+
+            padding: 0 5px;
 
             background: none;
 
+            border: none;
+
             color: white;
 
-            font-size: 29px;
-
-            padding: 0;
+            font-size: 28px;
 
         }
 
@@ -1263,26 +1311,13 @@
 
         .video-container iframe {
 
+            display: block;
+
             width: 100%;
 
             height: 100%;
 
             border: none;
-
-            display: block;
-
-        }
-
-
-        .video-container video {
-
-            width: 100%;
-
-            height: 100%;
-
-            display: block;
-
-            background: #000;
 
         }
 
@@ -1295,9 +1330,9 @@
 
             display: flex;
 
-            align-items: center;
-
             justify-content: center;
+
+            align-items: center;
 
             text-align: center;
 
@@ -1305,31 +1340,31 @@
 
             color: #aaa;
 
-            line-height: 1.7;
+            line-height: 1.6;
 
         }
 
 
-        /* ==================================================
-           ADMIN
-        ================================================== */
+        /* =====================================================
+           PANEL ADMIN
+        ===================================================== */
 
         .admin-panel {
+
+            display: none;
 
             position: fixed;
 
             inset: 0;
 
-            z-index: 20000;
+            z-index: 12000;
 
-            display: none;
+            background:
+                rgba(0,0,0,.96);
 
             overflow-y: auto;
 
             padding: 30px 20px;
-
-            background:
-                rgba(0,0,0,.98);
 
         }
 
@@ -1341,17 +1376,17 @@
         }
 
 
-        .admin-box {
+        .admin-container {
 
-            width: 100%;
-
-            max-width: 850px;
+            width:
+                min(
+                    1100px,
+                    100%
+                );
 
             margin: auto;
 
-            padding: 35px;
-
-            background: #151515;
+            background: #111;
 
             border:
                 1px solid
@@ -1359,20 +1394,28 @@
 
             border-radius: 12px;
 
+            overflow: hidden;
+
         }
 
 
         .admin-header {
 
-            display: flex;
+            padding: 20px 25px;
 
-            justify-content: space-between;
+            background: #181818;
+
+            display: flex;
 
             align-items: center;
 
-            gap: 20px;
+            justify-content: space-between;
 
-            margin-bottom: 30px;
+            gap: 15px;
+
+            border-bottom:
+                1px solid
+                #333;
 
         }
 
@@ -1386,9 +1429,9 @@
 
         .admin-close {
 
-            width: 40px;
+            width: 42px;
 
-            height: 40px;
+            height: 42px;
 
             border: none;
 
@@ -1398,24 +1441,60 @@
 
             color: white;
 
-            font-size: 25px;
+            font-size: 24px;
 
         }
 
 
-        .admin-grid {
+        .admin-close:hover {
+
+            background: #e50914;
+
+        }
+
+
+        .admin-content {
+
+            padding: 25px;
+
+        }
+
+
+        .admin-notice {
+
+            background:
+                rgba(229,9,20,.09);
+
+            border:
+                1px solid
+                rgba(229,9,20,.3);
+
+            color: #ddd;
+
+            padding: 15px;
+
+            border-radius: 7px;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .admin-form {
 
             display: grid;
 
             grid-template-columns:
-                1fr 1fr;
+                repeat(2, 1fr);
 
-            gap: 18px;
+            gap: 15px;
 
         }
 
 
-        .admin-field {
+        .form-group {
 
             display: flex;
 
@@ -1426,14 +1505,15 @@
         }
 
 
-        .admin-field.full {
+        .form-group.full {
 
-            grid-column: 1 / -1;
+            grid-column:
+                1 / -1;
 
         }
 
 
-        .admin-field label {
+        .form-group label {
 
             color: #bbb;
 
@@ -1444,15 +1524,15 @@
         }
 
 
-        .admin-field input,
-        .admin-field textarea,
-        .admin-field select {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
 
             width: 100%;
 
-            padding: 12px;
+            background: #1c1c1c;
 
-            background: #222;
+            color: white;
 
             border:
                 1px solid
@@ -1460,25 +1540,25 @@
 
             border-radius: 6px;
 
-            color: white;
+            padding: 12px;
 
             outline: none;
 
         }
 
 
-        .admin-field textarea {
+        .form-group textarea {
 
-            min-height: 110px;
+            min-height: 100px;
 
             resize: vertical;
 
         }
 
 
-        .admin-field input:focus,
-        .admin-field textarea:focus,
-        .admin-field select:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
 
             border-color: #e50914;
 
@@ -1491,63 +1571,208 @@
 
             gap: 10px;
 
-            margin-top: 25px;
+            margin-top: 20px;
+
+            flex-wrap: wrap;
 
         }
 
 
-        .admin-actions button {
+        .admin-primary {
 
-            padding:
-                13px 20px;
+            background: #e50914;
+
+            color: white;
 
             border: none;
 
             border-radius: 6px;
+
+            padding:
+                12px
+                18px;
 
             font-weight: 800;
 
         }
 
 
-        .admin-save {
-
-            background: #e50914;
-
-            color: white;
-
-        }
-
-
-        .admin-clear {
+        .admin-secondary {
 
             background: #333;
 
             color: white;
 
+            border: none;
+
+            border-radius: 6px;
+
+            padding:
+                12px
+                18px;
+
+            font-weight: 800;
+
         }
 
 
-        .admin-note {
+        .admin-primary:hover {
 
-            color: #777;
+            background: #f6121d;
+
+        }
+
+
+        .admin-secondary:hover {
+
+            background: #444;
+
+        }
+
+
+        .admin-list {
+
+            margin-top: 35px;
+
+            border-top:
+                1px solid
+                #333;
+
+            padding-top: 25px;
+
+        }
+
+
+        .admin-list h3 {
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .admin-movie {
+
+            display: grid;
+
+            grid-template-columns:
+                70px
+                1fr
+                auto;
+
+            gap: 15px;
+
+            align-items: center;
+
+            padding: 12px;
+
+            background: #191919;
+
+            border-radius: 7px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .admin-thumb {
+
+            width: 70px;
+
+            height: 100px;
+
+            border-radius: 5px;
+
+            overflow: hidden;
+
+            background: #222;
+
+        }
+
+
+        .admin-thumb img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .admin-movie-info strong {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .admin-movie-info span {
+
+            color: #888;
 
             font-size: 12px;
 
-            line-height: 1.6;
+        }
 
-            margin-top: 20px;
+
+        .admin-movie-actions {
+
+            display: flex;
+
+            gap: 7px;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
 
         }
 
 
-        /* ==================================================
+        .small-button {
+
+            border: none;
+
+            border-radius: 5px;
+
+            padding:
+                8px
+                10px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        .edit-button {
+
+            background: #444;
+
+            color: white;
+
+        }
+
+
+        .delete-button {
+
+            background: #8d1018;
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
            FOOTER
-        ================================================== */
+        ===================================================== */
 
         footer {
 
-            padding: 50px 20px;
+            padding: 50px;
 
             text-align: center;
 
@@ -1557,41 +1782,90 @@
                 1px solid
                 #222;
 
-        }
-
-
-        .admin-link {
-
-            display: inline-block;
-
-            margin-top: 15px;
-
-            color: #444;
-
-            font-size: 11px;
-
-            text-decoration: none;
+            line-height: 1.7;
 
         }
 
 
-        .admin-link:hover {
+        /* =====================================================
+           MENSAJES
+        ===================================================== */
 
-            color: #aaa;
+        .toast {
+
+            position: fixed;
+
+            left: 50%;
+
+            bottom: 25px;
+
+            transform:
+                translate(-50%, 120px);
+
+            z-index: 30000;
+
+            background: #222;
+
+            color: white;
+
+            padding:
+                13px
+                18px;
+
+            border-radius: 7px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0,0,0,.6);
+
+            opacity: 0;
+
+            transition:
+                .3s ease;
+
+            pointer-events: none;
+
+            max-width:
+                calc(100% - 40px);
+
+            text-align: center;
 
         }
 
 
-        /* ==================================================
-           RESPONSIVE
-        ================================================== */
+        .toast.show {
+
+            opacity: 1;
+
+            transform:
+                translate(-50%, 0);
+
+        }
+
+
+        /* =====================================================
+           MOVIL
+        ===================================================== */
 
         @media(max-width: 850px) {
+
+            .navbar nav {
+                display: none;
+            }
+
+
+            #search {
+                width: 150px;
+            }
+
 
             .detail-layout {
 
                 grid-template-columns:
-                    180px 1fr;
+                    180px
+                    1fr;
+
+                gap: 25px;
 
             }
 
@@ -1602,35 +1876,85 @@
 
             }
 
+
+            .admin-form {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
         }
 
 
-        @media(max-width: 700px) {
+        @media(max-width: 600px) {
 
             .navbar {
 
-                padding: 0 4%;
+                height: 65px;
+
+                padding:
+                    0
+                    4%;
 
             }
 
 
-            .navbar nav {
+            .logo {
 
-                display: none;
+                font-size: 22px;
+
+                margin-right: 10px;
 
             }
 
 
-            .search-wrapper {
+            .navbar-right {
 
-                margin-left: auto;
+                gap: 5px;
 
             }
 
 
             #search {
 
-                width: 145px;
+                width: 125px;
+
+                padding:
+                    9px
+                    10px;
+
+            }
+
+
+            .admin-open-button {
+
+                padding:
+                    9px
+                    10px;
+
+                font-size: 0;
+
+            }
+
+
+            .admin-open-button::after {
+
+                content: "⚙️";
+
+                font-size: 16px;
+
+            }
+
+
+            .hero {
+
+                min-height: 570px;
+
+                padding:
+                    100px
+                    4%
+                    60px;
 
             }
 
@@ -1646,25 +1970,8 @@
 
             .movie-card {
 
-                flex-basis: 145px;
-
-            }
-
-
-            .hero {
-
-                min-height: 580px;
-
-                padding-left: 5%;
-
-                padding-right: 5%;
-
-            }
-
-
-            .hero h1 {
-
-                letter-spacing: -1px;
+                flex:
+                    0 0 145px;
 
             }
 
@@ -1672,22 +1979,22 @@
             .detail-container {
 
                 padding:
-                    30px 20px;
+                    35px
+                    20px;
 
             }
 
 
             .detail-layout {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
             }
 
 
             .detail-poster {
 
-                width: 210px;
+                width: 180px;
 
                 margin: auto;
 
@@ -1715,58 +2022,46 @@
             }
 
 
-            .admin-grid {
+            .admin-content {
+
+                padding: 18px;
+
+            }
+
+
+            .admin-header {
+
+                padding:
+                    16px;
+
+            }
+
+
+            .admin-movie {
 
                 grid-template-columns:
+                    55px
                     1fr;
 
             }
 
 
-            .admin-field.full {
+            .admin-thumb {
 
-                grid-column: auto;
+                width: 55px;
 
-            }
-
-
-            .admin-box {
-
-                padding: 25px 18px;
-
-            }
-
-        }
-
-
-        @media(max-width: 430px) {
-
-            .logo {
-
-                font-size: 22px;
-
-                margin-right: 10px;
+                height: 80px;
 
             }
 
 
-            #search {
+            .admin-movie-actions {
 
-                width: 130px;
+                grid-column:
+                    1 / -1;
 
-            }
-
-
-            .movie-card {
-
-                flex-basis: 135px;
-
-            }
-
-
-            .detail-poster {
-
-                width: 190px;
+                justify-content:
+                    flex-start;
 
             }
 
@@ -1780,690 +2075,467 @@
 <body>
 
 
-<!-- =====================================================
-     BIENVENIDA
-===================================================== -->
-
-<div
-    class="welcome"
-    id="welcome"
->
-
-    <div class="welcome-box">
-
-        <div class="welcome-logo">
-            CINE RD 🇩🇴
-        </div>
-
-
-        <h1>
-            ¡Bienvenido!
-        </h1>
-
-
-        <p>
-            ¿Cómo quieres que te llamemos?
-        </p>
-
-
-        <input
-            class="welcome-input"
-            id="name"
-            type="text"
-            maxlength="30"
-            autocomplete="off"
-            placeholder="Escribe tu nombre"
-        >
-
-
-        <button
-            class="welcome-button"
-            id="enterButton"
-            type="button"
-        >
-            ENTRAR
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
-
-<header
-    class="navbar"
-    id="navbar"
->
-
-    <div class="logo">
-        CINE RD
-    </div>
-
-
-    <nav>
-
-        <a href="#inicio">
-            Inicio
-        </a>
-
-        <a href="#peliculas">
-            Películas
-        </a>
-
-        <a href="#comedia">
-            Comedia
-        </a>
-
-        <a href="#drama">
-            Drama
-        </a>
-
-        <a href="#accion">
-            Acción
-        </a>
-
-        <a href="#clasicos">
-            Clásicos
-        </a>
-
-    </nav>
-
-
-    <div class="search-wrapper">
-
-        <input
-            id="search"
-            type="search"
-            autocomplete="off"
-            placeholder="🔍 Buscar..."
-        >
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section
-    class="hero"
-    id="inicio"
->
-
-    <div class="hero-content">
-
-        <span class="badge">
-            🇩🇴 CINE DOMINICANO
-        </span>
-
-
-        <h1>
-            Historias<br>
-            de nuestra tierra
-        </h1>
-
-
-        <p>
-            Descubre películas dominicanas,
-            clásicos, comedias, dramas,
-            acción y mucho más en Cine RD.
-        </p>
-
-
-        <div class="buttons">
-
-            <button
-                class="play"
-                id="heroPlay"
-                type="button"
-            >
-                ▶ Ver película
-            </button>
-
-
-            <button
-                class="list"
-                id="heroList"
-                type="button"
-            >
-                ＋ Mi lista
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CATALOGO
-===================================================== -->
-
-<main
-    class="catalogo"
-    id="peliculas"
->
-
-    <!-- Tendencias -->
-
-    <section
-        class="movie-section"
-        id="tendencias"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                🔥 Tendencias
-            </h2>
-
-            <span>
-                Cine RD
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-tendencias"
-        ></div>
-
-    </section>
-
-
-
-    <!-- Cine Dominicano -->
-
-    <section
-        class="movie-section"
-        id="dominicano"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                🇩🇴 Cine Dominicano
-            </h2>
-
-            <span>
-                Producciones dominicanas
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-dominicano"
-        ></div>
-
-    </section>
-
-
-
-    <!-- Comedia -->
-
-    <section
-        class="movie-section"
-        id="comedia"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                😂 Comedia
-            </h2>
-
-            <span>
-                Para reír
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-comedia"
-        ></div>
-
-    </section>
-
-
-
-    <!-- Drama -->
-
-    <section
-        class="movie-section"
-        id="drama"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                🎭 Drama
-            </h2>
-
-            <span>
-                Historias intensas
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-drama"
-        ></div>
-
-    </section>
-
-
-
-    <!-- Acción -->
-
-    <section
-        class="movie-section"
-        id="accion"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                💥 Acción
-            </h2>
-
-            <span>
-                Adrenalina
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-accion"
-        ></div>
-
-    </section>
-
-
-
-    <!-- Terror -->
-
-    <section
-        class="movie-section"
-        id="terror"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                👻 Terror
-            </h2>
-
-            <span>
-                Para los valientes
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-terror"
-        ></div>
-
-    </section>
-
-
-
-    <!-- Romance -->
-
-    <section
-        class="movie-section"
-        id="romance"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                ❤️ Romance
-            </h2>
-
-            <span>
-                Historias de amor
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-romance"
-        ></div>
-
-    </section>
-
-
-
-    <!-- Clásicos -->
-
-    <section
-        class="movie-section"
-        id="clasicos"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                🎬 Clásicos Dominicanos
-            </h2>
-
-            <span>
-                Grandes historias
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-clasicos"
-        ></div>
-
-    </section>
-
-
-
-    <!-- Mejor valoradas -->
-
-    <section
-        class="movie-section"
-        id="mejorValoradas"
-    >
-
-        <div class="section-title">
-
-            <h2>
-                ⭐ Mejor valoradas
-            </h2>
-
-            <span>
-                Las favoritas
-            </span>
-
-        </div>
-
-
-        <div
-            class="movie-row"
-            id="row-mejor"
-        ></div>
-
-    </section>
-
+    <!-- =====================================================
+         BIENVENIDA
+    ===================================================== -->
 
     <div
-        class="no-results"
-        id="noResults"
+        class="welcome"
+        id="welcome"
     >
 
-        <h2>
-            😕 No encontramos esa película
-        </h2>
+        <div class="welcome-box">
 
-        <p style="margin-top:10px;">
-            Prueba buscando otro título.
-        </p>
-
-    </div>
-
-</main>
-
-
-
-<!-- =====================================================
-     FICHA DE PELÍCULA
-===================================================== -->
-
-<div
-    class="movie-detail"
-    id="movieDetail"
->
-
-    <button
-        class="close-detail"
-        id="closeDetail"
-        type="button"
-        aria-label="Cerrar"
-    >
-        ×
-    </button>
-
-
-    <div class="detail-container">
-
-        <div class="detail-layout">
-
-
-            <div class="detail-poster">
-
-                <img
-                    id="detailPoster"
-                    src=""
-                    alt="Portada"
-                >
-
+            <div class="welcome-logo">
+                CINE RD 🇩🇴
             </div>
 
 
-            <div class="detail-content">
-
-                <span class="badge">
-                    🇩🇴 CINE RD
-                </span>
+            <h1>
+                ¡Bienvenido!
+            </h1>
 
 
-                <h1 id="detailTitle">
-                    Película
-                </h1>
+            <p>
+                ¿Cómo quieres que te llamemos?
+            </p>
 
 
-                <div class="metadata">
-
-                    <span id="detailYear">
-                        2025
-                    </span>
-
-                    <span>
-                        •
-                    </span>
-
-                    <span id="detailGenre">
-                        Drama
-                    </span>
-
-                    <span>
-                        •
-                    </span>
-
-                    <span id="detailDuration">
-                        1h 40min
-                    </span>
-
-                    <span class="rating">
-
-                        ⭐
-
-                        <span id="detailRating">
-                            8.5
-                        </span>
-
-                    </span>
-
-                </div>
+            <input
+                class="welcome-input"
+                id="name"
+                type="text"
+                maxlength="30"
+                autocomplete="off"
+                placeholder="Escribe tu nombre"
+            >
 
 
-                <p
-                    class="description"
-                    id="detailDescription"
-                >
-                    Descripción.
-                </p>
-
-
-                <p class="info">
-
-                    <strong>
-                        🎬 Director:
-                    </strong>
-
-                    <span id="detailDirector">
-                        Director
-                    </span>
-
-                    <br>
-
-                    <strong>
-                        👥 Reparto:
-                    </strong>
-
-                    <span id="detailCast">
-                        Reparto
-                    </span>
-
-                </p>
-
-
-                <div class="buttons">
-
-                    <button
-                        class="play"
-                        id="detailPlay"
-                        type="button"
-                    >
-                        ▶ Ver película
-                    </button>
-
-
-                    <button
-                        class="list"
-                        id="detailTrailer"
-                        type="button"
-                    >
-                        🎬 Ver tráiler
-                    </button>
-
-
-                    <button
-                        class="list"
-                        id="detailAddList"
-                        type="button"
-                    >
-                        ＋ Mi lista
-                    </button>
-
-                </div>
-
-            </div>
+            <button
+                class="welcome-button"
+                id="enterButton"
+                type="button"
+            >
+                ENTRAR
+            </button>
 
         </div>
 
+    </div>
 
 
-        <div class="detail-body">
 
-            <h2>
-                ⭐ Valorar película
-            </h2>
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            CINE RD
+        </div>
 
 
-            <div class="stars">
+        <nav>
 
-                <span
-                    class="star"
-                    data-star="1"
+            <a href="#">
+                Inicio
+            </a>
+
+            <a href="#peliculas">
+                Películas
+            </a>
+
+            <a href="#accion">
+                Acción
+            </a>
+
+            <a href="#comedia">
+                Comedia
+            </a>
+
+            <a href="#drama">
+                Drama
+            </a>
+
+            <a href="#clasicos">
+                Clásicos
+            </a>
+
+        </nav>
+
+
+        <div class="navbar-right">
+
+            <input
+                type="text"
+                id="search"
+                autocomplete="off"
+                placeholder="🔍 Buscar..."
+            >
+
+
+            <button
+                class="admin-open-button"
+                id="openAdminButton"
+                type="button"
+            >
+                ⚙️ PANEL
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                🇩🇴 CINE DOMINICANO
+            </span>
+
+
+            <h1>
+                Historias<br>
+                de nuestra tierra
+            </h1>
+
+
+            <p>
+                Descubre películas y producciones
+                dominicanas en un solo lugar.
+            </p>
+
+
+            <div class="buttons">
+
+                <button
+                    class="play"
+                    type="button"
+                    id="heroPlayButton"
                 >
-                    ★
-                </span>
-
-                <span
-                    class="star"
-                    data-star="2"
-                >
-                    ★
-                </span>
-
-                <span
-                    class="star"
-                    data-star="3"
-                >
-                    ★
-                </span>
-
-                <span
-                    class="star"
-                    data-star="4"
-                >
-                    ★
-                </span>
-
-                <span
-                    class="star"
-                    data-star="5"
-                >
-                    ★
-                </span>
-
-            </div>
-
-
-            <h2>
-                💬 Comentarios
-            </h2>
-
-
-            <div class="comment-box">
-
-                <input
-                    id="commentInput"
-                    type="text"
-                    maxlength="300"
-                    placeholder="Escribe un comentario..."
-                >
+                    ▶ Ver película
+                </button>
 
 
                 <button
-                    id="commentButton"
+                    class="list"
                     type="button"
+                    id="heroListButton"
                 >
-                    Publicar
+                    ＋ Mi lista
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CATALOGO
+    ===================================================== -->
+
+    <main
+        class="catalogo"
+        id="peliculas"
+    >
+
+        <!-- Las secciones se generan automáticamente -->
+        <div id="catalogContainer"></div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FICHA DE PELICULA
+    ===================================================== -->
+
+    <div
+        id="movieDetail"
+        class="movie-detail"
+    >
+
+        <div class="detail-container">
+
+
+            <button
+                class="close-detail"
+                id="closeDetailButton"
+                type="button"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+
+
+            <div class="detail-layout">
+
+
+                <div class="detail-poster">
+
+                    <img
+                        id="detailPoster"
+                        src=""
+                        alt="Portada de película"
+                    >
+
+                </div>
+
+
+                <div class="detail-content">
+
+                    <span class="badge">
+                        🇩🇴 CINE DOMINICANO
+                    </span>
+
+
+                    <h1 id="detailTitle">
+                        Película
+                    </h1>
+
+
+                    <div class="metadata">
+
+                        <span id="detailYear">
+                            -
+                        </span>
+
+                        <span>
+                            •
+                        </span>
+
+                        <span id="detailGenre">
+                            -
+                        </span>
+
+                        <span>
+                            •
+                        </span>
+
+                        <span id="detailDuration">
+                            -
+                        </span>
+
+                        <span class="rating">
+
+                            ⭐
+
+                            <span id="detailRating">
+                                -
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <p
+                        class="description"
+                        id="detailDescription"
+                    >
+                        Descripción.
+                    </p>
+
+
+                    <p class="info">
+
+                        🎬 Director:
+                        <span id="detailDirector">
+                            -
+                        </span>
+
+                        <br>
+
+                        👥 Reparto:
+                        <span id="detailCast">
+                            -
+                        </span>
+
+                    </p>
+
+
+                    <div class="buttons">
+
+                        <button
+                            class="play"
+                            id="watchMovieButton"
+                            type="button"
+                        >
+                            ▶ Ver película
+                        </button>
+
+
+                        <button
+                            class="list"
+                            id="watchTrailerButton"
+                            type="button"
+                        >
+                            🎬 Ver tráiler
+                        </button>
+
+
+                        <button
+                            class="list"
+                            id="detailListButton"
+                            type="button"
+                        >
+                            ❤️ Mi lista
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="detail-body">
+
+                <h2>
+                    ⭐ Valoración
+                </h2>
+
+
+                <div class="stars">
+
+                    <span
+                        class="star"
+                        data-rating="1"
+                    >
+                        ★
+                    </span>
+
+                    <span
+                        class="star"
+                        data-rating="2"
+                    >
+                        ★
+                    </span>
+
+                    <span
+                        class="star"
+                        data-rating="3"
+                    >
+                        ★
+                    </span>
+
+                    <span
+                        class="star"
+                        data-rating="4"
+                    >
+                        ★
+                    </span>
+
+                    <span
+                        class="star"
+                        data-rating="5"
+                    >
+                        ★
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    💬 Comentarios
+                </h2>
+
+
+                <div class="comment-box">
+
+                    <input
+                        id="commentInput"
+                        type="text"
+                        maxlength="300"
+                        placeholder="Escribe un comentario..."
+                    >
+
+
+                    <button
+                        id="commentButton"
+                        type="button"
+                    >
+                        Publicar
+                    </button>
+
+                </div>
+
+
+                <div id="comments">
+
+                    <div class="comment">
+
+                        <strong>
+                            Carlos
+                        </strong>
+
+                        <p>
+                            Me encantó esta película 🔥
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         REPRODUCTOR
+    ===================================================== -->
+
+    <div
+        class="player"
+        id="player"
+    >
+
+        <div class="player-box">
+
+
+            <div class="player-header">
+
+                <strong id="playerTitle">
+                    Reproduciendo
+                </strong>
+
+
+                <button
+                    class="close-player"
+                    id="closePlayerButton"
+                    type="button"
+                    aria-label="Cerrar reproductor"
+                >
+                    ×
                 </button>
 
             </div>
 
 
-            <div id="comments">
+            <div
+                class="video-container"
+                id="videoContainer"
+            >
 
-                <div class="comment">
+                <div class="video-message">
 
-                    <strong>
-                        Cine RD
-                    </strong>
-
-                    <p>
-                        ¡Disfruta de esta película! 🇩🇴🎬
-                    </p>
+                    Selecciona una película.
 
                 </div>
 
@@ -2473,2181 +2545,899 @@
 
     </div>
 
-</div>
 
 
+    <!-- =====================================================
+         PANEL ADMINISTRATIVO
+    ===================================================== -->
 
-<!-- =====================================================
-     REPRODUCTOR
-===================================================== -->
-
-<div
-    class="player"
-    id="player"
->
-
-    <div class="player-box">
-
-        <div class="player-header">
-
-            <strong id="playerTitle">
-                Reproduciendo
-            </strong>
-
-
-            <button
-                class="close-player"
-                id="closePlayer"
-                type="button"
-                aria-label="Cerrar reproductor"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div
-            class="video-container"
-            id="videoContainer"
-        ></div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     PANEL ADMINISTRADOR
-===================================================== -->
-
-<div
-    class="admin-panel"
-    id="adminPanel"
->
-
-    <div class="admin-box">
-
-        <div class="admin-header">
-
-            <h2>
-                🎬 Cine RD — Agregar película
-            </h2>
-
-
-            <button
-                class="admin-close"
-                id="adminClose"
-                type="button"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="admin-grid">
-
-
-            <div class="admin-field">
-
-                <label>
-                    Título
-                </label>
-
-                <input
-                    id="adminTitle"
-                    type="text"
-                    placeholder="Ej. La Trampa"
-                >
-
-            </div>
-
-
-            <div class="admin-field">
-
-                <label>
-                    Año
-                </label>
-
-                <input
-                    id="adminYear"
-                    type="number"
-                    placeholder="2026"
-                >
-
-            </div>
-
-
-            <div class="admin-field">
-
-                <label>
-                    Género principal
-                </label>
-
-                <select id="adminGenre">
-
-                    <option value="Comedia">
-                        Comedia
-                    </option>
-
-                    <option value="Drama">
-                        Drama
-                    </option>
-
-                    <option value="Acción">
-                        Acción
-                    </option>
-
-                    <option value="Terror">
-                        Terror
-                    </option>
-
-                    <option value="Romance">
-                        Romance
-                    </option>
-
-                    <option value="Aventura">
-                        Aventura
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="admin-field">
-
-                <label>
-                    Duración
-                </label>
-
-                <input
-                    id="adminDuration"
-                    type="text"
-                    placeholder="1h 30min"
-                >
-
-            </div>
-
-
-            <div class="admin-field">
-
-                <label>
-                    Valoración
-                </label>
-
-                <input
-                    id="adminRating"
-                    type="number"
-                    min="0"
-                    max="10"
-                    step=".1"
-                    placeholder="8.5"
-                >
-
-            </div>
-
-
-            <div class="admin-field">
-
-                <label>
-                    Director
-                </label>
-
-                <input
-                    id="adminDirector"
-                    type="text"
-                    placeholder="Nombre del director"
-                >
-
-            </div>
-
-
-            <div class="admin-field full">
-
-                <label>
-                    Reparto
-                </label>
-
-                <input
-                    id="adminCast"
-                    type="text"
-                    placeholder="Actor 1, Actor 2, Actor 3"
-                >
-
-            </div>
-
-
-            <div class="admin-field full">
-
-                <label>
-                    Descripción
-                </label>
-
-                <textarea
-                    id="adminDescription"
-                    placeholder="Descripción de la película..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="admin-field full">
-
-                <label>
-                    URL de la portada
-                </label>
-
-                <input
-                    id="adminPoster"
-                    type="url"
-                    placeholder="https://..."
-                >
-
-            </div>
-
-
-            <div class="admin-field full">
-
-                <label>
-                    URL del tráiler de YouTube
-                </label>
-
-                <input
-                    id="adminTrailer"
-                    type="url"
-                    placeholder="https://youtu.be/..."
-                >
-
-            </div>
-
-
-            <div class="admin-field full">
-
-                <label>
-                    URL de la película
-                </label>
-
-                <input
-                    id="adminVideo"
-                    type="url"
-                    placeholder="URL autorizada del vídeo..."
-                >
-
-            </div>
-
-
-            <div class="admin-field">
-
-                <label>
-                    ¿Es tendencia?
-                </label>
-
-                <select id="adminTrending">
-
-                    <option value="true">
-                        Sí
-                    </option>
-
-                    <option value="false">
-                        No
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="admin-field">
-
-                <label>
-                    ¿Es clásico?
-                </label>
-
-                <select id="adminClassic">
-
-                    <option value="false">
-                        No
-                    </option>
-
-                    <option value="true">
-                        Sí
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-
-        <div class="admin-actions">
-
-            <button
-                class="admin-save"
-                id="adminSave"
-                type="button"
-            >
-                ➕ Agregar película
-            </button>
-
-
-            <button
-                class="admin-clear"
-                id="adminClear"
-                type="button"
-            >
-                Limpiar
-            </button>
-
-        </div>
-
-
-        <p class="admin-note">
-
-            ⚠️ Este panel es una herramienta local de esta
-            primera versión. Todavía NO es un panel seguro
-            para producción. Más adelante construiremos
-            autenticación, permisos, base de datos y
-            protección contra contenido no autorizado.
-
-        </p>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <strong>
-        CINE RD 🇩🇴
-    </strong>
-
-    <br><br>
-
-    Plataforma de cine dominicano.
-
-    <br><br>
-
-    © 2026 Cine RD
-
-
-    <br>
-
-    <a
-        href="#"
-        class="admin-link"
-        id="adminLink"
+    <div
+        class="admin-panel"
+        id="adminPanel"
     >
-        Administración
-    </a>
 
-</footer>
+        <div class="admin-container">
 
 
+            <div class="admin-header">
 
-<script>
+                <div>
 
-/* ======================================================
-   CINE RD
-   SISTEMA PRINCIPAL
-====================================================== */
+                    <h2>
+                        ⚙️ Panel de Cine RD
+                    </h2>
 
+                    <small style="color:#777;">
+                        Gestión de películas
+                    </small>
 
-/* ======================================================
-   PELÍCULAS
+                </div>
 
-   PARA AGREGAR UNA NUEVA PELÍCULA:
 
-   1. Copia uno de estos objetos.
-   2. Cambia los datos.
-   3. Pon un ID diferente.
+                <button
+                    class="admin-close"
+                    id="closeAdminButton"
+                    type="button"
+                >
+                    ×
+                </button>
 
-====================================================== */
+            </div>
 
-const movies = [
 
-    {
-        id: 1,
+            <div class="admin-content">
 
-        title: "La Trampa",
 
-        year: 2022,
+                <div class="admin-notice">
 
-        genre: "Comedia",
+                    <strong>
+                        Modo de desarrollo
+                    </strong>
 
-        duration: "1h 29min",
+                    <br>
 
-        rating: 8.2,
+                    Desde aquí puedes añadir películas
+                    sin modificar manualmente el código.
+                    Los datos se guardan en este navegador.
 
-        director: "Frank Perozo",
+                    <br><br>
 
-        cast:
-            "Raymond Pozo, Miguel Céspedes, Pepe Sierra, Caroline Aquino, Melymel, Kenny Grullón",
+                    <strong>
+                        Importante:
+                    </strong>
 
-        description:
-            "La Trampa cuenta dos historias que terminan conectándose. Aldo enfrenta una deuda provocada por el juego, mientras Jaime intenta recuperar unas tierras que pertenecen a su familia. Una comedia dominicana llena de enredos, conflictos y situaciones inesperadas.",
+                    este panel todavía no es un sistema
+                    administrativo seguro para una web pública.
+                    La autenticación y base de datos segura
+                    las añadiremos posteriormente.
 
-        /*
-           AQUÍ PONEMOS LA PORTADA.
+                </div>
 
-           Puedes cambiar esta URL por la imagen
-           de portada que quieras utilizar.
-        */
 
-        poster:
-            "https://placehold.co/600x900/321014/ffffff?text=La+Trampa",
 
-        /*
-           Tráiler de YouTube.
-        */
+                <form
+                    class="admin-form"
+                    id="movieForm"
+                >
 
-        trailer:
-            "https://youtu.be/EKXHvaOX9VY",
+                    <div class="form-group">
 
-        /*
-           Vídeo proporcionado para esta película.
+                        <label for="movieTitle">
+                            Título *
+                        </label>
 
-           El sistema convierte automáticamente
-           enlaces de YouTube en reproductores.
-        */
+                        <input
+                            id="movieTitle"
+                            required
+                            type="text"
+                            maxlength="100"
+                            placeholder="Ej. La Trampa"
+                        >
 
-        video:
-            "https://youtu.be/fsCkuHpqXGo?si=OIlRJEQsUNVawrjX",
+                    </div>
 
-        trending: true,
 
-        classic: false,
 
-        dominican: true
+                    <div class="form-group">
 
-    },
+                        <label for="movieYear">
+                            Año
+                        </label>
 
+                        <input
+                            id="movieYear"
+                            type="text"
+                            maxlength="4"
+                            placeholder="2022"
+                        >
 
-    {
-        id: 2,
+                    </div>
 
-        title: "Santo Domingo",
 
-        year: 2024,
 
-        genre: "Drama",
+                    <div class="form-group">
 
-        duration: "1h 38min",
+                        <label for="movieGenre">
+                            Género
+                        </label>
 
-        rating: 8.2,
+                        <select id="movieGenre">
 
-        director: "Director Dominicano",
+                            <option value="Acción">
+                                Acción
+                            </option>
 
-        cast:
-            "Actor 1, Actor 2",
+                            <option value="Comedia">
+                                Comedia
+                            </option>
 
-        description:
-            "Una historia de familia, sueños y decisiones que cambian una vida.",
+                            <option value="Drama">
+                                Drama
+                            </option>
 
-        poster:
-            "https://placehold.co/600x900/06344c/ffffff?text=Santo+Domingo",
+                            <option value="Clásicos Dominicanos">
+                                Clásicos Dominicanos
+                            </option>
 
-        trailer:
-            "",
+                            <option value="Cine Dominicano">
+                                Cine Dominicano
+                            </option>
 
-        video:
-            "",
+                            <option value="Aventura">
+                                Aventura
+                            </option>
 
-        trending: true,
+                            <option value="Terror">
+                                Terror
+                            </option>
 
-        classic: false,
+                            <option value="Romance">
+                                Romance
+                            </option>
 
-        dominican: true
+                            <option value="Documental">
+                                Documental
+                            </option>
 
-    },
+                        </select>
 
+                    </div>
 
-    {
-        id: 3,
 
-        title: "Un Día en RD",
 
-        year: 2025,
+                    <div class="form-group">
 
-        genre: "Comedia",
+                        <label for="movieDuration">
+                            Duración
+                        </label>
 
-        duration: "1h 35min",
+                        <input
+                            id="movieDuration"
+                            type="text"
+                            maxlength="30"
+                            placeholder="1h 30min"
+                        >
 
-        rating: 8.5,
+                    </div>
 
-        director: "Director Dominicano",
 
-        cast:
-            "Actor 1, Actor 2, Actor 3",
 
-        description:
-            "Una divertida historia llena de situaciones que solamente podrían pasar en República Dominicana.",
+                    <div class="form-group">
 
-        poster:
-            "https://placehold.co/600x900/8a4b05/ffffff?text=Un+D%C3%ADa+en+RD",
+                        <label for="movieRating">
+                            Valoración
+                        </label>
 
-        trailer:
-            "",
+                        <input
+                            id="movieRating"
+                            type="number"
+                            min="0"
+                            max="10"
+                            step="0.1"
+                            value="8.0"
+                        >
 
-        video:
-            "",
+                    </div>
 
-        trending: true,
 
-        classic: false,
 
-        dominican: true
+                    <div class="form-group">
 
-    },
+                        <label for="movieDirector">
+                            Director
+                        </label>
 
+                        <input
+                            id="movieDirector"
+                            type="text"
+                            maxlength="100"
+                            placeholder="Nombre del director"
+                        >
 
-    {
-        id: 4,
+                    </div>
 
-        title: "Historias del Caribe",
 
-        year: 2023,
 
-        genre: "Drama",
+                    <div class="form-group full">
 
-        duration: "1h 50min",
+                        <label for="movieCast">
+                            Reparto
+                        </label>
 
-        rating: 8.9,
+                        <input
+                            id="movieCast"
+                            type="text"
+                            maxlength="300"
+                            placeholder="Actor 1, Actor 2, Actor 3"
+                        >
 
-        director: "Director Dominicano",
+                    </div>
 
-        cast:
-            "Actor 1, Actor 2",
 
-        description:
-            "Una historia sobre familia, identidad y las raíces del Caribe.",
 
-        poster:
-            "https://placehold.co/600x900/32105f/ffffff?text=Historias+del+Caribe",
+                    <div class="form-group full">
 
-        trailer:
-            "",
+                        <label for="movieDescription">
+                            Descripción
+                        </label>
 
-        video:
-            "",
+                        <textarea
+                            id="movieDescription"
+                            maxlength="1000"
+                            placeholder="Descripción de la película..."
+                        ></textarea>
 
-        trending: true,
+                    </div>
 
-        classic: false,
 
-        dominican: true
 
-    },
+                    <div class="form-group full">
 
+                        <label for="moviePoster">
+                            URL de la portada
+                        </label>
 
-    {
-        id: 5,
+                        <input
+                            id="moviePoster"
+                            type="url"
+                            placeholder="https://..."
+                        >
 
-        title: "Mi Barrio",
+                    </div>
 
-        year: 2024,
 
-        genre: "Drama",
 
-        duration: "1h 40min",
+                    <div class="form-group full">
 
-        rating: 8.1,
+                        <label for="movieVideo">
+                            URL de la película / vídeo
+                        </label>
 
-        director: "Director Dominicano",
+                        <input
+                            id="movieVideo"
+                            type="url"
+                            placeholder="https://www.youtube.com/watch?v=..."
+                        >
 
-        cast:
-            "Actor 1, Actor 2",
+                    </div>
 
-        description:
-            "Las historias y personajes de un barrio dominicano.",
 
-        poster:
-            "https://placehold.co/600x900/0c4920/ffffff?text=Mi+Barrio",
 
-        trailer:
-            "",
+                    <div class="form-group full">
 
-        video:
-            "",
+                        <label for="movieTrailer">
+                            URL del tráiler
+                        </label>
 
-        trending: false,
+                        <input
+                            id="movieTrailer"
+                            type="url"
+                            placeholder="https://www.youtube.com/watch?v=..."
+                        >
 
-        classic: false,
+                    </div>
 
-        dominican: true
 
-    },
+                </form>
 
 
-    {
-        id: 6,
 
-        title: "La Vuelta",
+                <div class="admin-actions">
 
-        year: 2025,
+                    <button
+                        class="admin-primary"
+                        id="saveMovieButton"
+                        type="button"
+                    >
+                        ＋ Guardar película
+                    </button>
 
-        genre: "Comedia",
 
-        duration: "1h 40min",
+                    <button
+                        class="admin-secondary"
+                        id="cancelEditButton"
+                        type="button"
+                    >
+                        Limpiar formulario
+                    </button>
 
-        rating: 8.4,
+                </div>
 
-        director: "Director Dominicano",
 
-        cast:
-            "Actor 1, Actor 2",
 
-        description:
-            "Una comedia dominicana llena de situaciones inesperadas.",
+                <div class="admin-list">
 
-        poster:
-            "https://placehold.co/600x900/7d160c/ffffff?text=La+Vuelta",
+                    <h3>
+                        🎬 Películas del catálogo
+                    </h3>
 
-        trailer:
-            "",
 
-        video:
-            "",
+                    <div id="adminMovieList"></div>
 
-        trending: true,
+                </div>
 
-        classic: false,
+            </div>
 
-        dominican: true
+        </div>
 
-    }
+    </div>
 
-];
 
 
-/* ======================================================
-   VARIABLES
-====================================================== */
+    <!-- =====================================================
+         TOAST
+    ===================================================== -->
 
-let currentMovie = null;
+    <div
+        class="toast"
+        id="toast"
+    >
+        Guardado.
+    </div>
 
 
-/* ======================================================
-   ELEMENTOS
-====================================================== */
 
-const welcome =
-    document.getElementById("welcome");
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
 
-const nameInput =
-    document.getElementById("name");
+    <footer>
 
-const enterButton =
-    document.getElementById("enterButton");
+        <strong>
+            CINE RD 🇩🇴
+        </strong>
 
-const movieDetail =
-    document.getElementById("movieDetail");
+        <br>
 
-const player =
-    document.getElementById("player");
+        Plataforma de cine dominicano.
 
-const videoContainer =
-    document.getElementById("videoContainer");
+        <br><br>
 
-const playerTitle =
-    document.getElementById("playerTitle");
+        © 2026 Cine RD
 
+    </footer>
 
-/* ======================================================
-   ENTRAR
-====================================================== */
 
-function entrar() {
 
-    const nombre =
-        nameInput.value.trim();
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
 
+    <script>
 
-    if (!nombre) {
+        "use strict";
 
-        nameInput.focus();
 
-        return;
+        /* =====================================================
+           DATOS INICIALES
+        ===================================================== */
 
-    }
+        const defaultMovies = {
 
+            1: {
 
-    localStorage.setItem(
-        "cineRD_name",
-        nombre
-    );
+                title:
+                    "La Trampa",
 
+                year:
+                    "2022",
 
-    welcome.classList.add("hidden");
+                genre:
+                    "Comedia",
 
-    document.body.classList.remove(
-        "no-scroll"
-    );
+                duration:
+                    "1h 29min",
 
-}
+                rating:
+                    "8.2",
 
+                director:
+                    "Frank Perozo",
 
-/* ======================================================
-   BOTON ENTRAR
-====================================================== */
+                cast:
+                    "Raymond Pozo, Miguel Céspedes, Pepe Sierra, Caroline Aquino, Melymel, Kenny Grullón",
 
-enterButton.addEventListener(
-    "click",
-    entrar
-);
+                description:
+                    "La Trampa cuenta dos historias que terminan conectándose. Una comedia dominicana llena de enredos, conflictos y situaciones inesperadas.",
 
+                poster:
+                    "https://img.youtube.com/vi/fsCkuHpqXGo/maxresdefault.jpg",
 
-/* ======================================================
-   ENTER EN NOMBRE
-====================================================== */
+                video:
+                    "https://www.youtube.com/watch?v=fsCkuHpqXGo",
 
-nameInput.addEventListener(
-    "keydown",
-    function(event) {
+                trailer:
+                    "https://www.youtube.com/watch?v=fsCkuHpqXGo"
 
-        if (event.key === "Enter") {
+            },
 
-            event.preventDefault();
 
-            entrar();
+            2: {
 
-        }
+                title:
+                    "Santo Domingo",
 
-    }
-);
+                year:
+                    "2024",
 
+                genre:
+                    "Drama",
 
-/* ======================================================
-   RECORDAR NOMBRE
-====================================================== */
+                duration:
+                    "1h 38min",
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
+                rating:
+                    "8.2",
 
-        const savedName =
-            localStorage.getItem(
-                "cineRD_name"
-            );
+                director:
+                    "Director Dominicano",
 
+                cast:
+                    "Actor 1, Actor 2",
 
-        if (savedName) {
+                description:
+                    "Una historia de familia, sueños y decisiones que cambian una vida.",
 
-            welcome.classList.add(
-                "hidden"
-            );
+                poster:
+                    "",
 
-        }
+                video:
+                    "",
 
+                trailer:
+                    ""
 
-        renderCatalog();
+            },
 
-    }
-);
 
+            3: {
 
-/* ======================================================
-   CREAR TARJETA
-====================================================== */
+                title:
+                    "Un Día en RD",
 
-function createMovieCard(movie) {
+                year:
+                    "2025",
 
-    const article =
-        document.createElement("article");
+                genre:
+                    "Comedia",
 
+                duration:
+                    "1h 35min",
 
-    article.className =
-        "movie-card";
+                rating:
+                    "8.5",
 
+                director:
+                    "Director Dominicano",
 
-    article.dataset.title =
-        movie.title.toLowerCase();
+                cast:
+                    "Actor 1, Actor 2, Actor 3",
 
+                description:
+                    "Una divertida historia llena de situaciones que solamente podrían pasar en República Dominicana.",
 
-    article.dataset.id =
-        movie.id;
+                poster:
+                    "",
 
+                video:
+                    "",
 
-    article.addEventListener(
-        "click",
-        function() {
+                trailer:
+                    ""
 
-            openMovie(movie.id);
+            },
 
-        }
-    );
 
+            4: {
 
-    const poster =
-        document.createElement("div");
+                title:
+                    "Historias del Caribe",
 
+                year:
+                    "2023",
 
-    poster.className =
-        "poster";
+                genre:
+                    "Drama",
 
+                duration:
+                    "1h 50min",
 
-    const image =
-        document.createElement("img");
+                rating:
+                    "8.9",
 
+                director:
+                    "Director Dominicano",
 
-    image.src =
-        movie.poster;
+                cast:
+                    "Actor 1, Actor 2",
 
+                description:
+                    "Una historia sobre familia, identidad y las raíces del Caribe.",
 
-    image.alt =
-        "Portada de " +
-        movie.title;
+                poster:
+                    "",
 
+                video:
+                    "",
 
-    image.loading =
-        "lazy";
+                trailer:
+                    ""
 
+            },
 
-    image.onerror =
-        function() {
 
-            this.src =
-                "https://placehold.co/600x900/181818/ffffff?text=Sin+Portada";
+            5: {
+
+                title:
+                    "Mi Barrio",
+
+                year:
+                    "2024",
+
+                genre:
+                    "Drama",
+
+                duration:
+                    "1h 40min",
+
+                rating:
+                    "8.1",
+
+                director:
+                    "Director Dominicano",
+
+                cast:
+                    "Actor 1, Actor 2",
+
+                description:
+                    "Las historias y personajes de un barrio dominicano.",
+
+                poster:
+                    "",
+
+                video:
+                    "",
+
+                trailer:
+                    ""
+
+            },
+
+
+            6: {
+
+                title:
+                    "La Vuelta",
+
+                year:
+                    "2025",
+
+                genre:
+                    "Comedia",
+
+                duration:
+                    "1h 30min",
+
+                rating:
+                    "8.4",
+
+                director:
+                    "Director Dominicano",
+
+                cast:
+                    "Actor 1, Actor 2",
+
+                description:
+                    "Una comedia dominicana llena de situaciones inesperadas.",
+
+                poster:
+                    "",
+
+                video:
+                    "",
+
+                trailer:
+                    ""
+
+            }
 
         };
 
 
-    poster.appendChild(image);
+        /* =====================================================
+           CARGAR PELICULAS
+        ===================================================== */
 
+        let movies = {};
 
-    if (movie.trending) {
 
-        const badge =
-            document.createElement("span");
+        function loadMovies() {
 
-
-        badge.className =
-            "movie-badge";
-
-
-        badge.textContent =
-            "TOP";
-
-
-        poster.appendChild(badge);
-
-    }
-
-
-    const bottom =
-        document.createElement("div");
-
-
-    bottom.className =
-        "poster-bottom";
-
-
-    const rating =
-        document.createElement("span");
-
-
-    rating.className =
-        "movie-rating";
-
-
-    rating.textContent =
-        "⭐ " +
-        movie.rating;
-
-
-    bottom.appendChild(rating);
-
-
-    poster.appendChild(bottom);
-
-
-    const title =
-        document.createElement("h3");
-
-
-    title.textContent =
-        movie.title;
-
-
-    const information =
-        document.createElement("p");
-
-
-    information.textContent =
-        movie.year +
-        " · " +
-        movie.genre;
-
-
-    article.appendChild(poster);
-
-    article.appendChild(title);
-
-    article.appendChild(information);
-
-
-    return article;
-
-}
-
-
-/* ======================================================
-   RENDERIZAR CATÁLOGO
-====================================================== */
-
-function renderRow(
-    rowId,
-    movieList
-) {
-
-    const row =
-        document.getElementById(rowId);
-
-
-    if (!row) {
-        return;
-    }
-
-
-    row.innerHTML = "";
-
-
-    movieList.forEach(
-        function(movie) {
-
-            row.appendChild(
-                createMovieCard(movie)
-            );
-
-        }
-    );
-
-}
-
-
-/* ======================================================
-   CATALOGO COMPLETO
-====================================================== */
-
-function renderCatalog() {
-
-    renderRow(
-        "row-tendencias",
-        movies.filter(
-            movie => movie.trending
-        )
-    );
-
-
-    renderRow(
-        "row-dominicano",
-        movies.filter(
-            movie => movie.dominican
-        )
-    );
-
-
-    renderRow(
-        "row-comedia",
-        movies.filter(
-            movie =>
-                movie.genre === "Comedia"
-        )
-    );
-
-
-    renderRow(
-        "row-drama",
-        movies.filter(
-            movie =>
-                movie.genre === "Drama"
-        )
-    );
-
-
-    renderRow(
-        "row-accion",
-        movies.filter(
-            movie =>
-                movie.genre === "Acción"
-        )
-    );
-
-
-    renderRow(
-        "row-terror",
-        movies.filter(
-            movie =>
-                movie.genre === "Terror"
-        )
-    );
-
-
-    renderRow(
-        "row-romance",
-        movies.filter(
-            movie =>
-                movie.genre === "Romance"
-        )
-    );
-
-
-    renderRow(
-        "row-clasicos",
-        movies.filter(
-            movie =>
-                movie.classic
-        )
-    );
-
-
-    const best =
-        [...movies]
-            .sort(
-                (a,b) =>
-                    b.rating - a.rating
-            );
-
-
-    renderRow(
-        "row-mejor",
-        best
-    );
-
-}
-
-
-/* ======================================================
-   ABRIR PELÍCULA
-====================================================== */
-
-function openMovie(id) {
-
-    const movie =
-        movies.find(
-            item =>
-                item.id === id
-        );
-
-
-    if (!movie) {
-        return;
-    }
-
-
-    currentMovie =
-        movie;
-
-
-    document.getElementById(
-        "detailPoster"
-    ).src =
-        movie.poster;
-
-
-    document.getElementById(
-        "detailTitle"
-    ).textContent =
-        movie.title;
-
-
-    document.getElementById(
-        "detailYear"
-    ).textContent =
-        movie.year;
-
-
-    document.getElementById(
-        "detailGenre"
-    ).textContent =
-        movie.genre;
-
-
-    document.getElementById(
-        "detailDuration"
-    ).textContent =
-        movie.duration;
-
-
-    document.getElementById(
-        "detailRating"
-    ).textContent =
-        movie.rating;
-
-
-    document.getElementById(
-        "detailDirector"
-    ).textContent =
-        movie.director;
-
-
-    document.getElementById(
-        "detailCast"
-    ).textContent =
-        movie.cast;
-
-
-    document.getElementById(
-        "detailDescription"
-    ).textContent =
-        movie.description;
-
-
-    resetStars();
-
-
-    movieDetail.classList.add(
-        "active"
-    );
-
-
-    document.body.classList.add(
-        "no-scroll"
-    );
-
-}
-
-
-/* ======================================================
-   CERRAR PELÍCULA
-====================================================== */
-
-function closeMovie() {
-
-    movieDetail.classList.remove(
-        "active"
-    );
-
-
-    if (!player.classList.contains("active")) {
-
-        document.body.classList.remove(
-            "no-scroll"
-        );
-
-    }
-
-}
-
-
-/* ======================================================
-   YOUTUBE → EMBED
-====================================================== */
-
-function convertYouTubeUrl(url) {
-
-    if (!url) {
-        return "";
-    }
-
-
-    try {
-
-        const parsed =
-            new URL(url);
-
-
-        if (
-            parsed.hostname.includes(
-                "youtu.be"
-            )
-        ) {
-
-            const id =
-                parsed.pathname.substring(1);
-
-
-            if (!id) {
-                return "";
-            }
-
-
-            return (
-                "https://www.youtube.com/embed/" +
-                id +
-                "?rel=0"
-            );
-
-        }
-
-
-        if (
-            parsed.hostname.includes(
-                "youtube.com"
-            )
-        ) {
-
-            const id =
-                parsed.searchParams.get(
-                    "v"
+            const saved =
+                localStorage.getItem(
+                    "cineRD_movies"
                 );
 
 
-            if (id) {
+            if (saved) {
 
-                return (
-                    "https://www.youtube.com/embed/" +
-                    id +
-                    "?rel=0"
-                );
+                try {
 
-            }
+                    movies =
+                        JSON.parse(saved);
 
-        }
+                } catch(error) {
 
-    } catch(error) {
-
-        return "";
-
-    }
-
-
-    return url;
-
-}
-
-
-/* ======================================================
-   ABRIR REPRODUCTOR
-====================================================== */
-
-function openPlayer() {
-
-    if (!currentMovie) {
-        return;
-    }
-
-
-    playerTitle.textContent =
-        currentMovie.title;
-
-
-    videoContainer.innerHTML =
-        "";
-
-
-    const videoUrl =
-        currentMovie.video;
-
-
-    if (!videoUrl) {
-
-        videoContainer.innerHTML = `
-            <div class="video-message">
-                <div>
-                    <strong>
-                        🎬 Vídeo no disponible todavía
-                    </strong>
-                    <br><br>
-                    Esta película todavía no tiene
-                    una fuente de reproducción configurada.
-                </div>
-            </div>
-        `;
-
-    } else {
-
-        const youtubeUrl =
-            convertYouTubeUrl(
-                videoUrl
-            );
-
-
-        if (
-            youtubeUrl.includes(
-                "youtube.com/embed/"
-            )
-        ) {
-
-            const iframe =
-                document.createElement(
-                    "iframe"
-                );
-
-
-            iframe.src =
-                youtubeUrl;
-
-
-            iframe.title =
-                currentMovie.title;
-
-
-            iframe.allow =
-                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-
-
-            iframe.allowFullscreen =
-                true;
-
-
-            videoContainer.appendChild(
-                iframe
-            );
-
-        } else {
-
-            const video =
-                document.createElement(
-                    "video"
-                );
-
-
-            video.controls =
-                true;
-
-
-            video.playsInline =
-                true;
-
-
-            video.preload =
-                "metadata";
-
-
-            video.src =
-                videoUrl;
-
-
-            videoContainer.appendChild(
-                video
-            );
-
-        }
-
-    }
-
-
-    player.classList.add(
-        "active"
-    );
-
-
-    document.body.classList.add(
-        "no-scroll"
-    );
-
-}
-
-
-/* ======================================================
-   CERRAR REPRODUCTOR
-====================================================== */
-
-function closePlayer() {
-
-    player.classList.remove(
-        "active"
-    );
-
-
-    videoContainer.innerHTML =
-        "";
-
-
-    if (!movieDetail.classList.contains(
-        "active"
-    )) {
-
-        document.body.classList.remove(
-            "no-scroll"
-        );
-
-    }
-
-}
-
-
-/* ======================================================
-   ABRIR TRAILER
-====================================================== */
-
-function openTrailer() {
-
-    if (!currentMovie) {
-        return;
-    }
-
-
-    if (!currentMovie.trailer) {
-
-        videoContainer.innerHTML = `
-            <div class="video-message">
-                <div>
-                    <strong>
-                        🎬 Tráiler no disponible
-                    </strong>
-                    <br><br>
-                    Todavía no hemos añadido
-                    el tráiler de esta película.
-                </div>
-            </div>
-        `;
-
-
-        playerTitle.textContent =
-            currentMovie.title +
-            " — Tráiler";
-
-
-        player.classList.add(
-            "active"
-        );
-
-
-        document.body.classList.add(
-            "no-scroll"
-        );
-
-
-        return;
-
-    }
-
-
-    const trailerUrl =
-        convertYouTubeUrl(
-            currentMovie.trailer
-        );
-
-
-    videoContainer.innerHTML =
-        "";
-
-
-    if (
-        trailerUrl.includes(
-            "youtube.com/embed/"
-        )
-    ) {
-
-        const iframe =
-            document.createElement(
-                "iframe"
-            );
-
-
-        iframe.src =
-            trailerUrl;
-
-
-        iframe.title =
-            currentMovie.title +
-            " - Tráiler";
-
-
-        iframe.allow =
-            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-
-
-        iframe.allowFullscreen =
-            true;
-
-
-        videoContainer.appendChild(
-            iframe
-        );
-
-    } else {
-
-        videoContainer.innerHTML = `
-            <div class="video-message">
-                No se pudo reconocer la fuente
-                del tráiler.
-            </div>
-        `;
-
-    }
-
-
-    playerTitle.textContent =
-        currentMovie.title +
-        " — Tráiler";
-
-
-    player.classList.add(
-        "active"
-    );
-
-
-    document.body.classList.add(
-        "no-scroll"
-    );
-
-}
-
-
-/* ======================================================
-   MI LISTA
-====================================================== */
-
-function getMyList() {
-
-    try {
-
-        return JSON.parse(
-            localStorage.getItem(
-                "cineRD_myList"
-            )
-        ) || [];
-
-    } catch(error) {
-
-        return [];
-
-    }
-
-}
-
-
-function saveMyList(list) {
-
-    localStorage.setItem(
-        "cineRD_myList",
-        JSON.stringify(list)
-    );
-
-}
-
-
-function addToList() {
-
-    if (!currentMovie) {
-
-        currentMovie =
-            movies[0];
-
-    }
-
-
-    const list =
-        getMyList();
-
-
-    if (
-        !list.includes(
-            currentMovie.id
-        )
-    ) {
-
-        list.push(
-            currentMovie.id
-        );
-
-        saveMyList(list);
-
-    }
-
-}
-
-
-function addCurrentToList() {
-
-    addToList();
-
-}
-
-
-/* ======================================================
-   VALORACIONES
-====================================================== */
-
-function resetStars() {
-
-    document
-        .querySelectorAll(".star")
-        .forEach(
-            function(star) {
-
-                star.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-}
-
-
-document
-    .querySelectorAll(".star")
-    .forEach(
-        function(star) {
-
-            star.addEventListener(
-                "click",
-                function() {
-
-                    const number =
-                        Number(
-                            this.dataset.star
-                        );
-
-
-                    document
-                        .querySelectorAll(
-                            ".star"
-                        )
-                        .forEach(
-                            function(item) {
-
-                                item.classList.toggle(
-                                    "selected",
-                                    Number(
-                                        item.dataset.star
-                                    ) <= number
-                                );
-
-                            }
-                        );
+                    movies =
+                        {...defaultMovies};
 
                 }
-            );
 
-        }
-    );
+            } else {
 
-
-/* ======================================================
-   COMENTARIOS
-====================================================== */
-
-function addComment() {
-
-    const input =
-        document.getElementById(
-            "commentInput"
-        );
-
-
-    const text =
-        input.value.trim();
-
-
-    if (!text) {
-
-        input.focus();
-
-        return;
-
-    }
-
-
-    const comment =
-        document.createElement(
-            "div"
-        );
-
-
-    comment.className =
-        "comment";
-
-
-    const name =
-        document.createElement(
-            "strong"
-        );
-
-
-    name.textContent =
-        "Tú";
-
-
-    const message =
-        document.createElement(
-            "p"
-        );
-
-
-    message.textContent =
-        text;
-
-
-    comment.appendChild(
-        name
-    );
-
-
-    comment.appendChild(
-        message
-    );
-
-
-    document.getElementById(
-        "comments"
-    ).appendChild(
-        comment
-    );
-
-
-    input.value =
-        "";
-
-}
-
-
-document
-    .getElementById(
-        "commentButton"
-    )
-    .addEventListener(
-        "click",
-        addComment
-    );
-
-
-document
-    .getElementById(
-        "commentInput"
-    )
-    .addEventListener(
-        "keydown",
-        function(event) {
-
-            if (
-                event.key ===
-                "Enter"
-            ) {
-
-                event.preventDefault();
-
-                addComment();
+                movies =
+                    {...defaultMovies};
 
             }
 
         }
-    );
 
 
-/* ======================================================
-   BUSCADOR
-====================================================== */
+        function saveMovies() {
 
-document
-    .getElementById("search")
-    .addEventListener(
-        "input",
-        function() {
+            localStorage.setItem(
+                "cineRD_movies",
+                JSON.stringify(movies)
+            );
 
-            const query =
-                this.value
-                    .toLowerCase()
-                    .trim();
+        }
 
 
-            const sections =
-                document.querySelectorAll(
-                    ".movie-section"
+        loadMovies();
+
+
+        /* =====================================================
+           VARIABLES
+        ===================================================== */
+
+        let currentMovie = null;
+
+        let editingMovieId = null;
+
+
+
+        /* =====================================================
+           UTILIDADES
+        ===================================================== */
+
+        function escapeHtml(value) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.textContent =
+                value ?? "";
+
+            return div.innerHTML;
+
+        }
+
+
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById(
+                    "toast"
                 );
 
 
-            let found =
-                false;
+            toast.textContent =
+                message;
 
 
-            sections.forEach(
-                function(section) {
-
-                    const cards =
-                        section.querySelectorAll(
-                            ".movie-card"
-                        );
-
-
-                    let sectionFound =
-                        false;
-
-
-                    cards.forEach(
-                        function(card) {
-
-                            const title =
-                                card.dataset.title ||
-                                "";
-
-
-                            if (
-                                title.includes(
-                                    query
-                                )
-                            ) {
-
-                                card.style.display =
-                                    "";
-
-                                sectionFound =
-                                    true;
-
-                                found =
-                                    true;
-
-                            } else {
-
-                                card.style.display =
-                                    "none";
-
-                            }
-
-                        }
-                    );
-
-
-                    section.style.display =
-                        sectionFound
-                            ? ""
-                            : "none";
-
-                }
+            toast.classList.add(
+                "show"
             );
 
 
-            document
-                .getElementById(
-                    "noResults"
-                )
-                .classList.toggle(
-                    "show",
-                    !found
+            clearTimeout(
+                showToast.timer
+            );
+
+
+            showToast.timer =
+                setTimeout(
+                    function() {
+
+                        toast.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    2500
                 );
 
+        }
 
-            if (!query) {
 
-                sections.forEach(
-                    function(section) {
 
-                        section.style.display =
-                            "";
+        function getYouTubeId(url) {
 
-                        section
-                            .querySelectorAll(
-                                ".movie-card"
-                            )
-                            .forEach(
-                                function(card) {
+            if (!url) {
 
-                                    card.style.display =
-                                        "";
+                return null;
 
-                                }
-                            );
+            }
+
+
+            try {
+
+                const parsed =
+                    new URL(url);
+
+
+                if (
+                    parsed.hostname.includes(
+                        "youtu.be"
+                    )
+                ) {
+
+                    return parsed.pathname
+                        .replace("/", "")
+                        .trim();
+
+                }
+
+
+                if (
+                    parsed.hostname.includes(
+                        "youtube.com"
+                    )
+                ) {
+
+                    const videoId =
+                        parsed.searchParams.get(
+                            "v"
+                        );
+
+                    if(videoId) {
+
+                        return videoId;
 
                     }
+
+
+                    const parts =
+                        parsed.pathname.split("/");
+
+
+                    const embedIndex =
+                        parts.indexOf("embed");
+
+
+                    if(
+                        embedIndex !== -1 &&
+                        parts[embedIndex + 1]
+                    ) {
+
+                        return parts[
+                            embedIndex + 1
+                        ];
+
+                    }
+
+                }
+
+            } catch(error) {
+
+                return null;
+
+            }
+
+
+            return null;
+
+        }
+
+
+
+        function getYouTubeEmbed(url) {
+
+            const id =
+                getYouTubeId(url);
+
+
+            if(!id) {
+
+                return null;
+
+            }
+
+
+            return:
+                "https://www.youtube.com/embed/" +
+                encodeURIComponent(id);
+
+        }
+
+
+
+        function getPoster(movie) {
+
+            if(movie.poster) {
+
+                return movie.poster;
+
+            }
+
+
+            const id =
+                getYouTubeId(
+                    movie.video
                 );
 
 
-                document
-                    .getElementById(
-                        "noResults"
-                    )
-                    .classList.remove(
-                        "show"
-                    );
+            if(id) {
+
+                return:
+                    "https://img.youtube.com/vi/" +
+                    id +
+                    "/hqdefault.jpg";
 
             }
 
-        }
-    );
 
-
-/* ======================================================
-   HERO
-====================================================== */
-
-document
-    .getElementById(
-        "heroPlay"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            openMovie(
-                movies[0].id
-            );
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "heroList"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            currentMovie =
-                movies[0];
-
-            addToList();
-
-        }
-    );
-
-
-/* ======================================================
-   BOTONES DE LA FICHA
-====================================================== */
-
-document
-    .getElementById(
-        "detailPlay"
-    )
-    .addEventListener(
-        "click",
-        openPlayer
-    );
-
-
-document
-    .getElementById(
-        "detailTrailer"
-    )
-    .addEventListener(
-        "click",
-        openTrailer
-    );
-
-
-document
-    .getElementById(
-        "detailAddList"
-    )
-    .addEventListener(
-        "click",
-        addCurrentToList
-    );
-
-
-/* ======================================================
-   CERRAR FICHA
-====================================================== */
-
-document
-    .getElementById(
-        "closeDetail"
-    )
-    .addEventListener(
-        "click",
-        closeMovie
-    );
-
-
-/* ======================================================
-   CERRAR REPRODUCTOR
-====================================================== */
-
-document
-    .getElementById(
-        "closePlayer"
-    )
-    .addEventListener(
-        "click",
-        closePlayer
-    );
-
-
-/* ======================================================
-   CERRAR CON ESC
-====================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key ===
-            "Escape"
-        ) {
-
-            closePlayer();
-
-            closeMovie();
-
-            closeAdmin();
+            return "";
 
         }
 
-    }
-);
 
 
-/* ======================================================
-   NAVBAR AL HACER SCROLL
-====================================================== */
+        /* =====================================================
+           ENTRADA
+        ===================================================== */
 
-window.addEventListener(
-    "scroll",
-    function() {
+        function entrar() {
 
-        document
-            .getElementById(
-                "navbar"
-            )
-            .classList.toggle(
-                "scrolled",
-                window.scrollY > 30
-            );
-
-    }
-);
-
-
-/* ======================================================
-   ADMINISTRACIÓN
-====================================================== */
-
-const adminPanel =
-    document.getElementById(
-        "adminPanel"
-    );
-
-
-function openAdmin() {
-
-    adminPanel.classList.add(
-        "active"
-    );
-
-    document.body.classList.add(
-        "no-scroll"
-    );
-
-}
-
-
-function closeAdmin() {
-
-    adminPanel.classList.remove(
-        "active"
-    );
-
-
-    if (
-        !movieDetail.classList.contains(
-            "active"
-        ) &&
-        !player.classList.contains(
-            "active"
-        )
-    ) {
-
-        document.body.classList.remove(
-            "no-scroll"
-        );
-
-    }
-
-}
-
-
-/*
-   IMPORTANTE:
-
-   Este acceso es solamente para
-   trabajar en local durante esta etapa.
-
-   Más adelante lo reemplazaremos
-   por autenticación real.
-*/
-
-document
-    .getElementById(
-        "adminLink"
-    )
-    .addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            openAdmin();
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "adminClose"
-    )
-    .addEventListener(
-        "click",
-        closeAdmin
-    );
-
-
-/* ======================================================
-   LIMPIAR ADMIN
-====================================================== */
-
-function clearAdminForm() {
-
-    document
-        .querySelectorAll(
-            "#adminPanel input, #adminPanel textarea"
-        )
-        .forEach(
-            function(input) {
-
-                input.value =
-                    "";
-
-            }
-        );
-
-
-    document.getElementById(
-        "adminRating"
-    ).value =
-        "";
-
-}
-
-
-document
-    .getElementById(
-        "adminClear"
-    )
-    .addEventListener(
-        "click",
-        clearAdminForm
-    );
-
-
-/* ======================================================
-   AGREGAR PELÍCULA DESDE ADMIN
-====================================================== */
-
-document
-    .getElementById(
-        "adminSave"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            const title =
+            const input =
                 document.getElementById(
-                    "adminTitle"
-                ).value.trim();
+                    "name"
+                );
 
 
-            if (!title) {
+            const nombre =
+                input.value.trim();
 
-                alert(
-                    "Escribe el título de la película."
+
+            if(!nombre) {
+
+                input.focus();
+
+                showToast(
+                    "Escribe tu nombre para entrar."
                 );
 
                 return;
@@ -4655,127 +3445,1946 @@ document
             }
 
 
-            const nextId =
-                movies.length
-                    ? Math.max(
-                        ...movies.map(
-                            movie =>
-                                movie.id
-                        )
-                    ) + 1
-                    : 1;
+            localStorage.setItem(
+                "cineRD_name",
+                nombre
+            );
 
 
-            const newMovie = {
+            document
+                .getElementById("welcome")
+                .classList.add(
+                    "hidden"
+                );
 
-                id:
-                    nextId,
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
+        }
+
+
+
+        document
+            .getElementById(
+                "enterButton"
+            )
+            .addEventListener(
+                "click",
+                entrar
+            );
+
+
+
+        document
+            .getElementById(
+                "name"
+            )
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if(
+                        event.key ===
+                        "Enter"
+                    ) {
+
+                        event.preventDefault();
+
+                        entrar();
+
+                    }
+
+                }
+            );
+
+
+
+        /* =====================================================
+           BIENVENIDA GUARDADA
+        ===================================================== */
+
+        function checkWelcome() {
+
+            const savedName =
+                localStorage.getItem(
+                    "cineRD_name"
+                );
+
+
+            if(savedName) {
+
+                document
+                    .getElementById(
+                        "welcome"
+                    )
+                    .classList.add(
+                        "hidden"
+                    );
+
+            } else {
+
+                document.body.classList.add(
+                    "no-scroll"
+                );
+
+            }
+
+        }
+
+
+        checkWelcome();
+
+
+
+        /* =====================================================
+           RENDER DEL CATALOGO
+        ===================================================== */
+
+        const sections = [
+
+            {
+                id: "tendencias",
+                title: "🔥 Tendencias",
+                filter: function(movie) {
+                    return true;
+                }
+            },
+
+            {
+                id: "cine-dominicano",
+                title: "🇩🇴 Cine Dominicano",
+                filter: function(movie) {
+                    return true;
+                }
+            },
+
+            {
+                id: "accion",
+                title: "💥 Acción",
+                filter: function(movie) {
+                    return movie.genre === "Acción";
+                }
+            },
+
+            {
+                id: "comedia",
+                title: "😂 Comedia",
+                filter: function(movie) {
+                    return movie.genre === "Comedia";
+                }
+            },
+
+            {
+                id: "drama",
+                title: "🎭 Drama",
+                filter: function(movie) {
+                    return movie.genre === "Drama";
+                }
+            },
+
+            {
+                id: "clasicos",
+                title: "🎞️ Clásicos Dominicanos",
+                filter: function(movie) {
+                    return movie.genre === "Clásicos Dominicanos";
+                }
+            }
+
+        ];
+
+
+
+        function renderCatalog(
+            searchQuery = ""
+        ) {
+
+            const container =
+                document.getElementById(
+                    "catalogContainer"
+                );
+
+
+            const query =
+                searchQuery
+                    .toLowerCase()
+                    .trim();
+
+
+            let html = "";
+
+
+            sections.forEach(
+                function(section) {
+
+                    const filtered =
+                        Object.entries(
+                            movies
+                        ).filter(
+                            function([
+                                id,
+                                movie
+                            ]) {
+
+                                const matchesGenre =
+                                    section.filter(
+                                        movie
+                                    );
+
+
+                                const matchesSearch =
+                                    !query ||
+                                    movie.title
+                                        .toLowerCase()
+                                        .includes(query) ||
+                                    movie.genre
+                                        .toLowerCase()
+                                        .includes(query);
+
+
+                                return (
+                                    matchesGenre &&
+                                    matchesSearch
+                                );
+
+                            }
+                        );
+
+
+                    if(
+                        filtered.length === 0
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    html +=
+                        '<section class="movie-section">';
+
+
+                    html +=
+                        '<div class="section-title">';
+
+
+                    html +=
+                        "<h2>" +
+                        escapeHtml(
+                            section.title
+                        ) +
+                        "</h2>";
+
+
+                    html +=
+                        "<span>" +
+                        filtered.length +
+                        (
+                            filtered.length === 1
+                                ? " película"
+                                : " películas"
+                        ) +
+                        "</span>";
+
+
+                    html +=
+                        "</div>";
+
+
+                    html +=
+                        '<div class="movie-row">';
+
+
+                    filtered.forEach(
+                        function([
+                            id,
+                            movie
+                        ]) {
+
+                            const poster =
+                                getPoster(movie);
+
+
+                            html +=
+                                '<article class="movie-card" data-title="' +
+                                escapeHtml(
+                                    movie.title
+                                ) +
+                                '" onclick="openMovie(' +
+                                Number(id) +
+                                ')">';
+
+
+                            html +=
+                                '<div class="poster">';
+
+
+                            if(poster) {
+
+                                html +=
+                                    '<img src="' +
+                                    escapeHtml(
+                                        poster
+                                    ) +
+                                    '" alt="' +
+                                    escapeHtml(
+                                        movie.title
+                                    ) +
+                                    '" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';">';
+
+                            }
+
+
+                            html +=
+                                '<div class="poster-placeholder" style="display:' +
+                                (
+                                    poster
+                                        ? "none"
+                                        : "flex"
+                                ) +
+                                ';">' +
+                                escapeHtml(
+                                    movie.title
+                                ) +
+                                "</div>";
+
+
+                            if(
+                                Number(
+                                    movie.rating
+                                ) >= 8.5
+                            ) {
+
+                                html +=
+                                    '<span class="movie-badge">TOP</span>';
+
+                            }
+
+
+                            html +=
+                                '<div class="poster-bottom">';
+
+
+                            html +=
+                                '<span class="movie-rating">⭐ ' +
+                                escapeHtml(
+                                    movie.rating
+                                ) +
+                                "</span>";
+
+
+                            html +=
+                                "</div>";
+
+
+                            html +=
+                                "</div>";
+
+
+                            html +=
+                                "<h3>" +
+                                escapeHtml(
+                                    movie.title
+                                ) +
+                                "</h3>";
+
+
+                            html +=
+                                "<p>" +
+                                escapeHtml(
+                                    movie.year
+                                ) +
+                                " · " +
+                                escapeHtml(
+                                    movie.genre
+                                ) +
+                                "</p>";
+
+
+                            html +=
+                                "</article>";
+
+                        }
+                    );
+
+
+                    html +=
+                        "</div>";
+
+
+                    html +=
+                        "</section>";
+
+                }
+            );
+
+
+            if(!html) {
+
+                html =
+                    '<div style="padding:50px;text-align:center;color:#777;">' +
+                    "No encontramos películas." +
+                    "</div>";
+
+            }
+
+
+            container.innerHTML =
+                html;
+
+        }
+
+
+        renderCatalog();
+
+
+
+        /* =====================================================
+           ABRIR PELICULA
+        ===================================================== */
+
+        function openMovie(id) {
+
+            const movie =
+                movies[id];
+
+
+            if(!movie) {
+
+                showToast(
+                    "No se encontró esta película."
+                );
+
+                return;
+
+            }
+
+
+            currentMovie =
+                Number(id);
+
+
+            document.getElementById(
+                "detailTitle"
+            ).textContent =
+                movie.title;
+
+
+            document.getElementById(
+                "detailYear"
+            ).textContent =
+                movie.year || "-";
+
+
+            document.getElementById(
+                "detailGenre"
+            ).textContent =
+                movie.genre || "-";
+
+
+            document.getElementById(
+                "detailDuration"
+            ).textContent =
+                movie.duration || "-";
+
+
+            document.getElementById(
+                "detailRating"
+            ).textContent =
+                movie.rating || "-";
+
+
+            document.getElementById(
+                "detailDirector"
+            ).textContent =
+                movie.director || "-";
+
+
+            document.getElementById(
+                "detailCast"
+            ).textContent =
+                movie.cast || "-";
+
+
+            document.getElementById(
+                "detailDescription"
+            ).textContent =
+                movie.description ||
+                "No hay descripción disponible.";
+
+
+            const poster =
+                getPoster(movie);
+
+
+            const detailPoster =
+                document.getElementById(
+                    "detailPoster"
+                );
+
+
+            if(poster) {
+
+                detailPoster.src =
+                    poster;
+
+                detailPoster.style.display =
+                    "block";
+
+            } else {
+
+                detailPoster.removeAttribute(
+                    "src"
+                );
+
+                detailPoster.style.display =
+                    "none";
+
+            }
+
+
+            document
+                .getElementById(
+                    "movieDetail"
+                )
+                .classList.add(
+                    "active"
+                );
+
+
+            document.body.classList.add(
+                "no-scroll"
+            );
+
+
+            resetStars();
+
+        }
+
+
+
+        window.openMovie =
+            openMovie;
+
+
+
+        /* =====================================================
+           CERRAR FICHA
+        ===================================================== */
+
+        function closeMovie() {
+
+            document
+                .getElementById(
+                    "movieDetail"
+                )
+                .classList.remove(
+                    "active"
+                );
+
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
+        }
+
+
+        document
+            .getElementById(
+                "closeDetailButton"
+            )
+            .addEventListener(
+                "click",
+                closeMovie
+            );
+
+
+
+        /* =====================================================
+           REPRODUCTOR
+        ===================================================== */
+
+        function openPlayer() {
+
+            if(!currentMovie) {
+
+                return;
+
+            }
+
+
+            const movie =
+                movies[currentMovie];
+
+
+            if(
+                !movie ||
+                !movie.video
+            ) {
+
+                showToast(
+                    "Esta película todavía no tiene un vídeo."
+                );
+
+                return;
+
+            }
+
+
+            const embed =
+                getYouTubeEmbed(
+                    movie.video
+                );
+
+
+            document.getElementById(
+                "playerTitle"
+            ).textContent =
+                movie.title;
+
+
+            const container =
+                document.getElementById(
+                    "videoContainer"
+                );
+
+
+            if(embed) {
+
+                container.innerHTML =
+
+                    '<iframe ' +
+
+                    'src="' +
+                    escapeHtml(
+                        embed
+                    ) +
+                    '?rel=0" ' +
+
+                    'title="' +
+                    escapeHtml(
+                        movie.title
+                    ) +
+                    '" ' +
+
+                    'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+
+                    'allowfullscreen>' +
+
+                    "</iframe>";
+
+            } else {
+
+                container.innerHTML =
+
+                    '<div class="video-message">' +
+
+                    "El formato del vídeo no es compatible con este reproductor." +
+
+                    "</div>";
+
+            }
+
+
+            document
+                .getElementById(
+                    "player"
+                )
+                .classList.add(
+                    "active"
+                );
+
+        }
+
+
+        document
+            .getElementById(
+                "watchMovieButton"
+            )
+            .addEventListener(
+                "click",
+                openPlayer
+            );
+
+
+
+        /* =====================================================
+           CERRAR REPRODUCTOR
+        ===================================================== */
+
+        function closePlayer() {
+
+            const player =
+                document.getElementById(
+                    "player"
+                );
+
+
+            player.classList.remove(
+                "active"
+            );
+
+
+            document.getElementById(
+                "videoContainer"
+            ).innerHTML =
+                '<div class="video-message">Selecciona una película.</div>';
+
+        }
+
+
+        document
+            .getElementById(
+                "closePlayerButton"
+            )
+            .addEventListener(
+                "click",
+                closePlayer
+            );
+
+
+
+        /* =====================================================
+           TRAILER
+        ===================================================== */
+
+        function openTrailer() {
+
+            if(!currentMovie) {
+
+                return;
+
+            }
+
+
+            const movie =
+                movies[currentMovie];
+
+
+            if(
+                !movie ||
+                !movie.trailer
+            ) {
+
+                showToast(
+                    "Esta película todavía no tiene tráiler."
+                );
+
+                return;
+
+            }
+
+
+            const embed =
+                getYouTubeEmbed(
+                    movie.trailer
+                );
+
+
+            if(!embed) {
+
+                showToast(
+                    "El enlace del tráiler no es válido."
+                );
+
+                return;
+
+            }
+
+
+            document.getElementById(
+                "playerTitle"
+            ).textContent =
+                "Tráiler — " +
+                movie.title;
+
+
+            document.getElementById(
+                "videoContainer"
+            ).innerHTML =
+
+                '<iframe ' +
+
+                'src="' +
+                escapeHtml(
+                    embed
+                ) +
+                '?rel=0" ' +
+
+                'title="Tráiler de ' +
+                escapeHtml(
+                    movie.title
+                ) +
+                '" ' +
+
+                'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+
+                'allowfullscreen>' +
+
+                "</iframe>";
+
+
+            document
+                .getElementById(
+                    "player"
+                )
+                .classList.add(
+                    "active"
+                );
+
+        }
+
+
+        document
+            .getElementById(
+                "watchTrailerButton"
+            )
+            .addEventListener(
+                "click",
+                openTrailer
+            );
+
+
+
+        /* =====================================================
+           MI LISTA
+        ===================================================== */
+
+        function addToList() {
+
+            if(!currentMovie) {
+
+                showToast(
+                    "Abre primero una película."
+                );
+
+                return;
+
+            }
+
+
+            const movie =
+                movies[currentMovie];
+
+
+            let list =
+                JSON.parse(
+                    localStorage.getItem(
+                        "cineRD_myList"
+                    ) ||
+                    "[]"
+                );
+
+
+            if(
+                list.includes(
+                    currentMovie
+                )
+            ) {
+
+                showToast(
+                    "Esta película ya está en Mi Lista ❤️"
+                );
+
+                return;
+
+            }
+
+
+            list.push(
+                currentMovie
+            );
+
+
+            localStorage.setItem(
+                "cineRD_myList",
+                JSON.stringify(list)
+            );
+
+
+            showToast(
+                movie.title +
+                " fue agregada a Mi Lista ❤️"
+            );
+
+        }
+
+
+        document
+            .getElementById(
+                "detailListButton"
+            )
+            .addEventListener(
+                "click",
+                addToList
+            );
+
+
+        document
+            .getElementById(
+                "heroListButton"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    if(!currentMovie) {
+
+                        openMovie(
+                            1
+                        );
+
+                        return;
+
+                    }
+
+
+                    addToList();
+
+                }
+            );
+
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        document
+            .getElementById(
+                "heroPlayButton"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    const firstMovie =
+                        Object.keys(
+                            movies
+                        )[0];
+
+
+                    if(firstMovie) {
+
+                        openMovie(
+                            Number(
+                                firstMovie
+                            )
+                        );
+
+                    }
+
+                }
+            );
+
+
+
+        /* =====================================================
+           VALORACION
+        ===================================================== */
+
+        function resetStars() {
+
+            document
+                .querySelectorAll(
+                    ".star"
+                )
+                .forEach(
+                    function(star) {
+
+                        star.classList.remove(
+                            "selected"
+                        );
+
+                    }
+                );
+
+        }
+
+
+        function rate(number) {
+
+            document
+                .querySelectorAll(
+                    ".star"
+                )
+                .forEach(
+                    function(star) {
+
+                        const rating =
+                            Number(
+                                star.dataset.rating
+                            );
+
+
+                        if(
+                            rating <= number
+                        ) {
+
+                            star.classList.add(
+                                "selected"
+                            );
+
+                        } else {
+
+                            star.classList.remove(
+                                "selected"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+            showToast(
+                "¡Gracias por tu valoración ⭐!"
+            );
+
+        }
+
+
+        document
+            .querySelectorAll(
+                ".star"
+            )
+            .forEach(
+                function(star) {
+
+                    star.addEventListener(
+                        "click",
+                        function() {
+
+                            rate(
+                                Number(
+                                    this.dataset.rating
+                                )
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /* =====================================================
+           COMENTARIOS
+        ===================================================== */
+
+        function addComment() {
+
+            const input =
+                document.getElementById(
+                    "commentInput"
+                );
+
+
+            const text =
+                input.value.trim();
+
+
+            if(!text) {
+
+                input.focus();
+
+                return;
+
+            }
+
+
+            const comment =
+                document.createElement(
+                    "div"
+                );
+
+
+            comment.className =
+                "comment";
+
+
+            const name =
+                document.createElement(
+                    "strong"
+                );
+
+
+            const savedName =
+                localStorage.getItem(
+                    "cineRD_name"
+                );
+
+
+            name.textContent =
+                savedName ||
+                "Tú";
+
+
+            const message =
+                document.createElement(
+                    "p"
+                );
+
+
+            message.textContent =
+                text;
+
+
+            comment.appendChild(
+                name
+            );
+
+
+            comment.appendChild(
+                message
+            );
+
+
+            document
+                .getElementById(
+                    "comments"
+                )
+                .appendChild(
+                    comment
+                );
+
+
+            input.value =
+                "";
+
+
+            showToast(
+                "Comentario publicado."
+            );
+
+        }
+
+
+        document
+            .getElementById(
+                "commentButton"
+            )
+            .addEventListener(
+                "click",
+                addComment
+            );
+
+
+        document
+            .getElementById(
+                "commentInput"
+            )
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if(
+                        event.key ===
+                        "Enter"
+                    ) {
+
+                        event.preventDefault();
+
+                        addComment();
+
+                    }
+
+                }
+            );
+
+
+
+        /* =====================================================
+           BUSCADOR
+        ===================================================== */
+
+        document
+            .getElementById(
+                "search"
+            )
+            .addEventListener(
+                "input",
+                function() {
+
+                    renderCatalog(
+                        this.value
+                    );
+
+                }
+            );
+
+
+
+        /* =====================================================
+           PANEL ADMIN
+        ===================================================== */
+
+        function openAdmin() {
+
+            document
+                .getElementById(
+                    "adminPanel"
+                )
+                .classList.add(
+                    "active"
+                );
+
+
+            document.body.classList.add(
+                "no-scroll"
+            );
+
+
+            renderAdminMovies();
+
+        }
+
+
+        function closeAdmin() {
+
+            document
+                .getElementById(
+                    "adminPanel"
+                )
+                .classList.remove(
+                    "active"
+                );
+
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
+        }
+
+
+        document
+            .getElementById(
+                "openAdminButton"
+            )
+            .addEventListener(
+                "click",
+                openAdmin
+            );
+
+
+        document
+            .getElementById(
+                "closeAdminButton"
+            )
+            .addEventListener(
+                "click",
+                closeAdmin
+            );
+
+
+
+        /* =====================================================
+           FORMULARIO ADMIN
+        ===================================================== */
+
+        function clearMovieForm() {
+
+            document
+                .getElementById(
+                    "movieForm"
+                )
+                .reset();
+
+
+            document.getElementById(
+                "movieRating"
+            ).value =
+                "8.0";
+
+
+            editingMovieId =
+                null;
+
+
+            document.getElementById(
+                "saveMovieButton"
+            ).textContent =
+                "＋ Guardar película";
+
+        }
+
+
+        document
+            .getElementById(
+                "cancelEditButton"
+            )
+            .addEventListener(
+                "click",
+                clearMovieForm
+            );
+
+
+
+        function getFormData() {
+
+            return {
 
                 title:
-                    title,
+                    document
+                        .getElementById(
+                            "movieTitle"
+                        )
+                        .value
+                        .trim(),
 
                 year:
-                    Number(
-                        document.getElementById(
-                            "adminYear"
-                        ).value
-                    ) || 2026,
+                    document
+                        .getElementById(
+                            "movieYear"
+                        )
+                        .value
+                        .trim(),
 
                 genre:
-                    document.getElementById(
-                        "adminGenre"
-                    ).value,
+                    document
+                        .getElementById(
+                            "movieGenre"
+                        )
+                        .value,
 
                 duration:
-                    document.getElementById(
-                        "adminDuration"
-                    ).value.trim() ||
-                    "Duración desconocida",
+                    document
+                        .getElementById(
+                            "movieDuration"
+                        )
+                        .value
+                        .trim(),
 
                 rating:
-                    Number(
-                        document.getElementById(
-                            "adminRating"
-                        ).value
-                    ) || 0,
+                    document
+                        .getElementById(
+                            "movieRating"
+                        )
+                        .value,
 
                 director:
-                    document.getElementById(
-                        "adminDirector"
-                    ).value.trim() ||
-                    "No especificado",
+                    document
+                        .getElementById(
+                            "movieDirector"
+                        )
+                        .value
+                        .trim(),
 
                 cast:
-                    document.getElementById(
-                        "adminCast"
-                    ).value.trim() ||
-                    "No especificado",
+                    document
+                        .getElementById(
+                            "movieCast"
+                        )
+                        .value
+                        .trim(),
 
                 description:
-                    document.getElementById(
-                        "adminDescription"
-                    ).value.trim() ||
-                    "Descripción no disponible.",
+                    document
+                        .getElementById(
+                            "movieDescription"
+                        )
+                        .value
+                        .trim(),
 
                 poster:
-                    document.getElementById(
-                        "adminPoster"
-                    ).value.trim() ||
-                    "https://placehold.co/600x900/181818/ffffff?text=Sin+Portada",
-
-                trailer:
-                    document.getElementById(
-                        "adminTrailer"
-                    ).value.trim(),
+                    document
+                        .getElementById(
+                            "moviePoster"
+                        )
+                        .value
+                        .trim(),
 
                 video:
-                    document.getElementById(
-                        "adminVideo"
-                    ).value.trim(),
+                    document
+                        .getElementById(
+                            "movieVideo"
+                        )
+                        .value
+                        .trim(),
 
-                trending:
-                    document.getElementById(
-                        "adminTrending"
-                    ).value === "true",
-
-                classic:
-                    document.getElementById(
-                        "adminClassic"
-                    ).value === "true",
-
-                dominican:
-                    true
+                trailer:
+                    document
+                        .getElementById(
+                            "movieTrailer"
+                        )
+                        .value
+                        .trim()
 
             };
 
+        }
 
-            movies.push(
-                newMovie
-            );
+
+
+        function saveMovieFromForm() {
+
+            const data =
+                getFormData();
+
+
+            if(!data.title) {
+
+                document
+                    .getElementById(
+                        "movieTitle"
+                    )
+                    .focus();
+
+                showToast(
+                    "El título es obligatorio."
+                );
+
+                return;
+
+            }
+
+
+            if(editingMovieId) {
+
+                movies[
+                    editingMovieId
+                ] =
+                    data;
+
+
+                showToast(
+                    "Película actualizada correctamente."
+                );
+
+            } else {
+
+                const ids =
+                    Object.keys(
+                        movies
+                    ).map(
+                        Number
+                    );
+
+
+                const newId =
+                    ids.length
+                        ? Math.max(
+                            ...ids
+                        ) + 1
+                        : 1;
+
+
+                movies[
+                    newId
+                ] =
+                    data;
+
+
+                showToast(
+                    "Película añadida correctamente."
+                );
+
+            }
+
+
+            saveMovies();
 
 
             renderCatalog();
 
 
-            clearAdminForm();
+            renderAdminMovies();
 
 
-            closeAdmin();
+            clearMovieForm();
+
+        }
 
 
-            alert(
-                "✅ Película agregada al catálogo."
+        document
+            .getElementById(
+                "saveMovieButton"
+            )
+            .addEventListener(
+                "click",
+                saveMovieFromForm
+            );
+
+
+
+        /* =====================================================
+           LISTA DEL PANEL
+        ===================================================== */
+
+        function renderAdminMovies() {
+
+            const container =
+                document.getElementById(
+                    "adminMovieList"
+                );
+
+
+            const entries =
+                Object.entries(
+                    movies
+                );
+
+
+            if(!entries.length) {
+
+                container.innerHTML =
+                    '<p style="color:#777;">No hay películas.</p>';
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                "";
+
+
+            entries.forEach(
+                function([
+                    id,
+                    movie
+                ]) {
+
+                    const row =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    row.className =
+                        "admin-movie";
+
+
+                    const thumb =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    thumb.className =
+                        "admin-thumb";
+
+
+                    const poster =
+                        getPoster(
+                            movie
+                        );
+
+
+                    if(poster) {
+
+                        const img =
+                            document.createElement(
+                                "img"
+                            );
+
+
+                        img.src =
+                            poster;
+
+
+                        img.alt =
+                            movie.title;
+
+
+                        thumb.appendChild(
+                            img
+                        );
+
+                    }
+
+
+                    const info =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    info.className =
+                        "admin-movie-info";
+
+
+                    info.innerHTML =
+                        "<strong>" +
+                        escapeHtml(
+                            movie.title
+                        ) +
+                        "</strong>" +
+
+                        "<span>" +
+                        escapeHtml(
+                            movie.year || "-"
+                        ) +
+
+                        " · " +
+
+                        escapeHtml(
+                            movie.genre || "-"
+                        ) +
+
+                        " · ⭐ " +
+
+                        escapeHtml(
+                            movie.rating || "-"
+                        ) +
+
+                        "</span>";
+
+
+                    const actions =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    actions.className =
+                        "admin-movie-actions";
+
+
+                    const edit =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    edit.type =
+                        "button";
+
+
+                    edit.className =
+                        "small-button edit-button";
+
+
+                    edit.textContent =
+                        "Editar";
+
+
+                    edit.addEventListener(
+                        "click",
+                        function() {
+
+                            editMovie(
+                                Number(id)
+                            );
+
+                        }
+                    );
+
+
+                    const del =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    del.type =
+                        "button";
+
+
+                    del.className =
+                        "small-button delete-button";
+
+
+                    del.textContent =
+                        "Eliminar";
+
+
+                    del.addEventListener(
+                        "click",
+                        function() {
+
+                            deleteMovie(
+                                Number(id)
+                            );
+
+                        }
+                    );
+
+
+                    actions.appendChild(
+                        edit
+                    );
+
+
+                    actions.appendChild(
+                        del
+                    );
+
+
+                    row.appendChild(
+                        thumb
+                    );
+
+
+                    row.appendChild(
+                        info
+                    );
+
+
+                    row.appendChild(
+                        actions
+                    );
+
+
+                    container.appendChild(
+                        row
+                    );
+
+                }
             );
 
         }
-    );
 
 
-/* ======================================================
-   FIN
-====================================================== */
 
-</script>
+        /* =====================================================
+           EDITAR
+        ===================================================== */
+
+        function editMovie(id) {
+
+            const movie =
+                movies[id];
+
+
+            if(!movie) {
+
+                return;
+
+            }
+
+
+            editingMovieId =
+                id;
+
+
+            document.getElementById(
+                "movieTitle"
+            ).value =
+                movie.title || "";
+
+
+            document.getElementById(
+                "movieYear"
+            ).value =
+                movie.year || "";
+
+
+            document.getElementById(
+                "movieGenre"
+            ).value =
+                movie.genre || "Drama";
+
+
+            document.getElementById(
+                "movieDuration"
+            ).value =
+                movie.duration || "";
+
+
+            document.getElementById(
+                "movieRating"
+            ).value =
+                movie.rating || "8.0";
+
+
+            document.getElementById(
+                "movieDirector"
+            ).value =
+                movie.director || "";
+
+
+            document.getElementById(
+                "movieCast"
+            ).value =
+                movie.cast || "";
+
+
+            document.getElementById(
+                "movieDescription"
+            ).value =
+                movie.description || "";
+
+
+            document.getElementById(
+                "moviePoster"
+            ).value =
+                movie.poster || "";
+
+
+            document.getElementById(
+                "movieVideo"
+            ).value =
+                movie.video || "";
+
+
+            document.getElementById(
+                "movieTrailer"
+            ).value =
+                movie.trailer || "";
+
+
+            document.getElementById(
+                "saveMovieButton"
+            ).textContent =
+                "💾 Guardar cambios";
+
+
+            document
+                .getElementById(
+                    "movieTitle"
+                )
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+
+            showToast(
+                "Editando: " +
+                movie.title
+            );
+
+        }
+
+
+
+        /* =====================================================
+           ELIMINAR
+        ===================================================== */
+
+        function deleteMovie(id) {
+
+            const movie =
+                movies[id];
+
+
+            if(!movie) {
+
+                return;
+
+            }
+
+
+            const confirmed =
+                window.confirm(
+                    "¿Seguro que quieres eliminar \"" +
+                    movie.title +
+                    "\"?"
+                );
+
+
+            if(!confirmed) {
+
+                return;
+
+            }
+
+
+            delete movies[id];
+
+
+            saveMovies();
+
+
+            renderCatalog();
+
+
+            renderAdminMovies();
+
+
+            if(
+                currentMovie === id
+            ) {
+
+                closeMovie();
+
+            }
+
+
+            showToast(
+                "Película eliminada."
+            );
+
+        }
+
+
+
+        /* =====================================================
+           ESC
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if(
+                    event.key !==
+                    "Escape"
+                ) {
+
+                    return;
+
+                }
+
+
+                if(
+                    document
+                        .getElementById(
+                            "player"
+                        )
+                        .classList.contains(
+                            "active"
+                        )
+                ) {
+
+                    closePlayer();
+
+                    return;
+
+                }
+
+
+                if(
+                    document
+                        .getElementById(
+                            "adminPanel"
+                        )
+                        .classList.contains(
+                            "active"
+                        )
+                ) {
+
+                    closeAdmin();
+
+                    return;
+
+                }
+
+
+                if(
+                    document
+                        .getElementById(
+                            "movieDetail"
+                        )
+                        .classList.contains(
+                            "active"
+                        )
+                ) {
+
+                    closeMovie();
+
+                }
+
+            }
+        );
+
+
+    </script>
 
 </body>
 
