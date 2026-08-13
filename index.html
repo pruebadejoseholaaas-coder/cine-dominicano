@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Cine RD 🇩🇴</title>
 
 <style>
 
-/* =====================================================
-   CONFIGURACIÓN GENERAL
-===================================================== */
+/* =========================
+   RESET
+========================= */
 
 *{
     margin:0;
@@ -31,27 +27,17 @@ html{
 body{
     background:#080808;
     color:white;
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body.no-scroll{
     overflow:hidden;
 }
 
-button,
-input{
-    font-family:inherit;
-}
 
-button{
-    border:none;
-    cursor:pointer;
-}
-
-
-/* =====================================================
-   PANTALLA DE BIENVENIDA
-===================================================== */
+/* =========================
+   BIENVENIDA
+========================= */
 
 .welcome-screen{
 
@@ -67,25 +53,23 @@ button{
 
     justify-content:center;
 
-    padding:20px;
-
     background:
         radial-gradient(
             circle at center,
             #351014 0%,
-            #080808 65%
+            #080808 70%
         );
+
+    padding:20px;
 }
 
 .welcome-box{
 
     width:min(420px,100%);
 
-    padding:45px 35px;
-
     background:rgba(20,20,20,.97);
 
-    border:1px solid #292929;
+    padding:45px 35px;
 
     border-radius:12px;
 
@@ -93,6 +77,7 @@ button{
 
     box-shadow:
         0 20px 70px rgba(0,0,0,.8);
+
 }
 
 .welcome-logo{
@@ -104,6 +89,7 @@ button{
     font-weight:900;
 
     margin-bottom:25px;
+
 }
 
 .welcome-box h1{
@@ -111,6 +97,7 @@ button{
     font-size:28px;
 
     margin-bottom:10px;
+
 }
 
 .welcome-box p{
@@ -118,6 +105,7 @@ button{
     color:#aaa;
 
     margin-bottom:22px;
+
 }
 
 .welcome-box input{
@@ -125,8 +113,6 @@ button{
     width:100%;
 
     padding:14px;
-
-    margin-bottom:15px;
 
     background:#222;
 
@@ -138,40 +124,50 @@ button{
 
     outline:none;
 
+    margin-bottom:15px;
+
     font-size:15px;
+
 }
 
 .welcome-box input:focus{
 
     border-color:#e50914;
+
 }
 
 .welcome-box button{
 
     width:100%;
 
-    padding:14px;
-
     background:#e50914;
 
     color:white;
+
+    padding:14px;
+
+    border:none;
 
     border-radius:5px;
 
     font-weight:bold;
 
+    cursor:pointer;
+
     font-size:15px;
+
 }
 
 .welcome-box button:hover{
 
     background:#f6121d;
+
 }
 
 
-/* =====================================================
+/* =========================
    NAVBAR
-===================================================== */
+========================= */
 
 .navbar{
 
@@ -197,6 +193,7 @@ button{
             rgba(0,0,0,.95),
             rgba(0,0,0,0)
         );
+
 }
 
 .logo{
@@ -209,7 +206,6 @@ button{
 
     margin-right:35px;
 
-    white-space:nowrap;
 }
 
 .nav-links{
@@ -219,6 +215,7 @@ button{
     gap:25px;
 
     list-style:none;
+
 }
 
 .nav-links a{
@@ -228,23 +225,22 @@ button{
     text-decoration:none;
 
     font-size:14px;
+
 }
 
 .nav-links a:hover{
 
     color:white;
+
 }
 
 .search{
 
     margin-left:auto;
+
 }
 
 .search input{
-
-    width:190px;
-
-    padding:9px 13px;
 
     background:#111;
 
@@ -252,45 +248,20 @@ button{
 
     color:white;
 
+    padding:9px 13px;
+
     border-radius:4px;
 
+    width:190px;
+
     outline:none;
-}
 
-.search input:focus{
-
-    border-color:#e50914;
 }
 
 
-/* =====================================================
-   SALUDO
-===================================================== */
-
-.user-greeting{
-
-    position:absolute;
-
-    top:72px;
-
-    right:5%;
-
-    color:#bbb;
-
-    font-size:13px;
-
-    display:none;
-}
-
-.user-greeting.visible{
-
-    display:block;
-}
-
-
-/* =====================================================
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero{
 
@@ -324,11 +295,13 @@ button{
             #250d12 35%,
             #080808 75%
         );
+
 }
 
 .hero-content{
 
     max-width:600px;
+
 }
 
 .badge{
@@ -346,6 +319,7 @@ button{
     font-weight:bold;
 
     margin-bottom:18px;
+
 }
 
 .hero h1{
@@ -355,6 +329,7 @@ button{
     line-height:.95;
 
     margin-bottom:20px;
+
 }
 
 .hero p{
@@ -366,26 +341,38 @@ button{
     line-height:1.6;
 
     margin-bottom:25px;
+
 }
+
+
+/* =========================
+   BOTONES
+========================= */
 
 .buttons{
 
     display:flex;
 
+    gap:12px;
+
     flex-wrap:wrap;
 
-    gap:10px;
 }
 
-.buttons button{
+button{
 
-    padding:13px 20px;
+    border:none;
+
+    cursor:pointer;
 
     border-radius:5px;
 
+    padding:13px 22px;
+
     font-weight:bold;
 
-    font-size:14px;
+    font-size:15px;
+
 }
 
 .play{
@@ -393,11 +380,13 @@ button{
     background:white;
 
     color:black;
+
 }
 
 .play:hover{
 
     background:#ddd;
+
 }
 
 .list{
@@ -405,44 +394,50 @@ button{
     background:#555;
 
     color:white;
+
 }
 
 .list:hover{
 
     background:#666;
+
 }
 
 .trailer-button{
 
-    background:#333;
+    background:#e50914;
 
     color:white;
+
 }
 
 .trailer-button:hover{
 
-    background:#444;
+    background:#f6121d;
+
 }
 
 
-/* =====================================================
+/* =========================
    SECCIONES
-===================================================== */
+========================= */
 
 .section{
 
     padding:25px 5%;
+
 }
 
 .section h2{
 
     margin-bottom:18px;
+
 }
 
 
-/* =====================================================
-   GRID DE PELÍCULAS
-===================================================== */
+/* =========================
+   GRID
+========================= */
 
 .movie-grid{
 
@@ -452,6 +447,7 @@ button{
         repeat(5,1fr);
 
     gap:14px;
+
 }
 
 .movie-card{
@@ -467,6 +463,7 @@ button{
     overflow:hidden;
 
     background:#151515;
+
 }
 
 .movie-card:hover{
@@ -474,8 +471,8 @@ button{
     transform:scale(1.05);
 
     box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.8);
+        0 15px 40px rgba(0,0,0,.8);
+
 }
 
 .poster{
@@ -493,6 +490,7 @@ button{
     background-size:cover;
 
     background-position:center;
+
 }
 
 .poster::after{
@@ -508,6 +506,7 @@ button{
             transparent 35%,
             rgba(0,0,0,.95)
         );
+
 }
 
 .poster-info{
@@ -515,24 +514,25 @@ button{
     position:relative;
 
     z-index:2;
+
 }
 
 .poster-info h3{
 
     margin-bottom:5px;
 
-    font-size:16px;
 }
 
 .poster-info small{
 
     color:#bbb;
+
 }
 
 
-/* =====================================================
-   POSTERS TEMPORALES
-===================================================== */
+/* =========================
+   PORTADAS
+========================= */
 
 .poster1{
 
@@ -543,6 +543,7 @@ button{
             #e04720,
             #150202
         );
+
 }
 
 .poster2{
@@ -554,6 +555,7 @@ button{
             #1683a5,
             #030b10
         );
+
 }
 
 .poster3{
@@ -565,6 +567,7 @@ button{
             #d99018,
             #100800
         );
+
 }
 
 .poster4{
@@ -576,6 +579,7 @@ button{
             #855bd2,
             #09050e
         );
+
 }
 
 .poster5{
@@ -587,6 +591,7 @@ button{
             #2e9250,
             #020b04
         );
+
 }
 
 .poster6{
@@ -598,12 +603,13 @@ button{
             #c84c81,
             #10030a
         );
+
 }
 
 
-/* =====================================================
-   FICHA DE PELÍCULA
-===================================================== */
+/* =========================
+   DETALLE PELÍCULA
+========================= */
 
 .movie-detail{
 
@@ -615,15 +621,16 @@ button{
 
     z-index:2000;
 
-    background:
-        rgba(0,0,0,.96);
+    background:rgba(0,0,0,.97);
 
     overflow-y:auto;
+
 }
 
 .movie-detail.active{
 
     display:block;
+
 }
 
 .detail-container{
@@ -635,6 +642,7 @@ button{
     min-height:100vh;
 
     background:#111;
+
 }
 
 .detail-hero{
@@ -670,11 +678,13 @@ button{
             #b83327,
             #111
         );
+
 }
 
 .detail-content{
 
     max-width:650px;
+
 }
 
 .detail-content h1{
@@ -682,19 +692,21 @@ button{
     font-size:52px;
 
     margin-bottom:15px;
+
 }
 
 .metadata{
 
     display:flex;
 
-    flex-wrap:wrap;
+    gap:15px;
 
-    gap:12px;
+    flex-wrap:wrap;
 
     color:#ccc;
 
     margin-bottom:20px;
+
 }
 
 .rating{
@@ -702,6 +714,7 @@ button{
     color:#ffd700;
 
     font-weight:bold;
+
 }
 
 .description{
@@ -711,6 +724,7 @@ button{
     line-height:1.7;
 
     margin-bottom:20px;
+
 }
 
 .info{
@@ -720,6 +734,7 @@ button{
     line-height:1.8;
 
     margin-bottom:25px;
+
 }
 
 .close-detail{
@@ -745,27 +760,25 @@ button{
     font-size:24px;
 
     padding:0;
-}
 
-.close-detail:hover{
-
-    background:#e50914;
 }
 
 .detail-body{
 
     padding:40px 50px;
+
 }
 
 .detail-body h2{
 
     margin-bottom:20px;
+
 }
 
 
-/* =====================================================
-   VALORACIÓN
-===================================================== */
+/* =========================
+   ESTRELLAS
+========================= */
 
 .stars{
 
@@ -773,7 +786,8 @@ button{
 
     gap:8px;
 
-    margin-bottom:35px;
+    margin-bottom:30px;
+
 }
 
 .star{
@@ -784,25 +798,18 @@ button{
 
     color:#444;
 
-    transition:.2s;
-}
-
-.star:hover{
-
-    transform:scale(1.1);
-
-    color:#ffd700;
 }
 
 .star.selected{
 
     color:#ffd700;
+
 }
 
 
-/* =====================================================
+/* =========================
    COMENTARIOS
-===================================================== */
+========================= */
 
 .comment-box{
 
@@ -811,6 +818,7 @@ button{
     gap:10px;
 
     margin-bottom:30px;
+
 }
 
 .comment-box input{
@@ -828,11 +836,7 @@ button{
     border-radius:4px;
 
     outline:none;
-}
 
-.comment-box input:focus{
-
-    border-color:#e50914;
 }
 
 .comments{
@@ -842,6 +846,7 @@ button{
     flex-direction:column;
 
     gap:15px;
+
 }
 
 .comment{
@@ -851,6 +856,7 @@ button{
     padding:15px;
 
     border-radius:5px;
+
 }
 
 .comment strong{
@@ -858,19 +864,19 @@ button{
     display:block;
 
     margin-bottom:7px;
+
 }
 
 .comment p{
 
     color:#bbb;
 
-    line-height:1.5;
 }
 
 
-/* =====================================================
-   VENTANAS DE VIDEO / TRAILER
-===================================================== */
+/* =========================
+   REPRODUCTOR
+========================= */
 
 .player{
 
@@ -889,11 +895,13 @@ button{
     justify-content:center;
 
     padding:20px;
+
 }
 
 .player.active{
 
     display:flex;
+
 }
 
 .player-box{
@@ -905,6 +913,7 @@ button{
     border-radius:7px;
 
     overflow:hidden;
+
 }
 
 .player-header{
@@ -918,6 +927,7 @@ button{
     align-items:center;
 
     background:#181818;
+
 }
 
 .video{
@@ -935,15 +945,7 @@ button{
     text-align:center;
 
     padding:30px;
-}
 
-.video p{
-
-    color:#aaa;
-
-    max-width:500px;
-
-    line-height:1.6;
 }
 
 .video iframe{
@@ -953,6 +955,17 @@ button{
     height:100%;
 
     border:none;
+
+}
+
+.video-message{
+
+    color:#aaa;
+
+    max-width:500px;
+
+    line-height:1.6;
+
 }
 
 .close-player{
@@ -964,17 +977,13 @@ button{
     font-size:28px;
 
     padding:0;
-}
 
-.close-player:hover{
-
-    color:#e50914;
 }
 
 
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer{
 
@@ -987,29 +996,21 @@ footer{
     color:#666;
 
     border-top:1px solid #222;
+
 }
 
 
-/* =====================================================
+/* =========================
    RESPONSIVE
-===================================================== */
-
-@media(max-width:1100px){
-
-    .movie-grid{
-
-        grid-template-columns:
-            repeat(4,1fr);
-    }
-
-}
+========================= */
 
 @media(max-width:900px){
 
     .movie-grid{
 
         grid-template-columns:
-            repeat(3,1fr);
+            repeat(4,1fr);
+
     }
 
 }
@@ -1019,27 +1020,32 @@ footer{
     .navbar{
 
         padding:0 4%;
+
     }
 
     .nav-links{
 
         display:none;
+
     }
 
     .search input{
 
         width:130px;
+
     }
 
     .movie-grid{
 
         grid-template-columns:
             repeat(2,1fr);
+
     }
 
     .poster{
 
         height:260px;
+
     }
 
     .detail-hero{
@@ -1047,52 +1053,25 @@ footer{
         min-height:600px;
 
         padding:30px;
+
     }
 
     .detail-content h1{
 
         font-size:38px;
+
     }
 
     .detail-body{
 
         padding:30px;
+
     }
 
     .comment-box{
 
         flex-direction:column;
-    }
 
-}
-
-@media(max-width:450px){
-
-    .logo{
-
-        font-size:22px;
-
-        margin-right:12px;
-    }
-
-    .search input{
-
-        width:110px;
-    }
-
-    .poster{
-
-        height:230px;
-    }
-
-    .poster-info h3{
-
-        font-size:14px;
-    }
-
-    .detail-content h1{
-
-        font-size:32px;
     }
 
 }
@@ -1105,9 +1084,9 @@ footer{
 <body>
 
 
-<!-- =====================================================
+<!-- =========================
      PANTALLA DE BIENVENIDA
-===================================================== -->
+========================= -->
 
 <div
     id="welcomeScreen"
@@ -1133,12 +1112,6 @@ footer{
             type="text"
             placeholder="Escribe tu nombre..."
             maxlength="30"
-            autocomplete="name"
-            onkeydown="
-                if(event.key === 'Enter'){
-                    enterSite();
-                }
-            "
         >
 
         <button
@@ -1152,9 +1125,9 @@ footer{
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      NAVBAR
-===================================================== -->
+========================= -->
 
 <header class="navbar">
 
@@ -1204,18 +1177,9 @@ footer{
 </header>
 
 
-<!-- SALUDO -->
-
-<div
-    id="userGreeting"
-    class="user-greeting"
->
-</div>
-
-
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
 <section class="hero">
 
@@ -1241,12 +1205,12 @@ footer{
                 class="play"
                 onclick="openMovie(1)"
             >
-                ▶ Ver película
+                ▶ Reproducir
             </button>
 
             <button
                 class="list"
-                onclick="showListMessage()"
+                onclick="showMessage()"
             >
                 ＋ Mi lista
             </button>
@@ -1258,310 +1222,308 @@ footer{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      PELÍCULAS
-===================================================== -->
+========================= -->
 
 <main id="peliculas">
 
 
 <section class="section">
 
-<h2>
-🔥 Tendencias
-</h2>
+    <h2>
+        🔥 Tendencias
+    </h2>
 
-<div class="movie-grid">
+    <div class="movie-grid">
 
 
-<!-- PELÍCULA 1 -->
+        <!-- PELICULA 1 -->
 
-<div
-    class="movie-card"
-    data-title="La Gran Aventura Dominicana"
-    onclick="openMovie(1)"
->
+        <div
+            class="movie-card"
+            data-title="La Gran Aventura Dominicana"
+            onclick="openMovie(1)"
+        >
 
-    <div class="poster poster1">
+            <div class="poster poster1">
 
-        <div class="poster-info">
+                <div class="poster-info">
 
-            <h3>
-                La Gran Aventura Dominicana
-            </h3>
+                    <h3>
+                        La Gran Aventura Dominicana
+                    </h3>
 
-            <small>
-                2025 · Aventura
-            </small>
+                    <small>
+                        2025 · Aventura
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PELICULA 2 -->
+
+        <div
+            class="movie-card"
+            data-title="Santo Domingo"
+            onclick="openMovie(2)"
+        >
+
+            <div class="poster poster2">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Santo Domingo
+                    </h3>
+
+                    <small>
+                        2024 · Drama
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PELICULA 3 -->
+
+        <div
+            class="movie-card"
+            data-title="Un Día en RD"
+            onclick="openMovie(3)"
+        >
+
+            <div class="poster poster3">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Un Día en RD
+                    </h3>
+
+                    <small>
+                        2025 · Comedia
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PELICULA 4 -->
+
+        <div
+            class="movie-card"
+            data-title="Historias del Caribe"
+            onclick="openMovie(4)"
+        >
+
+            <div class="poster poster4">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Historias del Caribe
+                    </h3>
+
+                    <small>
+                        2023 · Drama
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PELICULA 5 -->
+
+        <div
+            class="movie-card"
+            data-title="Mi Barrio"
+            onclick="openMovie(5)"
+        >
+
+            <div class="poster poster5">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Mi Barrio
+                    </h3>
+
+                    <small>
+                        2024 · Drama
+                    </small>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
-
-
-<!-- PELÍCULA 2 -->
-
-<div
-    class="movie-card"
-    data-title="Santo Domingo"
-    onclick="openMovie(2)"
->
-
-    <div class="poster poster2">
-
-        <div class="poster-info">
-
-            <h3>
-                Santo Domingo
-            </h3>
-
-            <small>
-                2024 · Drama
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- PELÍCULA 3 -->
-
-<div
-    class="movie-card"
-    data-title="Un Día en RD"
-    onclick="openMovie(3)"
->
-
-    <div class="poster poster3">
-
-        <div class="poster-info">
-
-            <h3>
-                Un Día en RD
-            </h3>
-
-            <small>
-                2025 · Comedia
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- PELÍCULA 4 -->
-
-<div
-    class="movie-card"
-    data-title="Historias del Caribe"
-    onclick="openMovie(4)"
->
-
-    <div class="poster poster4">
-
-        <div class="poster-info">
-
-            <h3>
-                Historias del Caribe
-            </h3>
-
-            <small>
-                2023 · Drama
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- PELÍCULA 5 -->
-
-<div
-    class="movie-card"
-    data-title="Mi Barrio"
-    onclick="openMovie(5)"
->
-
-    <div class="poster poster5">
-
-        <div class="poster-info">
-
-            <h3>
-                Mi Barrio
-            </h3>
-
-            <small>
-                2024 · Drama
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-</div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      COMEDIA
-===================================================== -->
+========================= -->
 
 <section
     class="section"
     id="comedia"
 >
 
-<h2>
-😂 Comedia
-</h2>
+    <h2>
+        😂 Comedia
+    </h2>
 
-<div class="movie-grid">
-
-
-<div
-    class="movie-card"
-    data-title="La Vuelta"
-    onclick="openMovie(6)"
->
-
-    <div class="poster poster6">
-
-        <div class="poster-info">
-
-            <h3>
-                La Vuelta
-            </h3>
-
-            <small>
-                2025 · Comedia
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
+    <div class="movie-grid">
 
 
-<div
-    class="movie-card"
-    data-title="El Vecino"
-    onclick="openMovie(3)"
->
+        <div
+            class="movie-card"
+            data-title="La Vuelta"
+            onclick="openMovie(6)"
+        >
 
-    <div class="poster poster3">
+            <div class="poster poster6">
 
-        <div class="poster-info">
+                <div class="poster-info">
 
-            <h3>
-                El Vecino
-            </h3>
+                    <h3>
+                        La Vuelta
+                    </h3>
 
-            <small>
-                2024 · Comedia
-            </small>
+                    <small>
+                        2025 · Comedia
+                    </small>
+
+                </div>
+
+            </div>
 
         </div>
 
+
+        <div
+            class="movie-card"
+            data-title="El Vecino"
+            onclick="openMovie(3)"
+        >
+
+            <div class="poster poster3">
+
+                <div class="poster-info">
+
+                    <h3>
+                        El Vecino
+                    </h3>
+
+                    <small>
+                        2024 · Comedia
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
     </div>
-
-</div>
-
-
-</div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      DRAMA
-===================================================== -->
+========================= -->
 
 <section
     class="section"
     id="drama"
 >
 
-<h2>
-🎭 Drama
-</h2>
+    <h2>
+        🎭 Drama
+    </h2>
 
-<div class="movie-grid">
-
-
-<div
-    class="movie-card"
-    data-title="Historias de Familia"
-    onclick="openMovie(4)"
->
-
-    <div class="poster poster4">
-
-        <div class="poster-info">
-
-            <h3>
-                Historias de Familia
-            </h3>
-
-            <small>
-                2024 · Drama
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
+    <div class="movie-grid">
 
 
-<div
-    class="movie-card"
-    data-title="Después de la Lluvia"
-    onclick="openMovie(2)"
->
+        <div
+            class="movie-card"
+            data-title="Historias de Familia"
+            onclick="openMovie(4)"
+        >
 
-    <div class="poster poster2">
+            <div class="poster poster4">
 
-        <div class="poster-info">
+                <div class="poster-info">
 
-            <h3>
-                Después de la Lluvia
-            </h3>
+                    <h3>
+                        Historias de Familia
+                    </h3>
 
-            <small>
-                2023 · Drama
-            </small>
+                    <small>
+                        2024 · Drama
+                    </small>
+
+                </div>
+
+            </div>
 
         </div>
 
+
+        <div
+            class="movie-card"
+            data-title="Después de la Lluvia"
+            onclick="openMovie(2)"
+        >
+
+            <div class="poster poster2">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Después de la Lluvia
+                    </h3>
+
+                    <small>
+                        2023 · Drama
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
     </div>
-
-</div>
-
-
-</div>
 
 </section>
-
 
 </main>
 
 
-<!-- =====================================================
+<!-- =========================
      FICHA DE PELÍCULA
-===================================================== -->
+========================= -->
 
 <div
     id="movieDetail"
@@ -1574,7 +1536,6 @@ footer{
         <button
             class="close-detail"
             onclick="closeMovie()"
-            aria-label="Cerrar"
         >
             ×
         </button>
@@ -1584,9 +1545,7 @@ footer{
 
             <div class="detail-content">
 
-                <h1
-                    id="detailTitle"
-                >
+                <h1 id="detailTitle">
                     Película
                 </h1>
 
@@ -1614,13 +1573,10 @@ footer{
                     </span>
 
                     <span class="rating">
-
                         ⭐
-
                         <span id="detailRating">
                             8.7
                         </span>
-
                     </span>
 
                 </div>
@@ -1666,7 +1622,7 @@ footer{
                         class="trailer-button"
                         onclick="openTrailer()"
                     >
-                        ▶ Ver tráiler
+                        🎬 Ver tráiler
                     </button>
 
 
@@ -1674,13 +1630,13 @@ footer{
                         class="play"
                         onclick="openPlayer()"
                     >
-                        🎬 Ver película
+                        ▶ Ver película
                     </button>
 
 
                     <button
                         class="list"
-                        onclick="addToList()"
+                        onclick="showMessage()"
                     >
                         ＋ Mi lista
                     </button>
@@ -1692,10 +1648,9 @@ footer{
         </div>
 
 
-        <!-- VALORACIÓN Y COMENTARIOS -->
+        <!-- VALORACIÓN -->
 
         <div class="detail-body">
-
 
             <h2>
                 ⭐ ¿Qué te pareció?
@@ -1745,6 +1700,8 @@ footer{
             </div>
 
 
+            <!-- COMENTARIOS -->
+
             <h2>
                 💬 Comentarios
             </h2>
@@ -1757,13 +1714,7 @@ footer{
                     type="text"
                     placeholder="Escribe un comentario..."
                     maxlength="300"
-                    onkeydown="
-                        if(event.key === 'Enter'){
-                            addComment();
-                        }
-                    "
                 >
-
 
                 <button
                     class="play"
@@ -1814,56 +1765,9 @@ footer{
 </div>
 
 
-<!-- =====================================================
-     VENTANA DEL TRÁILER
-===================================================== -->
-
-<div
-    class="player"
-    id="trailer"
->
-
-    <div class="player-box">
-
-        <div class="player-header">
-
-            <strong id="trailerTitle">
-                Tráiler
-            </strong>
-
-
-            <button
-                class="close-player"
-                onclick="closeTrailer()"
-                aria-label="Cerrar tráiler"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div
-            class="video"
-            id="trailerVideo"
-        >
-
-            <p>
-                🎬 El tráiler aparecerá aquí
-                cuando agreguemos el enlace
-                oficial de la película.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     VENTANA DE PELÍCULA
-===================================================== -->
+<!-- =========================
+     REPRODUCTOR
+========================= -->
 
 <div
     class="player"
@@ -1878,11 +1782,9 @@ footer{
                 Reproduciendo
             </strong>
 
-
             <button
                 class="close-player"
                 onclick="closePlayer()"
-                aria-label="Cerrar reproductor"
             >
                 ×
             </button>
@@ -1892,21 +1794,26 @@ footer{
 
         <div
             class="video"
-            id="movieVideo"
+            id="videoContainer"
         >
 
-            <p>
+            <div class="video-message">
 
-                🎬 Aquí aparecerá la película.
+                🎬
 
-                <br>
-                <br>
+                <br><br>
 
-                En el siguiente paso conectaremos
-                videos externos que permitan
-                su inserción.
+                Todavía no hemos agregado
+                el enlace de esta película.
 
-            </p>
+                <br><br>
+
+                Cuando tengas un video publicado
+                por el propietario en YouTube
+                u otra plataforma que permita
+                inserción, podremos colocarlo aquí.
+
+            </div>
 
         </div>
 
@@ -1915,9 +1822,9 @@ footer{
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      FOOTER
-===================================================== -->
+========================= -->
 
 <footer>
 
@@ -1925,63 +1832,61 @@ footer{
         CINE RD 🇩🇴
     </strong>
 
-    <br>
-    <br>
+    <br><br>
 
     Plataforma de cine dominicano.
 
-    <br>
-    <br>
+    <br><br>
 
     © 2026 Cine RD
 
 </footer>
 
 
-<!-- =====================================================
+<!-- =========================
      JAVASCRIPT
-===================================================== -->
+========================= -->
 
 <script>
 
 
-/* =====================================================
-   INFORMACIÓN DE LAS PELÍCULAS
-===================================================== */
+/* =========================
+   DATOS DE LAS PELÍCULAS
+========================= */
 
 const movies = {
 
     1:{
 
         title:
-            "La Gran Aventura Dominicana",
+        "La Gran Aventura Dominicana",
 
         year:
-            "2025",
+        "2025",
 
         duration:
-            "1h 42min",
+        "1h 42min",
 
         genre:
-            "Aventura",
+        "Aventura",
 
         rating:
-            "8.7",
+        "8.7",
 
         director:
-            "Director Dominicano",
+        "Director Dominicano",
 
         cast:
-            "Actor 1, Actor 2, Actor 3",
+        "Actor 1, Actor 2, Actor 3",
 
         description:
-            "Una emocionante aventura ambientada en República Dominicana.",
+        "Una emocionante aventura ambientada en República Dominicana.",
 
-        trailerUrl:
-            "",
+        trailer:
+        "",
 
-        movieUrl:
-            ""
+        video:
+        ""
 
     },
 
@@ -1989,34 +1894,34 @@ const movies = {
     2:{
 
         title:
-            "Santo Domingo",
+        "Santo Domingo",
 
         year:
-            "2024",
+        "2024",
 
         duration:
-            "1h 38min",
+        "1h 38min",
 
         genre:
-            "Drama",
+        "Drama",
 
         rating:
-            "8.2",
+        "8.2",
 
         director:
-            "Director Dominicano",
+        "Director Dominicano",
 
         cast:
-            "Actor 1, Actor 2",
+        "Actor 1, Actor 2",
 
         description:
-            "Una historia de familia, sueños y decisiones que cambian una vida.",
+        "Una historia de familia, sueños y decisiones que cambian una vida.",
 
-        trailerUrl:
-            "",
+        trailer:
+        "",
 
-        movieUrl:
-            ""
+        video:
+        ""
 
     },
 
@@ -2024,34 +1929,34 @@ const movies = {
     3:{
 
         title:
-            "Un Día en RD",
+        "Un Día en RD",
 
         year:
-            "2025",
+        "2025",
 
         duration:
-            "1h 35min",
+        "1h 35min",
 
         genre:
-            "Comedia",
+        "Comedia",
 
         rating:
-            "8.5",
+        "8.5",
 
         director:
-            "Director Dominicano",
+        "Director Dominicano",
 
         cast:
-            "Actor 1, Actor 2, Actor 3",
+        "Actor 1, Actor 2, Actor 3",
 
         description:
-            "Una divertida historia llena de situaciones que solamente podrían pasar en República Dominicana.",
+        "Una divertida historia llena de situaciones que solamente podrían pasar en República Dominicana.",
 
-        trailerUrl:
-            "",
+        trailer:
+        "",
 
-        movieUrl:
-            ""
+        video:
+        ""
 
     },
 
@@ -2059,34 +1964,34 @@ const movies = {
     4:{
 
         title:
-            "Historias del Caribe",
+        "Historias del Caribe",
 
         year:
-            "2023",
+        "2023",
 
         duration:
-            "1h 50min",
+        "1h 50min",
 
         genre:
-            "Drama",
+        "Drama",
 
         rating:
-            "8.9",
+        "8.9",
 
         director:
-            "Director Dominicano",
+        "Director Dominicano",
 
         cast:
-            "Actor 1, Actor 2",
+        "Actor 1, Actor 2",
 
         description:
-            "Una historia sobre familia, identidad y las raíces del Caribe.",
+        "Una historia sobre familia, identidad y las raíces del Caribe.",
 
-        trailerUrl:
-            "",
+        trailer:
+        "",
 
-        movieUrl:
-            ""
+        video:
+        ""
 
     },
 
@@ -2094,34 +1999,34 @@ const movies = {
     5:{
 
         title:
-            "Mi Barrio",
+        "Mi Barrio",
 
         year:
-            "2024",
+        "2024",
 
         duration:
-            "1h 40min",
+        "1h 40min",
 
         genre:
-            "Drama",
+        "Drama",
 
         rating:
-            "8.1",
+        "8.1",
 
         director:
-            "Director Dominicano",
+        "Director Dominicano",
 
         cast:
-            "Actor 1, Actor 2",
+        "Actor 1, Actor 2",
 
         description:
-            "Las historias y personajes de un barrio dominicano.",
+        "Las historias y personajes de un barrio dominicano.",
 
-        trailerUrl:
-            "",
+        trailer:
+        "",
 
-        movieUrl:
-            ""
+        video:
+        ""
 
     },
 
@@ -2129,61 +2034,58 @@ const movies = {
     6:{
 
         title:
-            "La Vuelta",
+        "La Vuelta",
 
         year:
-            "2025",
+        "2025",
 
         duration:
-            "1h 30min",
+        "1h 30min",
 
         genre:
-            "Comedia",
+        "Comedia",
 
         rating:
-            "8.4",
+        "8.4",
 
         director:
-            "Director Dominicano",
+        "Director Dominicano",
 
         cast:
-            "Actor 1, Actor 2",
+        "Actor 1, Actor 2",
 
         description:
-            "Una comedia dominicana llena de situaciones inesperadas.",
+        "Una comedia dominicana llena de situaciones inesperadas.",
 
-        trailerUrl:
-            "",
+        trailer:
+        "",
 
-        movieUrl:
-            ""
+        video:
+        ""
 
     }
 
 };
 
 
-/* =====================================================
+/* =========================
    VARIABLES
-===================================================== */
+========================= */
 
 let currentMovie = null;
 
 
-/* =====================================================
-   ENTRAR A CINE RD
-===================================================== */
+/* =========================
+   ENTRAR A LA WEB
+========================= */
 
 function enterSite(){
 
     const input =
-        document.getElementById(
-            "nameInput"
-        );
+        document.getElementById("nameInput");
 
     const name =
         input.value.trim();
-
 
     if(!name){
 
@@ -2191,70 +2093,61 @@ function enterSite(){
             "Por favor escribe tu nombre."
         );
 
-        input.focus();
-
         return;
-    }
 
+    }
 
     localStorage.setItem(
         "cineRD_name",
         name
     );
 
-
-    showUser(name);
-
-
     document.getElementById(
         "welcomeScreen"
-    ).style.display =
-        "none";
+    ).style.display = "none";
 
 }
 
 
-/* =====================================================
-   MOSTRAR USUARIO
-===================================================== */
+/* =========================
+   COMPROBAR SI YA ENTRÓ
+========================= */
 
-function showUser(name){
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
 
-    const greeting =
-        document.getElementById(
-            "userGreeting"
-        );
+        const savedName =
+            localStorage.getItem(
+                "cineRD_name"
+            );
+
+        if(savedName){
+
+            document.getElementById(
+                "welcomeScreen"
+            ).style.display = "none";
+
+        }
+
+    }
+);
 
 
-    greeting.textContent =
-        "Hola, " + name + " 👋";
-
-
-    greeting.classList.add(
-        "visible"
-    );
-
-}
-
-
-/* =====================================================
+/* =========================
    ABRIR PELÍCULA
-===================================================== */
+========================= */
 
 function openMovie(id){
 
     const movie =
         movies[id];
 
-
     if(!movie){
-
         return;
     }
 
-
-    currentMovie =
-        id;
+    currentMovie = id;
 
 
     document.getElementById(
@@ -2305,35 +2198,30 @@ function openMovie(id){
         movie.description;
 
 
-    resetStars();
-
-
     document.getElementById(
         "movieDetail"
-    ).classList.add(
-        "active"
-    );
+    ).classList.add("active");
 
 
     document.body.classList.add(
         "no-scroll"
     );
 
+
+    resetStars();
+
 }
 
 
-/* =====================================================
+/* =========================
    CERRAR PELÍCULA
-===================================================== */
+========================= */
 
 function closeMovie(){
 
     document.getElementById(
         "movieDetail"
-    ).classList.remove(
-        "active"
-    );
-
+    ).classList.remove("active");
 
     document.body.classList.remove(
         "no-scroll"
@@ -2342,131 +2230,18 @@ function closeMovie(){
 }
 
 
-/* =====================================================
-   ABRIR TRÁILER
-===================================================== */
-
-function openTrailer(){
-
-    if(!currentMovie){
-
-        return;
-    }
-
-
-    const movie =
-        movies[currentMovie];
-
-
-    document.getElementById(
-        "trailerTitle"
-    ).textContent =
-        movie.title + " — Tráiler";
-
-
-    const video =
-        document.getElementById(
-            "trailerVideo"
-        );
-
-
-    /*
-       Si tenemos una URL oficial de YouTube
-       u otra plataforma que permita inserción,
-       aquí podremos mostrarla.
-
-       Por ahora mostramos un mensaje.
-    */
-
-    if(movie.trailerUrl){
-
-        video.innerHTML =
-            '<iframe src="' +
-            movie.trailerUrl +
-            '" ' +
-            'title="Tráiler" ' +
-            'allowfullscreen></iframe>';
-
-    }else{
-
-        video.innerHTML =
-
-            '<p>' +
-
-            '🎬 Todavía no hemos agregado ' +
-            'el tráiler oficial de esta película.' +
-
-            '<br><br>' +
-
-            'Cuando tengamos un enlace autorizado ' +
-            'para inserción aparecerá aquí.' +
-
-            '</p>';
-
-    }
-
-
-    document.getElementById(
-        "trailer"
-    ).classList.add(
-        "active"
-    );
-
-
-    document.body.classList.add(
-        "no-scroll"
-    );
-
-}
-
-
-/* =====================================================
-   CERRAR TRÁILER
-===================================================== */
-
-function closeTrailer(){
-
-    document.getElementById(
-        "trailer"
-    ).classList.remove(
-        "active"
-    );
-
-
-    document.getElementById(
-        "trailerVideo"
-    ).innerHTML =
-
-        '<p>' +
-
-        '🎬 El tráiler aparecerá aquí ' +
-        'cuando agreguemos el enlace oficial.' +
-
-        '</p>';
-
-
-    document.body.classList.remove(
-        "no-scroll"
-    );
-
-}
-
-
-/* =====================================================
-   ABRIR PELÍCULA / VIDEO
-===================================================== */
+/* =========================
+   REPRODUCIR PELÍCULA
+========================= */
 
 function openPlayer(){
 
     if(!currentMovie){
-
         return;
     }
 
-
     const movie =
         movies[currentMovie];
-
 
     document.getElementById(
         "playerTitle"
@@ -2474,100 +2249,150 @@ function openPlayer(){
         movie.title;
 
 
-    const video =
+    const container =
         document.getElementById(
-            "movieVideo"
+            "videoContainer"
         );
 
 
-    /*
-       Aquí conectaremos posteriormente
-       una fuente de video externa que
-       permita legalmente la inserción.
-    */
+    if(movie.video){
 
+        container.innerHTML = `
 
-    if(movie.movieUrl){
+            <iframe
+                src="${movie.video}"
+                allowfullscreen
+                allow="autoplay; fullscreen"
+            ></iframe>
 
-        video.innerHTML =
-
-            '<iframe src="' +
-            movie.movieUrl +
-            '" ' +
-            'title="Reproductor" ' +
-            'allowfullscreen></iframe>';
+        `;
 
     }else{
 
-        video.innerHTML =
+        container.innerHTML = `
 
-            '<p>' +
+            <div class="video-message">
 
-            '🎬 Aquí aparecerá la película.' +
+                🎬
 
-            '<br><br>' +
+                <br><br>
 
-            'Todavía no hemos agregado ' +
-            'una fuente de video autorizada.' +
+                El video de
+                <strong>
+                    ${movie.title}
+                </strong>
+                todavía no ha sido agregado.
 
-            '</p>';
+                <br><br>
+
+                Aquí colocaremos el enlace
+                de YouTube u otra plataforma
+                cuando tengamos uno autorizado
+                para insertar.
+
+            </div>
+
+        `;
 
     }
 
 
     document.getElementById(
         "player"
-    ).classList.add(
-        "active"
-    );
-
-
-    document.body.classList.add(
-        "no-scroll"
-    );
+    ).classList.add("active");
 
 }
 
 
-/* =====================================================
+/* =========================
+   ABRIR TRÁILER
+========================= */
+
+function openTrailer(){
+
+    if(!currentMovie){
+        return;
+    }
+
+    const movie =
+        movies[currentMovie];
+
+    document.getElementById(
+        "playerTitle"
+    ).textContent =
+        "Tráiler · " + movie.title;
+
+
+    const container =
+        document.getElementById(
+            "videoContainer"
+        );
+
+
+    if(movie.trailer){
+
+        container.innerHTML = `
+
+            <iframe
+                src="${movie.trailer}"
+                allowfullscreen
+                allow="autoplay; fullscreen"
+            ></iframe>
+
+        `;
+
+    }else{
+
+        container.innerHTML = `
+
+            <div class="video-message">
+
+                🎬
+
+                <br><br>
+
+                El tráiler de
+                <strong>
+                    ${movie.title}
+                </strong>
+                todavía no ha sido agregado.
+
+                <br><br>
+
+                Cuando encontremos un tráiler
+                publicado oficialmente y que
+                permita inserción, lo colocaremos aquí.
+
+            </div>
+
+        `;
+
+    }
+
+
+    document.getElementById(
+        "player"
+    ).classList.add("active");
+
+}
+
+
+/* =========================
    CERRAR REPRODUCTOR
-===================================================== */
+========================= */
 
 function closePlayer(){
 
     document.getElementById(
         "player"
-    ).classList.remove(
-        "active"
-    );
-
-
-    document.getElementById(
-        "movieVideo"
-    ).innerHTML =
-
-        '<p>' +
-
-        '🎬 Aquí aparecerá la película.' +
-
-        '<br><br>' +
-
-        'Todavía no hemos agregado ' +
-        'una fuente de video autorizada.' +
-
-        '</p>';
-
-
-    document.body.classList.remove(
-        "no-scroll"
-    );
+    ).classList.remove("active");
 
 }
 
 
-/* =====================================================
+/* =========================
    VALORAR
-===================================================== */
+========================= */
 
 function rate(number){
 
@@ -2576,9 +2401,8 @@ function rate(number){
             ".star"
         );
 
-
     stars.forEach(
-        function(star,index){
+        (star,index)=>{
 
             if(index < number){
 
@@ -2600,9 +2424,9 @@ function rate(number){
 }
 
 
-/* =====================================================
+/* =========================
    REINICIAR ESTRELLAS
-===================================================== */
+========================= */
 
 function resetStars(){
 
@@ -2611,9 +2435,8 @@ function resetStars(){
             ".star"
         );
 
-
     stars.forEach(
-        function(star){
+        star => {
 
             star.classList.remove(
                 "selected"
@@ -2625,9 +2448,9 @@ function resetStars(){
 }
 
 
-/* =====================================================
+/* =========================
    COMENTARIOS
-===================================================== */
+========================= */
 
 function addComment(){
 
@@ -2636,25 +2459,19 @@ function addComment(){
             "commentInput"
         );
 
-
     const text =
         input.value.trim();
 
 
     if(!text){
 
-        return;
-    }
-
-
-    const savedName =
-        localStorage.getItem(
-            "cineRD_name"
+        alert(
+            "Escribe un comentario."
         );
 
+        return;
 
-    const username =
-        savedName || "Usuario";
+    }
 
 
     const comment =
@@ -2667,33 +2484,30 @@ function addComment(){
         "comment";
 
 
-    const nameElement =
+    const strong =
         document.createElement(
             "strong"
         );
 
+    strong.textContent =
+        "Tú";
 
-    nameElement.textContent =
-        username;
 
-
-    const textElement =
+    const paragraph =
         document.createElement(
             "p"
         );
 
-
-    textElement.textContent =
+    paragraph.textContent =
         text;
 
 
     comment.appendChild(
-        nameElement
+        strong
     );
 
-
     comment.appendChild(
-        textElement
+        paragraph
     );
 
 
@@ -2709,16 +2523,16 @@ function addComment(){
 }
 
 
-/* =====================================================
+/* =========================
    BUSCADOR
-===================================================== */
+========================= */
 
 function searchMovies(){
 
     const query =
-        document.getElementById(
-            "search"
-        ).value
+        document
+        .getElementById("search")
+        .value
         .toLowerCase()
         .trim();
 
@@ -2730,7 +2544,7 @@ function searchMovies(){
 
 
     cards.forEach(
-        function(card){
+        card => {
 
             const title =
                 card
@@ -2740,11 +2554,7 @@ function searchMovies(){
                 .toLowerCase();
 
 
-            if(
-                title.includes(
-                    query
-                )
-            ){
+            if(title.includes(query)){
 
                 card.style.display =
                     "block";
@@ -2762,134 +2572,40 @@ function searchMovies(){
 }
 
 
-/* =====================================================
+/* =========================
    MI LISTA
-===================================================== */
+========================= */
 
-function addToList(){
-
-    const movie =
-        movies[currentMovie];
-
-
-    if(!movie){
-
-        return;
-    }
-
-
-    let list =
-        JSON.parse(
-            localStorage.getItem(
-                "cineRD_list"
-            )
-        ) || [];
-
-
-    if(
-        !list.includes(
-            currentMovie
-        )
-    ){
-
-        list.push(
-            currentMovie
-        );
-
-
-        localStorage.setItem(
-            "cineRD_list",
-            JSON.stringify(list)
-        );
-
-
-        alert(
-            movie.title +
-            " fue agregada a Mi Lista ❤️"
-        );
-
-    }else{
-
-        alert(
-            movie.title +
-            " ya está en Mi Lista."
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   MENSAJE MI LISTA
-===================================================== */
-
-function showListMessage(){
+function showMessage(){
 
     alert(
-        "Selecciona una película para agregarla a Mi Lista ❤️"
+        "❤️ Esta función la activaremos próximamente."
     );
 
 }
 
 
-/* =====================================================
-   ESC PARA CERRAR VENTANAS
-===================================================== */
+/* =========================
+   TECLA ESCAPE
+========================= */
 
 document.addEventListener(
     "keydown",
     function(event){
 
-        if(
-            event.key === "Escape"
-        ){
-
-            closeMovie();
-
-            closeTrailer();
+        if(event.key === "Escape"){
 
             closePlayer();
 
-        }
-
-    }
-);
-
-
-/* =====================================================
-   CARGAR NOMBRE GUARDADO
-===================================================== */
-
-window.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        const savedName =
-            localStorage.getItem(
-                "cineRD_name"
-            );
-
-
-        if(savedName){
-
-            showUser(
-                savedName
-            );
-
-
-            document.getElementById(
-                "welcomeScreen"
-            ).style.display =
-                "none";
+            closeMovie();
 
         }
 
     }
 );
+
 
 </script>
-
 
 </body>
 
