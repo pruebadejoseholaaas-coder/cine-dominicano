@@ -1,0 +1,740 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cine Dominicano - Plataforma de películas dominicanas">
+  <title>Cine Dominicano</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #080808;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      z-index: 1000;
+      background: linear-gradient(to bottom, rgba(0,0,0,.95), rgba(0,0,0,0));
+    }
+
+    .logo {
+      color: #e50914;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-right: 35px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .search {
+      margin-left: auto;
+      position: relative;
+    }
+
+    .search input {
+      width: 180px;
+      background: rgba(0,0,0,.65);
+      border: 1px solid #777;
+      color: white;
+      padding: 9px 12px;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 70px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, #080808 0%, rgba(8,8,8,.85) 35%, rgba(8,8,8,.25) 75%, #080808 100%),
+        linear-gradient(0deg, #080808 0%, transparent 35%),
+        radial-gradient(circle at 70% 35%, #65131a 0%, #261015 35%, #080808 75%);
+    }
+
+    .hero-content {
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e50914;
+      padding: 6px 12px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: .95;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #ddd;
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+      padding: 13px 22px;
+      font-size: 15px;
+    }
+
+    .play-btn {
+      background: white;
+      color: black;
+    }
+
+    .play-btn:hover {
+      background: #ddd;
+    }
+
+    .list-btn {
+      background: rgba(100,100,100,.7);
+      color: white;
+    }
+
+    .list-btn:hover {
+      background: rgba(130,130,130,.8);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 25px 5%;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .movie-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .movie-card {
+      position: relative;
+      background: #151515;
+      border-radius: 5px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .25s, box-shadow .25s;
+      min-height: 260px;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+      z-index: 5;
+      box-shadow: 0 15px 35px rgba(0,0,0,.7);
+    }
+
+    .poster {
+      height: 260px;
+      display: flex;
+      align-items: flex-end;
+      padding: 15px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 35%, rgba(0,0,0,.95));
+    }
+
+    .poster-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .poster h3 {
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .poster small {
+      color: #bbb;
+    }
+
+    /* COLORES DE POSTERS DE EJEMPLO */
+    .p1 { background: linear-gradient(135deg, #26100f, #a42b24, #170808); }
+    .p2 { background: linear-gradient(135deg, #091c2a, #16718c, #041014); }
+    .p3 { background: linear-gradient(135deg, #30220a, #c27c16, #161005); }
+    .p4 { background: linear-gradient(135deg, #17132c, #6848a8, #090711); }
+    .p5 { background: linear-gradient(135deg, #102414, #27703d, #061008); }
+    .p6 { background: linear-gradient(135deg, #27131d, #a64d73, #11070d); }
+    .p7 { background: linear-gradient(135deg, #20150b, #9a5d24, #0b0804); }
+    .p8 { background: linear-gradient(135deg, #071b28, #247b9c, #030c11); }
+    .p9 { background: linear-gradient(135deg, #260b0b, #d13939, #0d0303); }
+    .p10 { background: linear-gradient(135deg, #171717, #777, #080808); }
+
+    /* FOOTER */
+    footer {
+      margin-top: 60px;
+      padding: 50px 5%;
+      color: #777;
+      border-top: 1px solid #222;
+      text-align: center;
+    }
+
+    footer strong {
+      color: #e50914;
+    }
+
+    /* MODAL / REPRODUCTOR */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .player {
+      width: min(950px, 100%);
+      background: #111;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 70px rgba(0,0,0,.8);
+    }
+
+    .player-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: #181818;
+    }
+
+    .player-top h2 {
+      font-size: 18px;
+    }
+
+    .close {
+      background: transparent;
+      color: white;
+      font-size: 25px;
+      padding: 0 8px;
+    }
+
+    .video-area {
+      aspect-ratio: 16/9;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .video-message {
+      color: #aaa;
+      max-width: 500px;
+    }
+
+    .video-message strong {
+      color: white;
+      display: block;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* BUSCADOR */
+    .no-results {
+      display: none;
+      color: #aaa;
+      padding: 30px 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .movie-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .poster {
+        height: 230px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        height: 60px;
+        padding: 0 4%;
+      }
+
+      .logo {
+        font-size: 21px;
+        margin-right: 15px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .search input {
+        width: 130px;
+      }
+
+      .hero {
+        min-height: 600px;
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .movie-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .poster {
+        height: 250px;
+      }
+
+      .section {
+        padding-left: 4%;
+        padding-right: 4%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">CINE RD</div>
+
+    <ul class="nav-links">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#peliculas">Películas</a></li>
+      <li><a href="#comedia">Comedia</a></li>
+      <li><a href="#drama">Drama</a></li>
+    </ul>
+
+    <div class="search">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Buscar..."
+        oninput="searchMovies()"
+      >
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">🇩🇴 CINE DOMINICANO</span>
+
+      <h1>Historias<br>de nuestra tierra</h1>
+
+      <p>
+        Descubre películas, historias y producciones dominicanas
+        en un solo lugar.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="play-btn" onclick="openMovie('Película destacada')">
+          ▶ Reproducir
+        </button>
+
+        <button class="list-btn" onclick="addToList()">
+          ＋ Mi lista
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PELÍCULAS -->
+  <main id="peliculas">
+
+    <section class="section">
+      <h2>🔥 Tendencias</h2>
+
+      <div class="movie-row">
+
+        <div class="movie-card" data-title="La Gran Aventura Dominicana"
+             onclick="openMovie('La Gran Aventura Dominicana')">
+          <div class="poster p1">
+            <div class="poster-content">
+              <h3>La Gran Aventura Dominicana</h3>
+              <small>2025 · Aventura</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="Santo Domingo"
+             onclick="openMovie('Santo Domingo')">
+          <div class="poster p2">
+            <div class="poster-content">
+              <h3>Santo Domingo</h3>
+              <small>2024 · Drama</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="Un Día en RD"
+             onclick="openMovie('Un Día en RD')">
+          <div class="poster p3">
+            <div class="poster-content">
+              <h3>Un Día en RD</h3>
+              <small>2025 · Comedia</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="Historias del Caribe"
+             onclick="openMovie('Historias del Caribe')">
+          <div class="poster p4">
+            <div class="poster-content">
+              <h3>Historias del Caribe</h3>
+              <small>2023 · Drama</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="Mi Barrio"
+             onclick="openMovie('Mi Barrio')">
+          <div class="poster p5">
+            <div class="poster-content">
+              <h3>Mi Barrio</h3>
+              <small>2024 · Drama</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section" id="comedia">
+      <h2>😂 Comedia</h2>
+
+      <div class="movie-row">
+
+        <div class="movie-card" data-title="La Vuelta"
+             onclick="openMovie('La Vuelta')">
+          <div class="poster p6">
+            <div class="poster-content">
+              <h3>La Vuelta</h3>
+              <small>2025 · Comedia</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="El Vecino"
+             onclick="openMovie('El Vecino')">
+          <div class="poster p7">
+            <div class="poster-content">
+              <h3>El Vecino</h3>
+              <small>2024 · Comedia</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="Qué Lío"
+             onclick="openMovie('Qué Lío')">
+          <div class="poster p8">
+            <div class="poster-content">
+              <h3>Qué Lío</h3>
+              <small>2023 · Comedia</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="La Familia"
+             onclick="openMovie('La Familia')">
+          <div class="poster p9">
+            <div class="poster-content">
+              <h3>La Familia</h3>
+              <small>2024 · Comedia</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="El Viaje"
+             onclick="openMovie('El Viaje')">
+          <div class="poster p10">
+            <div class="poster-content">
+              <h3>El Viaje</h3>
+              <small>2025 · Comedia</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section" id="drama">
+      <h2>🎭 Drama</h2>
+
+      <div class="movie-row">
+
+        <div class="movie-card" data-title="Historias de Familia"
+             onclick="openMovie('Historias de Familia')">
+          <div class="poster p4">
+            <div class="poster-content">
+              <h3>Historias de Familia</h3>
+              <small>2024 · Drama</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="Después de la Lluvia"
+             onclick="openMovie('Después de la Lluvia')">
+          <div class="poster p2">
+            <div class="poster-content">
+              <h3>Después de la Lluvia</h3>
+              <small>2023 · Drama</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="El Regreso"
+             onclick="openMovie('El Regreso')">
+          <div class="poster p5">
+            <div class="poster-content">
+              <h3>El Regreso</h3>
+              <small>2025 · Drama</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="Nuestro Camino"
+             onclick="openMovie('Nuestro Camino')">
+          <div class="poster p1">
+            <div class="poster-content">
+              <h3>Nuestro Camino</h3>
+              <small>2024 · Drama</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card" data-title="La Decisión"
+             onclick="openMovie('La Decisión')">
+          <div class="poster p3">
+            <div class="poster-content">
+              <h3>La Decisión</h3>
+              <small>2025 · Drama</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="no-results" id="noResults">
+        No encontramos películas con ese nombre.
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- REPRODUCTOR -->
+  <div class="modal" id="movieModal">
+
+    <div class="player">
+
+      <div class="player-top">
+        <h2 id="movieTitle">Película</h2>
+
+        <button class="close" onclick="closeMovie()">×</button>
+      </div>
+
+      <div class="video-area">
+
+        <div class="video-message">
+          <strong>🎬 Reproductor</strong>
+
+          <p>
+            Aquí colocaremos el reproductor de la película.
+          </p>
+
+          <br>
+
+          <p>
+            En el siguiente paso conectaremos esta sección
+            con videos externos que puedan ser incrustados
+            legalmente.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <strong>CINE RD</strong>
+    </p>
+
+    <br>
+
+    <p>
+      Plataforma de cine dominicano.
+    </p>
+
+    <br>
+
+    <p>
+      © 2026 Cine RD
+    </p>
+  </footer>
+
+
+  <script>
+
+    function openMovie(title) {
+      document.getElementById("movieTitle").textContent = title;
+      document.getElementById("movieModal").classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMovie() {
+      document.getElementById("movieModal").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    function addToList() {
+      alert("⭐ ¡Película agregada a Mi Lista!");
+    }
+
+    function searchMovies() {
+
+      const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+      const movies =
+        document.querySelectorAll(".movie-card");
+
+      let found = false;
+
+      movies.forEach(movie => {
+
+        const title =
+          movie.getAttribute("data-title").toLowerCase();
+
+        if (title.includes(search)) {
+          movie.style.display = "";
+          found = true;
+        } else {
+          movie.style.display = "none";
+        }
+
+      });
+
+      const noResults =
+        document.getElementById("noResults");
+
+      if (search !== "" && !found) {
+        noResults.style.display = "block";
+      } else {
+        noResults.style.display = "none";
+      }
+    }
+
+    document
+      .getElementById("movieModal")
+      .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+          closeMovie();
+        }
+
+      });
+
+    document.addEventListener("keydown", function(event) {
+
+      if (event.key === "Escape") {
+        closeMovie();
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
+```
