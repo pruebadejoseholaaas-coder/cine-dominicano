@@ -11,7 +11,7 @@
             color: #fff;
         }
 
-        .pantalla-inicio, .pantalla-app {
+        .pantalla {
             display: none;
             padding: 20px;
         }
@@ -24,7 +24,7 @@
             text-align: center;
         }
 
-        .inicio-contenido {
+        .inicio-contenido, .admin-contenido {
             max-width: 400px;
             margin: 80px auto;
             text-align: center;
@@ -33,7 +33,7 @@
             border-radius: 10px;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="password"] {
             width: 100%;
             padding: 10px;
             margin-top: 10px;
@@ -71,10 +71,6 @@
             border-radius: 10px;
         }
 
-        .pelicula-card h3 {
-            margin: 10px 0;
-        }
-
         iframe {
             width: 100%;
             height: 180px;
@@ -83,10 +79,6 @@
 
         .comentarios {
             margin-top: 10px;
-        }
-
-        .comentarios h4 {
-            margin-bottom: 5px;
         }
 
         .comentarios-lista {
@@ -103,174 +95,219 @@
             padding: 4px 0;
         }
 
-        .comentario-item:last-child {
-            border-bottom: none;
-        }
-
-        .comentarios input[type="text"] {
-            width: calc(100% - 20px);
-            margin-top: 5px;
-        }
-
         .usuario-info {
             text-align: center;
             margin-top: 10px;
             font-size: 14px;
             color: #ccc;
         }
+
+        .admin-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #444;
+        }
     </style>
 </head>
 <body>
 
-<div id="pantallaInicio" class="pantalla-inicio visible">
+<!-- PANTALLA DE INICIO -->
+<div id="pantallaInicio" class="pantalla visible">
     <div class="inicio-contenido">
         <h1>Películas Dominicanas Gratis</h1>
-        <p>Escribe tu nombre para entrar y comentar las películas.</p>
+        <p>Escribe tu nombre para entrar.</p>
         <input type="text" id="nombreUsuario" placeholder="Tu nombre">
         <button id="btnEntrar">Entrar</button>
     </div>
 </div>
 
-<div id="pantallaApp" class="pantalla-app">
+<!-- PANTALLA PRINCIPAL -->
+<div id="pantallaApp" class="pantalla">
     <h2>Catálogo de Películas Dominicanas</h2>
     <div class="usuario-info">
         Usuario: <span id="nombreMostrado"></span>
     </div>
-    <div class="peliculas-container" id="peliculasContainer">
-        <!-- Aquí se generan las películas automáticamente -->
+    <div class="peliculas-container" id="peliculasContainer"></div>
+</div>
+
+<!-- BOTÓN PARA ADMIN -->
+<button class="admin-btn" id="btnAdmin">Admin</button>
+
+<!-- PANTALLA ADMIN -->
+<div id="pantallaAdmin" class="pantalla">
+    <div class="admin-contenido">
+        <h2>Panel de Administración</h2>
+
+        <div id="adminLogin">
+            <p>Contraseña de administrador:</p>
+            <input type="password" id="adminPass" placeholder="Contraseña">
+            <button id="btnLoginAdmin">Entrar</button>
+        </div>
+
+        <div id="adminPanel" style="display:none;">
+            <h3>Agregar nueva película</h3>
+            <input type="text" id="tituloPeli" placeholder="Título">
+            <input type="text" id="descPeli" placeholder="Descripción">
+            <input type="text" id="youtubePeli" placeholder="ID de YouTube">
+            <button id="btnAgregarPeli">Agregar</button>
+        </div>
     </div>
 </div>
 
 <script>
-    // Lista de películas (puedes agregar más sin tocar el HTML)
-    const peliculas = [
+    // CONTRASEÑA DEL ADMIN
+    const ADMIN_PASSWORD = "dominicana123"; // cámbiala cuando quieras
+
+    // CARGAR PELÍCULAS
+    let peliculas = JSON.parse(localStorage.getItem("peliculas_db")) || [
         {
             id: 1,
             titulo: "Película Dominicana 1",
-            descripcion: "Descripción breve de la película 1.",
-            youtubeId: "VIDEO_ID_1" // reemplaza con el ID real de YouTube
-        },
-        {
-            id: 2,
-            titulo: "Película Dominicana 2",
-            descripcion: "Descripción breve de la película 2.",
-            youtubeId: "VIDEO_ID_2"
+            descripcion: "Descripción breve.",
+            youtubeId: "VIDEO_ID_1"
         }
-        // Agrega más objetos aquí para más películas
     ];
 
-    // Comentarios guardados en localStorage
-    const COMENTARIOS_KEY = "comentarios_peliculas";
-
-    function cargarComentarios() {
-        const datos = localStorage.getItem(COMENTARIOS_KEY);
-        return datos ? JSON.parse(datos) : {};
+    function guardarPeliculas() {
+        localStorage.setItem("peliculas_db", JSON.stringify(peliculas));
     }
 
-    function guardarComentarios(comentarios) {
-        localStorage.setItem(COMENTARIOS_KEY, JSON.stringify(comentarios));
+    // COMENTARIOS
+    let comentarios = JSON.parse(localStorage.getItem("comentarios_db")) || {};
+
+    function guardarComentarios() {
+        localStorage.setItem("comentarios_db", JSON.stringify(comentarios));
     }
 
-    let comentarios = cargarComentarios();
-    let usuarioActual = "";
-
+    // ELEMENTOS
     const pantallaInicio = document.getElementById("pantallaInicio");
     const pantallaApp = document.getElementById("pantallaApp");
-    const btnEntrar = document.getElementById("btnEntrar");
+    const pantallaAdmin = document.getElementById("pantallaAdmin");
+
     const nombreUsuarioInput = document.getElementById("nombreUsuario");
     const nombreMostrado = document.getElementById("nombreMostrado");
     const peliculasContainer = document.getElementById("peliculasContainer");
 
+    const btnEntrar = document.getElementById("btnEntrar");
+    const btnAdmin = document.getElementById("btnAdmin");
+    const btnLoginAdmin = document.getElementById("btnLoginAdmin");
+    const btnAgregarPeli = document.getElementById("btnAgregarPeli");
+
+    let usuarioActual = "";
+
+    // ENTRAR A LA WEB
     btnEntrar.addEventListener("click", () => {
         const nombre = nombreUsuarioInput.value.trim();
-        if (!nombre) {
-            alert("Por favor, escribe tu nombre para entrar.");
-            return;
-        }
+        if (!nombre) return alert("Escribe tu nombre.");
         usuarioActual = nombre;
         nombreMostrado.textContent = usuarioActual;
+
         pantallaInicio.classList.remove("visible");
         pantallaApp.classList.add("visible");
+
         renderPeliculas();
     });
 
+    // ABRIR PANEL ADMIN
+    btnAdmin.addEventListener("click", () => {
+        pantallaInicio.classList.remove("visible");
+        pantallaApp.classList.remove("visible");
+        pantallaAdmin.classList.add("visible");
+    });
+
+    // LOGIN ADMIN
+    btnLoginAdmin.addEventListener("click", () => {
+        const pass = document.getElementById("adminPass").value;
+        if (pass === ADMIN_PASSWORD) {
+            document.getElementById("adminLogin").style.display = "none";
+            document.getElementById("adminPanel").style.display = "block";
+        } else {
+            alert("Contraseña incorrecta.");
+        }
+    });
+
+    // AGREGAR PELÍCULA
+    btnAgregarPeli.addEventListener("click", () => {
+        const titulo = document.getElementById("tituloPeli").value.trim();
+        const desc = document.getElementById("descPeli").value.trim();
+        const youtube = document.getElementById("youtubePeli").value.trim();
+
+        if (!titulo || !desc || !youtube) return alert("Completa todos los campos.");
+
+        peliculas.push({
+            id: Date.now(),
+            titulo,
+            descripcion: desc,
+            youtubeId: youtube
+        });
+
+        guardarPeliculas();
+        alert("Película agregada.");
+
+        document.getElementById("tituloPeli").value = "";
+        document.getElementById("descPeli").value = "";
+        document.getElementById("youtubePeli").value = "";
+    });
+
+    // RENDER PELÍCULAS
     function renderPeliculas() {
         peliculasContainer.innerHTML = "";
-        peliculas.forEach(pelicula => {
+
+        peliculas.forEach(p => {
             const card = document.createElement("div");
             card.className = "pelicula-card";
 
-            const titulo = document.createElement("h3");
-            titulo.textContent = pelicula.titulo;
-
-            const descripcion = document.createElement("p");
-            descripcion.textContent = pelicula.descripcion;
-
-            const iframe = document.createElement("iframe");
-            iframe.src = `https://www.youtube.com/embed/${pelicula.youtubeId}`;
-            iframe.setAttribute("frameborder", "0");
-            iframe.setAttribute("allowfullscreen", "true");
-
-            const comentariosDiv = document.createElement("div");
-            comentariosDiv.className = "comentarios";
-
-            const comentariosTitulo = document.createElement("h4");
-            comentariosTitulo.textContent = "Comentarios";
-
-            const comentariosLista = document.createElement("div");
-            comentariosLista.className = "comentarios-lista";
-
-            const inputComentario = document.createElement("input");
-            inputComentario.type = "text";
-            inputComentario.placeholder = "Escribe un comentario...";
-
-            const btnComentar = document.createElement("button");
-            btnComentar.textContent = "Comentar";
-
-            btnComentar.addEventListener("click", () => {
-                const texto = inputComentario.value.trim();
-                if (!texto) return;
-                const nuevoComentario = {
-                    usuario: usuarioActual,
-                    texto,
-                    fecha: new Date().toLocaleString()
-                };
-                if (!comentarios[pelicula.id]) {
-                    comentarios[pelicula.id] = [];
-                }
-                comentarios[pelicula.id].push(nuevoComentario);
-                guardarComentarios(comentarios);
-                inputComentario.value = "";
-                mostrarComentarios(pelicula.id, comentariosLista);
-            });
-
-            comentariosDiv.appendChild(comentariosTitulo);
-            comentariosDiv.appendChild(comentariosLista);
-            comentariosDiv.appendChild(inputComentario);
-            comentariosDiv.appendChild(btnComentar);
-
-            card.appendChild(titulo);
-            card.appendChild(descripcion);
-            card.appendChild(iframe);
-            card.appendChild(comentariosDiv);
+            card.innerHTML = `
+                <h3>${p.titulo}</h3>
+                <p>${p.descripcion}</p>
+                <iframe src="https://www.youtube.com/embed/${p.youtubeId}" allowfullscreen></iframe>
+                <div class="comentarios">
+                    <h4>Comentarios</h4>
+                    <div class="comentarios-lista" id="c_${p.id}"></div>
+                    <input type="text" id="i_${p.id}" placeholder="Escribe un comentario...">
+                    <button onclick="comentar(${p.id})">Comentar</button>
+                </div>
+            `;
 
             peliculasContainer.appendChild(card);
-
-            mostrarComentarios(pelicula.id, comentariosLista);
+            mostrarComentarios(p.id);
         });
     }
 
-    function mostrarComentarios(peliculaId, contenedor) {
-        contenedor.innerHTML = "";
-        const lista = comentarios[peliculaId] || [];
-        lista.forEach(c => {
-            const item = document.createElement("div");
-            item.className = "comentario-item";
-            item.textContent = `${c.usuario}: ${c.texto} (${c.fecha})`;
-            contenedor.appendChild(item);
+    // COMENTAR
+    function comentar(id) {
+        const input = document.getElementById("i_" + id);
+        const texto = input.value.trim();
+        if (!texto) return;
+
+        if (!comentarios[id]) comentarios[id] = [];
+
+        comentarios[id].push({
+            usuario: usuarioActual,
+            texto,
+            fecha: new Date().toLocaleString()
+        });
+
+        guardarComentarios();
+        input.value = "";
+        mostrarComentarios(id);
+    }
+
+    // MOSTRAR COMENTARIOS
+    function mostrarComentarios(id) {
+        const cont = document.getElementById("c_" + id);
+        cont.innerHTML = "";
+
+        (comentarios[id] || []).forEach(c => {
+            const div = document.createElement("div");
+            div.className = "comentario-item";
+            div.textContent = `${c.usuario}: ${c.texto} (${c.fecha})`;
+            cont.appendChild(div);
         });
     }
 </script>
 
 </body>
 </html>
+
