@@ -78,7 +78,408 @@
         button:hover {
             background: #f6121d;
         }
+/* =========================
+   PAGINA PRINCIPAL
+========================= */
 
+.navbar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:70px;
+
+    z-index:1000;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 5%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.95),
+            rgba(0,0,0,0)
+        );
+
+}
+
+.logo{
+
+    color:#e50914;
+
+    font-size:27px;
+
+    font-weight:900;
+
+    margin-right:35px;
+
+}
+
+.navbar nav{
+
+    display:flex;
+
+    gap:25px;
+
+}
+
+.navbar nav a{
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+}
+
+.navbar nav a:hover{
+
+    color:white;
+
+}
+
+#search{
+
+    margin-left:auto;
+
+    width:190px;
+
+    padding:10px 13px;
+
+    background:#111;
+
+    border:1px solid #555;
+
+    border-radius:5px;
+
+    color:white;
+
+    outline:none;
+
+}
+
+
+/* HERO */
+
+.hero{
+
+    min-height:650px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:100px 5% 70px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #080808 0%,
+            rgba(8,8,8,.85) 35%,
+            rgba(8,8,8,.2) 75%,
+            #080808 100%
+        ),
+
+        radial-gradient(
+            circle at 75% 35%,
+            #72151c,
+            #250d12 35%,
+            #080808 75%
+        );
+
+}
+
+.hero-content{
+
+    max-width:600px;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    background:#e50914;
+
+    padding:6px 12px;
+
+    border-radius:3px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    margin-bottom:18px;
+
+}
+
+.hero h1{
+
+    font-size:clamp(42px,6vw,75px);
+
+    line-height:.95;
+
+    margin-bottom:20px;
+
+}
+
+.hero p{
+
+    color:#ccc;
+
+    font-size:17px;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+
+}
+
+.buttons{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.play{
+
+    background:white;
+
+    color:black;
+
+}
+
+.list{
+
+    background:#555;
+
+    color:white;
+
+}
+
+
+/* SECCION */
+
+.section{
+
+    padding:30px 5%;
+
+}
+
+.section h2{
+
+    margin-bottom:20px;
+
+}
+
+
+/* GRID */
+
+.movie-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:15px;
+
+}
+
+.movie-card{
+
+    cursor:pointer;
+
+    border-radius:7px;
+
+    overflow:hidden;
+
+    background:#151515;
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+}
+
+.movie-card:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.8);
+
+}
+
+
+/* PORTADAS */
+
+.poster{
+
+    height:310px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    padding:15px;
+
+}
+
+.poster::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0,0,0,.95)
+        );
+
+}
+
+.poster-info{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.poster-info h3{
+
+    margin-bottom:5px;
+
+}
+
+.poster-info small{
+
+    color:#bbb;
+
+}
+
+
+/* COLORES TEMPORALES */
+
+.poster1{
+
+    background:
+        linear-gradient(
+            135deg,
+            #4c0909,
+            #e04720,
+            #150202
+        );
+
+}
+
+.poster2{
+
+    background:
+        linear-gradient(
+            135deg,
+            #082438,
+            #1683a5,
+            #030b10
+        );
+
+}
+
+.poster3{
+
+    background:
+        linear-gradient(
+            135deg,
+            #5a3005,
+            #d99018,
+            #100800
+        );
+
+}
+
+.poster4{
+
+    background:
+        linear-gradient(
+            135deg,
+            #25104a,
+            #855bd2,
+            #09050e
+        );
+
+}
+
+.poster5{
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b3218,
+            #2e9250,
+            #020b04
+        );
+
+}
+
+
+/* CELULAR */
+
+@media(max-width:900px){
+
+    .movie-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .navbar nav{
+
+        display:none;
+
+    }
+
+    #search{
+
+        width:130px;
+
+    }
+
+    .movie-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .poster{
+
+        height:260px;
+
+    }
+
+}
     </style>
 </head>
 
@@ -113,6 +514,203 @@
         </div>
 
     </div>
+
+    <!-- =========================
+     PAGINA PRINCIPAL
+========================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        CINE RD
+    </div>
+
+    <nav>
+
+        <a href="#">
+            Inicio
+        </a>
+
+        <a href="#peliculas">
+            Películas
+        </a>
+
+        <a href="#comedia">
+            Comedia
+        </a>
+
+        <a href="#drama">
+            Drama
+        </a>
+
+    </nav>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="🔍 Buscar..."
+    >
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            🇩🇴 CINE DOMINICANO
+        </span>
+
+        <h1>
+            Historias<br>
+            de nuestra tierra
+        </h1>
+
+        <p>
+            Descubre películas y producciones
+            dominicanas en un solo lugar.
+        </p>
+
+        <div class="buttons">
+
+            <button class="play">
+                ▶ Reproducir
+            </button>
+
+            <button class="list">
+                ＋ Mi lista
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PELICULAS -->
+
+<section
+    class="section"
+    id="peliculas"
+>
+
+    <h2>
+        🔥 Tendencias
+    </h2>
+
+    <div class="movie-grid">
+
+        <div class="movie-card">
+
+            <div class="poster poster1">
+
+                <div class="poster-info">
+
+                    <h3>
+                        La Gran Aventura Dominicana
+                    </h3>
+
+                    <small>
+                        2025 · Aventura
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="movie-card">
+
+            <div class="poster poster2">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Santo Domingo
+                    </h3>
+
+                    <small>
+                        2024 · Drama
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="movie-card">
+
+            <div class="poster poster3">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Un Día en RD
+                    </h3>
+
+                    <small>
+                        2025 · Comedia
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="movie-card">
+
+            <div class="poster poster4">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Historias del Caribe
+                    </h3>
+
+                    <small>
+                        2023 · Drama
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="movie-card">
+
+            <div class="poster poster5">
+
+                <div class="poster-info">
+
+                    <h3>
+                        Mi Barrio
+                    </h3>
+
+                    <small>
+                        2024 · Drama
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
     <script>
 function entrar() {
