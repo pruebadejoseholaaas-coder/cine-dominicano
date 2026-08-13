@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Cine RD</title>
+
 
     <style>
 
@@ -14,744 +21,1278 @@
             padding: 0;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
             background: #080808;
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
+
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           BIENVENIDA
+        ========================= */
 
         .welcome {
+
             position: fixed;
+
             inset: 0;
-            background: #080808;
+
+            z-index: 99999;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #351014 0%,
+                    #080808 65%
+                );
+
+            padding: 20px;
+
         }
+
 
         .box {
+
             width: 90%;
-            max-width: 400px;
-            background: #181818;
-            padding: 40px;
+
+            max-width: 420px;
+
+            background: rgba(24,24,24,.97);
+
+            padding: 45px 35px;
+
             text-align: center;
+
             border-radius: 10px;
+
+            box-shadow:
+                0 20px 70px
+                rgba(0,0,0,.8);
+
         }
 
-        .logo {
+
+        .welcome-logo {
+
             color: #e50914;
-            font-size: 32px;
-            font-weight: bold;
+
+            font-size: 34px;
+
+            font-weight: 900;
+
             margin-bottom: 25px;
+
         }
 
-        h1 {
-            margin-bottom: 15px;
+
+        .box h1 {
+
+            margin-bottom: 12px;
+
+            font-size: 28px;
+
         }
 
-        p {
+
+        .box p {
+
             color: #aaa;
-            margin-bottom: 20px;
+
+            margin-bottom: 22px;
+
         }
 
-        input {
+
+        .box input {
+
             width: 100%;
+
             padding: 14px;
+
             margin-bottom: 15px;
+
             background: #222;
+
             color: white;
+
             border: 1px solid #444;
+
             border-radius: 5px;
+
+            outline: none;
+
+            font-size: 15px;
+
         }
+
+
+        .box input:focus {
+
+            border-color: #e50914;
+
+        }
+
 
         button {
-            width: 100%;
-            padding: 14px;
-            background: #e50914;
-            color: white;
+
             border: none;
-            border-radius: 5px;
-            font-weight: bold;
+
             cursor: pointer;
+
+            font-weight: bold;
+
         }
 
-        button:hover {
+
+        .welcome-button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            background: #e50914;
+
+            color: white;
+
+            border-radius: 5px;
+
+            font-size: 15px;
+
+        }
+
+
+        .welcome-button:hover {
+
             background: #f6121d;
+
         }
-/* =========================
-   PAGINA PRINCIPAL
-========================= */
 
-.navbar{
 
-    position:fixed;
-
-    top:0;
-    left:0;
-    right:0;
-
-    height:70px;
-
-    z-index:1000;
-
-    display:flex;
-
-    align-items:center;
-
-    padding:0 5%;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.95),
-            rgba(0,0,0,0)
-        );
-
-}
-
-.logo{
-
-    color:#e50914;
-
-    font-size:27px;
-
-    font-weight:900;
-
-    margin-right:35px;
-
-}
-
-.navbar nav{
-
-    display:flex;
-
-    gap:25px;
-
-}
-
-.navbar nav a{
-
-    color:#ddd;
-
-    text-decoration:none;
-
-    font-size:14px;
-
-}
-
-.navbar nav a:hover{
-
-    color:white;
-
-}
-
-#search{
-
-    margin-left:auto;
-
-    width:190px;
-
-    padding:10px 13px;
-
-    background:#111;
-
-    border:1px solid #555;
-
-    border-radius:5px;
-
-    color:white;
-
-    outline:none;
-
-}
-
-
-/* HERO */
-
-.hero{
-
-    min-height:650px;
-
-    display:flex;
-
-    align-items:center;
-
-    padding:100px 5% 70px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #080808 0%,
-            rgba(8,8,8,.85) 35%,
-            rgba(8,8,8,.2) 75%,
-            #080808 100%
-        ),
-
-        radial-gradient(
-            circle at 75% 35%,
-            #72151c,
-            #250d12 35%,
-            #080808 75%
-        );
-
-}
-
-.hero-content{
-
-    max-width:600px;
-
-}
-
-.badge{
-
-    display:inline-block;
-
-    background:#e50914;
-
-    padding:6px 12px;
-
-    border-radius:3px;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-    margin-bottom:18px;
-
-}
-
-.hero h1{
-
-    font-size:clamp(42px,6vw,75px);
-
-    line-height:.95;
-
-    margin-bottom:20px;
-
-}
-
-.hero p{
-
-    color:#ccc;
-
-    font-size:17px;
-
-    line-height:1.6;
-
-    margin-bottom:25px;
-
-}
-
-.buttons{
-
-    display:flex;
-
-    gap:12px;
-
-}
-
-.play{
-
-    background:white;
-
-    color:black;
-
-}
-
-.list{
-
-    background:#555;
-
-    color:white;
-
-}
-
-
-/* SECCION */
-
-.section{
-
-    padding:30px 5%;
-
-}
-
-.section h2{
-
-    margin-bottom:20px;
-
-}
-
-
-/* GRID */
-
-.movie-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(5,1fr);
-
-    gap:15px;
-
-}
-
-.movie-card{
-
-    cursor:pointer;
-
-    border-radius:7px;
-
-    overflow:hidden;
-
-    background:#151515;
-
-    transition:
-        transform .25s,
-        box-shadow .25s;
-
-}
-
-.movie-card:hover{
-
-    transform:scale(1.05);
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.8);
-
-}
-
-
-/* PORTADAS */
-
-.poster{
-
-    height:310px;
-
-    position:relative;
-
-    display:flex;
-
-    align-items:flex-end;
-
-    padding:15px;
-
-}
-
-.poster::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        linear-gradient(
-            transparent 35%,
-            rgba(0,0,0,.95)
-        );
-
-}
-
-.poster-info{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-.poster-info h3{
-
-    margin-bottom:5px;
-
-}
-
-.poster-info small{
-
-    color:#bbb;
-
-}
-
-
-/* COLORES TEMPORALES */
-
-.poster1{
-
-    background:
-        linear-gradient(
-            135deg,
-            #4c0909,
-            #e04720,
-            #150202
-        );
-
-}
-
-.poster2{
-
-    background:
-        linear-gradient(
-            135deg,
-            #082438,
-            #1683a5,
-            #030b10
-        );
-
-}
-
-.poster3{
-
-    background:
-        linear-gradient(
-            135deg,
-            #5a3005,
-            #d99018,
-            #100800
-        );
-
-}
-
-.poster4{
-
-    background:
-        linear-gradient(
-            135deg,
-            #25104a,
-            #855bd2,
-            #09050e
-        );
-
-}
-
-.poster5{
-
-    background:
-        linear-gradient(
-            135deg,
-            #0b3218,
-            #2e9250,
-            #020b04
-        );
-
-}
-
-
-/* CELULAR */
-
-@media(max-width:900px){
-
-    .movie-grid{
-
-        grid-template-columns:
-            repeat(3,1fr);
-
-    }
-
-}
-
-@media(max-width:600px){
-
-    .navbar nav{
-
-        display:none;
-
-    }
-
-    #search{
-
-        width:130px;
-
-    }
-
-    .movie-grid{
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-    .poster{
-
-        height:260px;
-
-    }
-
-}
         /* =========================
-   FICHA DE PELÍCULA
-========================= */
+           NAVBAR
+        ========================= */
 
-.movie-detail{
+        .navbar {
 
-    display:none;
+            position: fixed;
 
-    position:fixed;
+            top: 0;
 
-    inset:0;
+            left: 0;
 
-    z-index:5000;
+            right: 0;
 
-    background:#080808;
+            height: 70px;
 
-    overflow-y:auto;
+            z-index: 1000;
 
-    padding:40px 5%;
+            display: flex;
 
-}
+            align-items: center;
 
-.movie-detail.active{
+            padding: 0 5%;
 
-    display:block;
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.96),
+                    rgba(0,0,0,0)
+                );
 
-}
+        }
 
-.detail-container{
 
-    max-width:1000px;
+        .logo {
 
-    margin:auto;
+            color: #e50914;
 
-    min-height:100vh;
+            font-size: 27px;
 
-    padding:50px;
+            font-weight: 900;
 
-    background:
+            margin-right: 35px;
 
-        linear-gradient(
-            135deg,
-            #321014,
-            #111 50%,
-            #080808
-        );
+        }
 
-    border-radius:10px;
 
-}
+        .navbar nav {
 
-.close-detail{
+            display: flex;
 
-    position:fixed;
+            gap: 25px;
 
-    top:25px;
+        }
 
-    right:30px;
 
-    width:45px;
+        .navbar nav a {
 
-    height:45px;
+            color: #ddd;
 
-    border-radius:50%;
+            text-decoration: none;
 
-    background:#222;
+            font-size: 14px;
 
-    color:white;
+        }
 
-    font-size:25px;
 
-    padding:0;
+        .navbar nav a:hover {
 
-    z-index:6000;
+            color: white;
 
-}
+        }
 
-.detail-content{
 
-    max-width:650px;
+        #search {
 
-    padding-top:40px;
+            margin-left: auto;
 
-}
+            width: 190px;
 
-.detail-content h1{
+            padding: 10px 13px;
 
-    font-size:55px;
+            background: #111;
 
-    margin:20px 0;
+            border: 1px solid #555;
 
-}
+            border-radius: 5px;
 
-.metadata{
+            color: white;
 
-    display:flex;
+            outline: none;
 
-    gap:12px;
+        }
 
-    flex-wrap:wrap;
 
-    color:#bbb;
+        #search:focus {
 
-    margin-bottom:20px;
+            border-color: #e50914;
 
-}
+        }
 
-.rating{
 
-    color:#ffd700;
+        /* =========================
+           HERO
+        ========================= */
 
-    font-weight:bold;
+        .hero {
 
-}
+            min-height: 650px;
 
-.description{
+            display: flex;
 
-    color:#ccc;
+            align-items: center;
 
-    line-height:1.7;
+            padding: 100px 5% 70px;
 
-    margin-bottom:20px;
+            background:
 
-}
+                linear-gradient(
+                    90deg,
+                    #080808 0%,
+                    rgba(8,8,8,.88) 35%,
+                    rgba(8,8,8,.25) 75%,
+                    #080808 100%
+                ),
 
-.info{
+                linear-gradient(
+                    0deg,
+                    #080808 0%,
+                    transparent 45%
+                ),
 
-    color:#aaa;
+                radial-gradient(
+                    circle at 75% 35%,
+                    #72151c,
+                    #250d12 35%,
+                    #080808 75%
+                );
 
-    line-height:1.8;
+        }
 
-    margin-bottom:25px;
 
-}
+        .hero-content {
 
-.detail-body{
+            max-width: 600px;
 
-    margin-top:50px;
+        }
 
-    padding-top:30px;
 
-    border-top:1px solid #333;
+        .badge {
 
-}
+            display: inline-block;
 
-.detail-body h2{
+            background: #e50914;
 
-    margin-bottom:20px;
+            padding: 6px 12px;
 
-}
+            border-radius: 3px;
 
-.stars{
+            font-size: 12px;
 
-    display:flex;
+            font-weight: bold;
 
-    gap:8px;
+            margin-bottom: 18px;
 
-    margin-bottom:35px;
+        }
 
-}
 
-.star{
+        .hero h1 {
 
-    font-size:32px;
+            font-size: clamp(42px, 6vw, 75px);
 
-    color:#444;
+            line-height: .95;
 
-    cursor:pointer;
+            margin-bottom: 20px;
 
-}
+        }
 
-.star.selected{
 
-    color:#ffd700;
+        .hero p {
 
-}
+            color: #ccc;
 
-.comment-box{
+            font-size: 17px;
 
-    display:flex;
+            line-height: 1.6;
 
-    gap:10px;
+            margin-bottom: 25px;
 
-    margin-bottom:25px;
+        }
 
-}
 
-.comment-box input{
+        .buttons {
 
-    flex:1;
+            display: flex;
 
-    background:#222;
+            gap: 12px;
 
-    border:1px solid #444;
+            flex-wrap: wrap;
 
-    color:white;
+        }
 
-    padding:13px;
 
-    border-radius:5px;
+        .buttons button {
 
-}
+            padding: 13px 22px;
 
-.comment{
+            border-radius: 5px;
 
-    background:#1b1b1b;
+            font-size: 15px;
 
-    padding:15px;
+        }
 
-    border-radius:5px;
 
-    margin-bottom:12px;
+        .play {
 
-}
+            background: white;
 
-.comment strong{
+            color: black;
 
-    display:block;
+        }
 
-    margin-bottom:7px;
 
-}
+        .play:hover {
 
-.comment p{
+            background: #ddd;
 
-    color:#aaa;
+        }
 
-}
 
-@media(max-width:600px){
+        .list {
 
-    .detail-container{
+            background: #555;
 
-        padding:30px 20px;
+            color: white;
 
-    }
+        }
 
-    .detail-content h1{
 
-        font-size:38px;
+        .list:hover {
 
-    }
+            background: #666;
 
-}
+        }
+
+
+        /* =========================
+           CATALOGO
+        ========================= */
+
+        .catalogo {
+
+            padding: 20px 5% 70px;
+
+            background: #080808;
+
+        }
+
+
+        .movie-section {
+
+            margin-bottom: 48px;
+
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .section-title h2 {
+
+            font-size: 22px;
+
+        }
+
+
+        .section-title span {
+
+            color: #888;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+        }
+
+
+        .section-title span:hover {
+
+            color: white;
+
+        }
+
+
+        /* FILA HORIZONTAL */
+
+        .movie-row {
+
+            display: flex;
+
+            gap: 18px;
+
+            overflow-x: auto;
+
+            padding: 8px 5px 18px;
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        .movie-row::-webkit-scrollbar {
+
+            height: 6px;
+
+        }
+
+
+        .movie-row::-webkit-scrollbar-track {
+
+            background: #111;
+
+        }
+
+
+        .movie-row::-webkit-scrollbar-thumb {
+
+            background: #444;
+
+            border-radius: 10px;
+
+        }
+
+
+        .movie-row::-webkit-scrollbar-thumb:hover {
+
+            background: #666;
+
+        }
+
+
+        /* TARJETA */
+
+        .movie-card {
+
+            flex: 0 0 190px;
+
+            cursor: pointer;
+
+            transition:
+                transform .25s ease;
+
+        }
+
+
+        .movie-card:hover {
+
+            transform: scale(1.06);
+
+            z-index: 5;
+
+        }
+
+
+        .movie-card h3 {
+
+            font-size: 14px;
+
+            margin-top: 10px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+        }
+
+
+        .movie-card p {
+
+            color: #777;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+
+        }
+
+
+        /* PORTADA */
+
+        .poster {
+
+            height: 285px;
+
+            width: 100%;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 6px;
+
+            background-size: cover;
+
+            background-position: center;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,.5);
+
+        }
+
+
+        .poster::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,.85),
+                    transparent 45%
+                );
+
+        }
+
+
+        .poster-bottom {
+
+            position: absolute;
+
+            bottom: 12px;
+
+            left: 12px;
+
+            z-index: 2;
+
+        }
+
+
+        .movie-rating {
+
+            color: #ffd700;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+        }
+
+
+        .movie-badge {
+
+            position: absolute;
+
+            top: 10px;
+
+            left: 10px;
+
+            z-index: 3;
+
+            background: #e50914;
+
+            color: white;
+
+            padding: 5px 8px;
+
+            border-radius: 3px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* PORTADAS TEMPORALES */
+
+        .poster1 {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7d160c,
+                    #e05224,
+                    #190303
+                );
+
+        }
+
+
+        .poster2 {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #06344c,
+                    #1683a5,
+                    #020b10
+                );
+
+        }
+
+
+        .poster3 {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8a4b05,
+                    #d99018,
+                    #140900
+                );
+
+        }
+
+
+        .poster4 {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #32105f,
+                    #855bd2,
+                    #09050e
+                );
+
+        }
+
+
+        .poster5 {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0c4920,
+                    #2e9250,
+                    #020b04
+                );
+
+        }
+
+
+        /* =========================
+           FICHA DE PELÍCULA
+        ========================= */
+
+        .movie-detail {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 5000;
+
+            background:
+                rgba(0,0,0,.97);
+
+            overflow-y: auto;
+
+            padding: 40px 5%;
+
+        }
+
+
+        .movie-detail.active {
+
+            display: block;
+
+        }
+
+
+        .detail-container {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            min-height: 100vh;
+
+            padding: 50px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #321014,
+                    #111 50%,
+                    #080808
+                );
+
+            border-radius: 10px;
+
+        }
+
+
+        .close-detail {
+
+            position: fixed;
+
+            top: 25px;
+
+            right: 30px;
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #222;
+
+            color: white;
+
+            font-size: 25px;
+
+            z-index: 6000;
+
+        }
+
+
+        .close-detail:hover {
+
+            background: #e50914;
+
+        }
+
+
+        .detail-content {
+
+            max-width: 650px;
+
+            padding-top: 40px;
+
+        }
+
+
+        .detail-content h1 {
+
+            font-size: 55px;
+
+            margin: 20px 0;
+
+        }
+
+
+        .metadata {
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            color: #bbb;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .rating {
+
+            color: #ffd700;
+
+            font-weight: bold;
+
+        }
+
+
+        .description {
+
+            color: #ccc;
+
+            line-height: 1.7;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .info {
+
+            color: #aaa;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .detail-body {
+
+            margin-top: 50px;
+
+            padding-top: 30px;
+
+            border-top: 1px solid #333;
+
+        }
+
+
+        .detail-body h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* VALORACION */
+
+        .stars {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .star {
+
+            font-size: 32px;
+
+            color: #444;
+
+            cursor: pointer;
+
+        }
+
+
+        .star.selected {
+
+            color: #ffd700;
+
+        }
+
+
+        /* COMENTARIOS */
+
+        .comment-box {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .comment-box input {
+
+            flex: 1;
+
+            background: #222;
+
+            border: 1px solid #444;
+
+            color: white;
+
+            padding: 13px;
+
+            border-radius: 5px;
+
+            outline: none;
+
+        }
+
+
+        .comment-box button {
+
+            width: auto;
+
+            padding: 13px 20px;
+
+            background: white;
+
+            color: black;
+
+            border-radius: 5px;
+
+        }
+
+
+        .comment {
+
+            background: #1b1b1b;
+
+            padding: 15px;
+
+            border-radius: 5px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .comment strong {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .comment p {
+
+            color: #aaa;
+
+            margin: 0;
+
+        }
+
+
+        /* =========================
+           REPRODUCTOR
+        ========================= */
+
+        .player {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 10000;
+
+            background:
+                rgba(0,0,0,.97);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+        }
+
+
+        .player.active {
+
+            display: flex;
+
+        }
+
+
+        .player-box {
+
+            width: min(1000px, 100%);
+
+            background: #111;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+        }
+
+
+        .player-header {
+
+            padding: 15px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            background: #181818;
+
+        }
+
+
+        .close-player {
+
+            width: auto;
+
+            background: none;
+
+            color: white;
+
+            font-size: 28px;
+
+            padding: 0;
+
+        }
+
+
+        .close-player:hover {
+
+            color: #e50914;
+
+        }
+
+
+        .video {
+
+            aspect-ratio: 16 / 9;
+
+            background: #000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 30px;
+
+        }
+
+
+        .video p {
+
+            color: #aaa;
+
+            max-width: 550px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            padding: 50px;
+
+            text-align: center;
+
+            color: #666;
+
+            border-top: 1px solid #222;
+
+        }
+
+
+        /* =========================
+           MOVIL
+        ========================= */
+
+        @media(max-width: 700px) {
+
+            .navbar {
+
+                padding: 0 4%;
+
+            }
+
+
+            .navbar nav {
+
+                display: none;
+
+            }
+
+
+            #search {
+
+                width: 140px;
+
+            }
+
+
+            .catalogo {
+
+                padding-left: 4%;
+
+                padding-right: 4%;
+
+            }
+
+
+            .movie-card {
+
+                flex: 0 0 145px;
+
+            }
+
+
+            .poster {
+
+                height: 220px;
+
+            }
+
+
+            .section-title h2 {
+
+                font-size: 19px;
+
+            }
+
+
+            .hero {
+
+                min-height: 580px;
+
+            }
+
+
+            .detail-container {
+
+                padding: 30px 20px;
+
+            }
+
+
+            .detail-content h1 {
+
+                font-size: 38px;
+
+            }
+
+
+            .comment-box {
+
+                flex-direction: column;
+
+            }
+
+
+            .comment-box button {
+
+                width: 100%;
+
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <div class="welcome" id="welcome">
+
+    <!-- =========================
+         BIENVENIDA
+    ========================= -->
+
+    <div
+        class="welcome"
+        id="welcome"
+    >
 
         <div class="box">
 
-            <div class="logo">
+            <div class="welcome-logo">
                 CINE RD
             </div>
+
 
             <h1>
                 ¡Bienvenido! 🇩🇴
             </h1>
 
+
             <p>
                 ¿Cómo quieres que te llamemos?
             </p>
+
 
             <input
                 id="name"
                 type="text"
                 placeholder="Escribe tu nombre"
+                maxlength="30"
+                autocomplete="off"
             >
 
-            <button onclick="entrar()">
+
+            <button
+                class="welcome-button"
+                onclick="entrar()"
+            >
                 ENTRAR
             </button>
 
@@ -759,286 +1300,73 @@
 
     </div>
 
-    <!-- =========================
-     PAGINA PRINCIPAL
-========================= -->
 
-<header class="navbar">
-
-    <div class="logo">
-        CINE RD
-    </div>
-
-    <nav>
-
-        <a href="#">
-            Inicio
-        </a>
-
-        <a href="#peliculas">
-            Películas
-        </a>
-
-        <a href="#comedia">
-            Comedia
-        </a>
-
-        <a href="#drama">
-            Drama
-        </a>
-
-    </nav>
-
-    <input
-        type="text"
-        id="search"
-        placeholder="🔍 Buscar..."
-    >
-
-</header>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <span class="badge">
-            🇩🇴 CINE DOMINICANO
-        </span>
-
-        <h1>
-            Historias<br>
-            de nuestra tierra
-        </h1>
-
-        <p>
-            Descubre películas y producciones
-            dominicanas en un solo lugar.
-        </p>
-
-        <div class="buttons">
-
-            <button class="play">
-                ▶ Reproducir
-            </button>
-
-            <button class="list">
-                ＋ Mi lista
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PELICULAS -->
-
-<section
-    class="section"
-    id="peliculas"
->
-
-    <h2>
-        🔥 Tendencias
-    </h2>
-
-  <div
-    class="movie-card"
-    onclick="openMovie(2)"
->
-
-    <div class="poster poster2">
-        <div class="poster-info">
-
-            <h3>
-                La Gran Aventura Dominicana
-            </h3>
-
-            <small>
-                2025 · Aventura
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
-
-        <div class="movie-card">
-
-            <div class="poster poster2">
-
-                <div class="poster-info">
-
-                    <h3>
-                        Santo Domingo
-                    </h3>
-
-                    <small>
-                        2024 · Drama
-                    </small>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-       <div
-    class="movie-card"
-    onclick="openMovie(3)"
->
-
-    <div class="poster poster3">
-
-                <div class="poster-info">
-
-                    <h3>
-                        Un Día en RD
-                    </h3>
-
-                    <small>
-                        2025 · Comedia
-                    </small>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-       <div
-    class="movie-card"
-    onclick="openMovie(4)"
->
-
-    <div class="poster poster4">
-                <div class="poster-info">
-
-                    <h3>
-                        Historias del Caribe
-                    </h3>
-
-                    <small>
-                        2023 · Drama
-                    </small>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-    class="movie-card"
-    onclick="openMovie(5)"
->
-
-    <div class="poster poster5">
-                <div class="poster-info">
-
-                    <h3>
-                        Mi Barrio
-                    </h3>
-
-                    <small>
-                        2024 · Drama
-                    </small>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
 
     <!-- =========================
-     FICHA DE PELÍCULA
-========================= -->
+         NAVBAR
+    ========================= -->
 
-<div
-    id="movieDetail"
-    class="movie-detail"
->
+    <header class="navbar">
 
-    <div class="detail-container">
+        <div class="logo">
+            CINE RD
+        </div>
 
-        <button
-            class="close-detail"
-            onclick="closeMovie()"
+
+        <nav>
+
+            <a href="#">
+                Inicio
+            </a>
+
+            <a href="#peliculas">
+                Películas
+            </a>
+
+            <a href="#comedia">
+                Comedia
+            </a>
+
+            <a href="#drama">
+                Drama
+            </a>
+
+        </nav>
+
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Buscar..."
+            autocomplete="off"
         >
-            ×
-        </button>
+
+    </header>
 
 
-        <div class="detail-content">
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
 
             <span class="badge">
                 🇩🇴 CINE DOMINICANO
             </span>
 
-            <h1 id="detailTitle">
-                Película
+
+            <h1>
+                Historias<br>
+                de nuestra tierra
             </h1>
 
 
-            <div class="metadata">
-
-                <span id="detailYear">
-                    2025
-                </span>
-
-                <span>•</span>
-
-                <span id="detailGenre">
-                    Drama
-                </span>
-
-                <span>•</span>
-
-                <span id="detailDuration">
-                    1h 40min
-                </span>
-
-                <span class="rating">
-                    ⭐ <span id="detailRating">8.7</span>
-                </span>
-
-            </div>
-
-
-            <p
-                class="description"
-                id="detailDescription"
-            >
-                Descripción de la película.
-            </p>
-
-
-            <p class="info">
-
-                🎬 Director:
-                <span id="detailDirector">
-                    Director
-                </span>
-
-                <br>
-
-                👥 Reparto:
-                <span id="detailCast">
-                    Reparto
-                </span>
-
+            <p>
+                Descubre películas y producciones
+                dominicanas en un solo lugar.
             </p>
 
 
@@ -1046,93 +1374,828 @@
 
                 <button
                     class="play"
-                    onclick="openPlayer()"
+                    onclick="openMovie(1)"
                 >
                     ▶ Ver película
                 </button>
 
+
                 <button
                     class="list"
-                    onclick="openTrailer()"
+                    onclick="addToList()"
                 >
-                    🎬 Ver tráiler
+                    ＋ Mi lista
                 </button>
 
             </div>
 
         </div>
 
+    </section>
 
-        <div class="detail-body">
 
-            <h2>
-                ⭐ Valoración
-            </h2>
 
-            <div class="stars">
+    <!-- =========================
+         CATALOGO
+    ========================= -->
 
-                <span
-                    class="star"
-                    onclick="rate(1)"
-                >★</span>
+    <main
+        class="catalogo"
+        id="peliculas"
+    >
 
-                <span
-                    class="star"
-                    onclick="rate(2)"
-                >★</span>
 
-                <span
-                    class="star"
-                    onclick="rate(3)"
-                >★</span>
+        <!-- TENDENCIAS -->
 
-                <span
-                    class="star"
-                    onclick="rate(4)"
-                >★</span>
+        <section class="movie-section">
 
-                <span
-                    class="star"
-                    onclick="rate(5)"
-                >★</span>
+            <div class="section-title">
+
+                <h2>
+                    🔥 Tendencias
+                </h2>
+
+                <span>
+                    Cine RD
+                </span>
 
             </div>
 
 
-            <h2>
-                💬 Comentarios
-            </h2>
+            <div class="movie-row">
 
 
-            <div class="comment-box">
-
-                <input
-                    id="commentInput"
-                    type="text"
-                    placeholder="Escribe un comentario..."
+                <article
+                    class="movie-card"
+                    data-title="La Gran Aventura Dominicana"
+                    onclick="openMovie(1)"
                 >
 
-                <button
-                    class="play"
-                    onclick="addComment()"
-                >
-                    Publicar
-                </button>
+                    <div class="poster poster1">
 
-            </div>
+                        <span class="movie-badge">
+                            TOP 10
+                        </span>
 
 
-            <div id="comments">
+                        <div class="poster-bottom">
 
-                <div class="comment">
+                            <span class="movie-rating">
+                                ⭐ 8.7
+                            </span>
 
-                    <strong>
-                        Carlos
-                    </strong>
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        La Gran Aventura Dominicana
+                    </h3>
 
                     <p>
-                        Me encantó esta película 🔥
+                        2025 · Aventura
                     </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Santo Domingo"
+                    onclick="openMovie(2)"
+                >
+
+                    <div class="poster poster2">
+
+                        <span class="movie-badge">
+                            NUEVO
+                        </span>
+
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.2
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Santo Domingo
+                    </h3>
+
+                    <p>
+                        2024 · Drama
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Un Día en RD"
+                    onclick="openMovie(3)"
+                >
+
+                    <div class="poster poster3">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.5
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Un Día en RD
+                    </h3>
+
+                    <p>
+                        2025 · Comedia
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Historias del Caribe"
+                    onclick="openMovie(4)"
+                >
+
+                    <div class="poster poster4">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.9
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Historias del Caribe
+                    </h3>
+
+                    <p>
+                        2023 · Drama
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Mi Barrio"
+                    onclick="openMovie(5)"
+                >
+
+                    <div class="poster poster5">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.1
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Mi Barrio
+                    </h3>
+
+                    <p>
+                        2024 · Drama
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CINE DOMINICANO -->
+
+        <section class="movie-section">
+
+            <div class="section-title">
+
+                <h2>
+                    🇩🇴 Cine Dominicano
+                </h2>
+
+                <span>
+                    Explorar
+                </span>
+
+            </div>
+
+
+            <div class="movie-row">
+
+
+                <article
+                    class="movie-card"
+                    data-title="Un Día en RD"
+                    onclick="openMovie(3)"
+                >
+
+                    <div class="poster poster3">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.5
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Un Día en RD
+                    </h3>
+
+                    <p>
+                        2025 · Comedia
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="La Gran Aventura Dominicana"
+                    onclick="openMovie(1)"
+                >
+
+                    <div class="poster poster1">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.7
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        La Gran Aventura Dominicana
+                    </h3>
+
+                    <p>
+                        2025 · Aventura
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Mi Barrio"
+                    onclick="openMovie(5)"
+                >
+
+                    <div class="poster poster5">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.1
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Mi Barrio
+                    </h3>
+
+                    <p>
+                        2024 · Drama
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Historias del Caribe"
+                    onclick="openMovie(4)"
+                >
+
+                    <div class="poster poster4">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.9
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Historias del Caribe
+                    </h3>
+
+                    <p>
+                        2023 · Drama
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Santo Domingo"
+                    onclick="openMovie(2)"
+                >
+
+                    <div class="poster poster2">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.2
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Santo Domingo
+                    </h3>
+
+                    <p>
+                        2024 · Drama
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- COMEDIA -->
+
+        <section
+            class="movie-section"
+            id="comedia"
+        >
+
+            <div class="section-title">
+
+                <h2>
+                    😂 Comedia
+                </h2>
+
+                <span>
+                    Explorar
+                </span>
+
+            </div>
+
+
+            <div class="movie-row">
+
+
+                <article
+                    class="movie-card"
+                    data-title="Un Día en RD"
+                    onclick="openMovie(3)"
+                >
+
+                    <div class="poster poster3">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.5
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Un Día en RD
+                    </h3>
+
+                    <p>
+                        2025 · Comedia
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="La Vuelta"
+                    onclick="openMovie(6)"
+                >
+
+                    <div class="poster poster1">
+
+                        <span class="movie-badge">
+                            NUEVO
+                        </span>
+
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.4
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        La Vuelta
+                    </h3>
+
+                    <p>
+                        2025 · Comedia
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- DRAMA -->
+
+        <section
+            class="movie-section"
+            id="drama"
+        >
+
+            <div class="section-title">
+
+                <h2>
+                    🎭 Drama
+                </h2>
+
+                <span>
+                    Explorar
+                </span>
+
+            </div>
+
+
+            <div class="movie-row">
+
+
+                <article
+                    class="movie-card"
+                    data-title="Historias del Caribe"
+                    onclick="openMovie(4)"
+                >
+
+                    <div class="poster poster4">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.9
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Historias del Caribe
+                    </h3>
+
+                    <p>
+                        2023 · Drama
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Santo Domingo"
+                    onclick="openMovie(2)"
+                >
+
+                    <div class="poster poster2">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.2
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Santo Domingo
+                    </h3>
+
+                    <p>
+                        2024 · Drama
+                    </p>
+
+                </article>
+
+
+
+                <article
+                    class="movie-card"
+                    data-title="Mi Barrio"
+                    onclick="openMovie(5)"
+                >
+
+                    <div class="poster poster5">
+
+                        <div class="poster-bottom">
+
+                            <span class="movie-rating">
+                                ⭐ 8.1
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Mi Barrio
+                    </h3>
+
+                    <p>
+                        2024 · Drama
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FICHA DE PELÍCULA
+    ========================= -->
+
+    <div
+        id="movieDetail"
+        class="movie-detail"
+    >
+
+        <div class="detail-container">
+
+
+            <button
+                class="close-detail"
+                onclick="closeMovie()"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+
+
+            <div class="detail-content">
+
+                <span class="badge">
+                    🇩🇴 CINE DOMINICANO
+                </span>
+
+
+                <h1 id="detailTitle">
+                    Película
+                </h1>
+
+
+                <div class="metadata">
+
+                    <span id="detailYear">
+                        2025
+                    </span>
+
+                    <span>
+                        •
+                    </span>
+
+                    <span id="detailGenre">
+                        Drama
+                    </span>
+
+                    <span>
+                        •
+                    </span>
+
+                    <span id="detailDuration">
+                        1h 40min
+                    </span>
+
+                    <span class="rating">
+
+                        ⭐
+
+                        <span id="detailRating">
+                            8.7
+                        </span>
+
+                    </span>
+
+                </div>
+
+
+                <p
+                    class="description"
+                    id="detailDescription"
+                >
+                    Descripción de la película.
+                </p>
+
+
+                <p class="info">
+
+                    🎬 Director:
+
+                    <span id="detailDirector">
+                        Director
+                    </span>
+
+                    <br>
+
+                    👥 Reparto:
+
+                    <span id="detailCast">
+                        Reparto
+                    </span>
+
+                </p>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="play"
+                        onclick="openPlayer()"
+                    >
+                        ▶ Ver película
+                    </button>
+
+
+                    <button
+                        class="list"
+                        onclick="openTrailer()"
+                    >
+                        🎬 Ver tráiler
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="detail-body">
+
+                <h2>
+                    ⭐ Valoración
+                </h2>
+
+
+                <div class="stars">
+
+                    <span
+                        class="star"
+                        onclick="rate(1)"
+                    >
+                        ★
+                    </span>
+
+                    <span
+                        class="star"
+                        onclick="rate(2)"
+                    >
+                        ★
+                    </span>
+
+                    <span
+                        class="star"
+                        onclick="rate(3)"
+                    >
+                        ★
+                    </span>
+
+                    <span
+                        class="star"
+                        onclick="rate(4)"
+                    >
+                        ★
+                    </span>
+
+                    <span
+                        class="star"
+                        onclick="rate(5)"
+                    >
+                        ★
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    💬 Comentarios
+                </h2>
+
+
+                <div class="comment-box">
+
+                    <input
+                        id="commentInput"
+                        type="text"
+                        placeholder="Escribe un comentario..."
+                        maxlength="300"
+                    >
+
+
+                    <button
+                        onclick="addComment()"
+                    >
+                        Publicar
+                    </button>
+
+                </div>
+
+
+                <div id="comments">
+
+                    <div class="comment">
+
+                        <strong>
+                            Carlos
+                        </strong>
+
+                        <p>
+                            Me encantó esta película 🔥
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -1142,242 +2205,743 @@
 
     </div>
 
-</div>
+
+
+    <!-- =========================
+         REPRODUCTOR
+    ========================= -->
+
+    <div
+        class="player"
+        id="player"
+    >
+
+        <div class="player-box">
+
+
+            <div class="player-header">
+
+                <strong id="playerTitle">
+                    Reproduciendo
+                </strong>
+
+
+                <button
+                    class="close-player"
+                    onclick="closePlayer()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="video">
+
+                <p>
+
+                    <strong>
+                        🎬 Aquí aparecerá la película
+                    </strong>
+
+                    <br><br>
+
+                    En el siguiente paso
+                    conectaremos esta película
+                    con un vídeo externo.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <strong>
+            CINE RD
+        </strong>
+
+        <br><br>
+
+        Plataforma de cine dominicano.
+
+        <br><br>
+
+        © 2026 Cine RD
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
-function entrar() {
-
-    const nombre =
-        document.getElementById("name").value.trim();
-
-    if (nombre === "") {
-        return;
-    }
-
-    document.getElementById("welcome").style.display = "none";
-
-}
 
 
-/* Permitir entrar pulsando ENTER */
+        /* =========================
+           PELICULAS
+        ========================= */
 
-document.getElementById("name").addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Enter") {
-
-            entrar();
-
-        }
-
-    }
-);
         const movies = {
 
-    1: {
-        title: "La Gran Aventura Dominicana",
-        year: "2025",
-        genre: "Aventura",
-        duration: "1h 42min",
-        rating: "8.7",
-        director: "Director Dominicano",
-        cast: "Actor 1, Actor 2, Actor 3",
-        description:
-            "Una emocionante aventura ambientada en República Dominicana."
-    },
+            1: {
 
-    2: {
-        title: "Santo Domingo",
-        year: "2024",
-        genre: "Drama",
-        duration: "1h 38min",
-        rating: "8.2",
-        director: "Director Dominicano",
-        cast: "Actor 1, Actor 2",
-        description:
-            "Una historia de familia, sueños y decisiones que cambian una vida."
-    },
+                title:
+                    "La Gran Aventura Dominicana",
 
-    3: {
-        title: "Un Día en RD",
-        year: "2025",
-        genre: "Comedia",
-        duration: "1h 35min",
-        rating: "8.5",
-        director: "Director Dominicano",
-        cast: "Actor 1, Actor 2, Actor 3",
-        description:
-            "Una divertida historia llena de situaciones que solamente podrían pasar en República Dominicana."
-    },
+                year:
+                    "2025",
 
-    4: {
-        title: "Historias del Caribe",
-        year: "2023",
-        genre: "Drama",
-        duration: "1h 50min",
-        rating: "8.9",
-        director: "Director Dominicano",
-        cast: "Actor 1, Actor 2",
-        description:
-            "Una historia sobre familia, identidad y las raíces del Caribe."
-    },
+                genre:
+                    "Aventura",
 
-    5: {
-        title: "Mi Barrio",
-        year: "2024",
-        genre: "Drama",
-        duration: "1h 40min",
-        rating: "8.1",
-        director: "Director Dominicano",
-        cast: "Actor 1, Actor 2",
-        description:
-            "Las historias y personajes de un barrio dominicano."
-    }
+                duration:
+                    "1h 42min",
 
-};
+                rating:
+                    "8.7",
+
+                director:
+                    "Director Dominicano",
+
+                cast:
+                    "Actor 1, Actor 2, Actor 3",
+
+                description:
+                    "Una emocionante aventura ambientada en República Dominicana."
+
+            },
 
 
-let currentMovie = null;
+            2: {
+
+                title:
+                    "Santo Domingo",
+
+                year:
+                    "2024",
+
+                genre:
+                    "Drama",
+
+                duration:
+                    "1h 38min",
+
+                rating:
+                    "8.2",
+
+                director:
+                    "Director Dominicano",
+
+                cast:
+                    "Actor 1, Actor 2",
+
+                description:
+                    "Una historia de familia, sueños y decisiones que cambian una vida."
+
+            },
 
 
-function openMovie(id){
+            3: {
 
-    const movie = movies[id];
+                title:
+                    "Un Día en RD",
 
-    if(!movie){
-        return;
-    }
+                year:
+                    "2025",
 
-    currentMovie = id;
+                genre:
+                    "Comedia",
 
+                duration:
+                    "1h 35min",
 
-    document.getElementById("detailTitle").textContent =
-        movie.title;
+                rating:
+                    "8.5",
 
-    document.getElementById("detailYear").textContent =
-        movie.year;
+                director:
+                    "Director Dominicano",
 
-    document.getElementById("detailGenre").textContent =
-        movie.genre;
+                cast:
+                    "Actor 1, Actor 2, Actor 3",
 
-    document.getElementById("detailDuration").textContent =
-        movie.duration;
+                description:
+                    "Una divertida historia llena de situaciones que solamente podrían pasar en República Dominicana."
 
-    document.getElementById("detailRating").textContent =
-        movie.rating;
-
-    document.getElementById("detailDirector").textContent =
-        movie.director;
-
-    document.getElementById("detailCast").textContent =
-        movie.cast;
-
-    document.getElementById("detailDescription").textContent =
-        movie.description;
+            },
 
 
-    document.getElementById("movieDetail")
-        .classList.add("active");
+            4: {
 
-}
+                title:
+                    "Historias del Caribe",
 
+                year:
+                    "2023",
 
-function closeMovie(){
+                genre:
+                    "Drama",
 
-    document.getElementById("movieDetail")
-        .classList.remove("active");
+                duration:
+                    "1h 50min",
 
-}
+                rating:
+                    "8.9",
 
+                director:
+                    "Director Dominicano",
 
-function openPlayer(){
+                cast:
+                    "Actor 1, Actor 2",
 
-    alert(
-        "Aquí conectaremos el vídeo de la película."
-    );
+                description:
+                    "Una historia sobre familia, identidad y las raíces del Caribe."
 
-}
-
-
-function openTrailer(){
-
-    alert(
-        "Aquí conectaremos el tráiler."
-    );
-
-}
+            },
 
 
-function rate(number){
+            5: {
 
-    const stars =
-        document.querySelectorAll(".star");
+                title:
+                    "Mi Barrio",
 
-    stars.forEach(
-        (star,index)=>{
+                year:
+                    "2024",
 
-            if(index < number){
+                genre:
+                    "Drama",
 
-                star.classList.add("selected");
+                duration:
+                    "1h 40min",
 
-            }else{
+                rating:
+                    "8.1",
 
-                star.classList.remove("selected");
+                director:
+                    "Director Dominicano",
+
+                cast:
+                    "Actor 1, Actor 2",
+
+                description:
+                    "Las historias y personajes de un barrio dominicano."
+
+            },
+
+
+            6: {
+
+                title:
+                    "La Vuelta",
+
+                year:
+                    "2025",
+
+                genre:
+                    "Comedia",
+
+                duration:
+                    "1h 30min",
+
+                rating:
+                    "8.4",
+
+                director:
+                    "Director Dominicano",
+
+                cast:
+                    "Actor 1, Actor 2",
+
+                description:
+                    "Una comedia dominicana llena de situaciones inesperadas."
 
             }
 
+        };
+
+
+        let currentMovie = null;
+
+
+
+        /* =========================
+           ENTRAR
+        ========================= */
+
+        function entrar() {
+
+            const input =
+                document.getElementById("name");
+
+            const nombre =
+                input.value.trim();
+
+
+            if (nombre === "") {
+
+                input.focus();
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "cineRD_name",
+                nombre
+            );
+
+
+            document.getElementById(
+                "welcome"
+            ).style.display = "none";
+
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
         }
-    );
-
-}
 
 
-function addComment(){
 
-    const input =
-        document.getElementById("commentInput");
+        /* ENTER PARA ENTRAR */
 
-    const text =
-        input.value.trim();
+        document
+            .getElementById("name")
+            .addEventListener(
+                "keydown",
+                function(event) {
 
-    if(!text){
-        return;
-    }
+                    if (event.key === "Enter") {
 
+                        event.preventDefault();
 
-    const comment =
-        document.createElement("div");
+                        entrar();
 
-    comment.className = "comment";
+                    }
 
-
-    const name =
-        document.createElement("strong");
-
-    name.textContent = "Tú";
+                }
+            );
 
 
-    const message =
-        document.createElement("p");
 
-    message.textContent = text;
+        /* =========================
+           COMPROBAR NOMBRE GUARDADO
+        ========================= */
+
+        window.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                const savedName =
+                    localStorage.getItem(
+                        "cineRD_name"
+                    );
 
 
-    comment.appendChild(name);
+                if (savedName) {
 
-    comment.appendChild(message);
+                    document.getElementById(
+                        "welcome"
+                    ).style.display = "none";
+
+                }
+
+            }
+        );
 
 
-    document.getElementById("comments")
-        .appendChild(comment);
+
+        /* =========================
+           ABRIR PELICULA
+        ========================= */
+
+        function openMovie(id) {
+
+            const movie =
+                movies[id];
 
 
-    input.value = "";
+            if (!movie) {
 
-}
-        
+                return;
+
+            }
+
+
+            currentMovie = id;
+
+
+            document.getElementById(
+                "detailTitle"
+            ).textContent =
+                movie.title;
+
+
+            document.getElementById(
+                "detailYear"
+            ).textContent =
+                movie.year;
+
+
+            document.getElementById(
+                "detailGenre"
+            ).textContent =
+                movie.genre;
+
+
+            document.getElementById(
+                "detailDuration"
+            ).textContent =
+                movie.duration;
+
+
+            document.getElementById(
+                "detailRating"
+            ).textContent =
+                movie.rating;
+
+
+            document.getElementById(
+                "detailDirector"
+            ).textContent =
+                movie.director;
+
+
+            document.getElementById(
+                "detailCast"
+            ).textContent =
+                movie.cast;
+
+
+            document.getElementById(
+                "detailDescription"
+            ).textContent =
+                movie.description;
+
+
+            document.getElementById(
+                "movieDetail"
+            ).classList.add("active");
+
+
+            document.body.classList.add(
+                "no-scroll"
+            );
+
+        }
+
+
+
+        /* =========================
+           CERRAR PELICULA
+        ========================= */
+
+        function closeMovie() {
+
+            document.getElementById(
+                "movieDetail"
+            ).classList.remove("active");
+
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
+        }
+
+
+
+        /* =========================
+           REPRODUCTOR
+        ========================= */
+
+        function openPlayer() {
+
+            if (!currentMovie) {
+
+                return;
+
+            }
+
+
+            document.getElementById(
+                "playerTitle"
+            ).textContent =
+                movies[currentMovie].title;
+
+
+            document.getElementById(
+                "player"
+            ).classList.add("active");
+
+        }
+
+
+
+        function closePlayer() {
+
+            document.getElementById(
+                "player"
+            ).classList.remove("active");
+
+        }
+
+
+
+        /* =========================
+           TRAILER
+        ========================= */
+
+        function openTrailer() {
+
+            if (!currentMovie) {
+
+                return;
+
+            }
+
+
+            alert(
+                "Aquí conectaremos el tráiler de " +
+                movies[currentMovie].title
+            );
+
+        }
+
+
+
+        /* =========================
+           VALORACION
+        ========================= */
+
+        function rate(number) {
+
+            const stars =
+                document.querySelectorAll(
+                    ".star"
+                );
+
+
+            stars.forEach(
+                function(star, index) {
+
+                    if (index < number) {
+
+                        star.classList.add(
+                            "selected"
+                        );
+
+                    } else {
+
+                        star.classList.remove(
+                            "selected"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================
+           COMENTARIOS
+        ========================= */
+
+        function addComment() {
+
+            const input =
+                document.getElementById(
+                    "commentInput"
+                );
+
+
+            const text =
+                input.value.trim();
+
+
+            if (!text) {
+
+                input.focus();
+
+                return;
+
+            }
+
+
+            const comment =
+                document.createElement(
+                    "div"
+                );
+
+
+            comment.className =
+                "comment";
+
+
+            const name =
+                document.createElement(
+                    "strong"
+                );
+
+
+            name.textContent =
+                "Tú";
+
+
+            const message =
+                document.createElement(
+                    "p"
+                );
+
+
+            message.textContent =
+                text;
+
+
+            comment.appendChild(name);
+
+            comment.appendChild(message);
+
+
+            document.getElementById(
+                "comments"
+            ).appendChild(comment);
+
+
+            input.value = "";
+
+        }
+
+
+
+        /* =========================
+           ENTER EN COMENTARIOS
+        ========================= */
+
+        document
+            .getElementById("commentInput")
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Enter") {
+
+                        event.preventDefault();
+
+                        addComment();
+
+                    }
+
+                }
+            );
+
+
+
+        /* =========================
+           BUSCADOR
+        ========================= */
+
+        document
+            .getElementById("search")
+            .addEventListener(
+                "input",
+                function() {
+
+                    const query =
+                        this.value
+                            .toLowerCase()
+                            .trim();
+
+
+                    const cards =
+                        document.querySelectorAll(
+                            ".movie-card"
+                        );
+
+
+                    cards.forEach(
+                        function(card) {
+
+                            const title =
+                                (
+                                    card.dataset.title ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            if (
+                                title.includes(query)
+                            ) {
+
+                                card.style.display =
+                                    "";
+
+                            } else {
+
+                                card.style.display =
+                                    "none";
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /* =========================
+           MI LISTA
+        ========================= */
+
+        function addToList() {
+
+            alert(
+                "❤️ Película agregada a Mi Lista"
+            );
+
+        }
+
+
+
+        /* =========================
+           TECLA ESC
+        ========================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    closePlayer();
+
+                    closeMovie();
+
+                }
+
+            }
+        );
+
     </script>
 
 </body>
+
 </html>
