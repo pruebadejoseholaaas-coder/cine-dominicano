@@ -115,26 +115,35 @@
     </div>
 
     <script>
+function entrar() {
 
-        function entrar() {
+    const nombre =
+        document.getElementById("name").value.trim();
 
-            const nombre =
-                document.getElementById("name").value.trim();
+    if (nombre === "") {
+        return;
+    }
 
-            if (nombre === "") {
+    document.getElementById("welcome").style.display = "none";
 
-                alert("Escribe tu nombre primero.");
+}
 
-                return;
 
-            }
+/* Permitir entrar pulsando ENTER */
 
-            document.getElementById("welcome").style.display = "none";
+document.getElementById("name").addEventListener(
+    "keydown",
+    function(event) {
 
-            alert("¡Bienvenido a Cine RD, " + nombre + "!");
+        if (event.key === "Enter") {
+
+            entrar();
 
         }
 
+    }
+);
+        
     </script>
 
 </body>
