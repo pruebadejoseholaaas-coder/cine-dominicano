@@ -480,6 +480,250 @@
     }
 
 }
+        /* =========================
+   FICHA DE PELÍCULA
+========================= */
+
+.movie-detail{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    background:#080808;
+
+    overflow-y:auto;
+
+    padding:40px 5%;
+
+}
+
+.movie-detail.active{
+
+    display:block;
+
+}
+
+.detail-container{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    padding:50px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #321014,
+            #111 50%,
+            #080808
+        );
+
+    border-radius:10px;
+
+}
+
+.close-detail{
+
+    position:fixed;
+
+    top:25px;
+
+    right:30px;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    background:#222;
+
+    color:white;
+
+    font-size:25px;
+
+    padding:0;
+
+    z-index:6000;
+
+}
+
+.detail-content{
+
+    max-width:650px;
+
+    padding-top:40px;
+
+}
+
+.detail-content h1{
+
+    font-size:55px;
+
+    margin:20px 0;
+
+}
+
+.metadata{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    color:#bbb;
+
+    margin-bottom:20px;
+
+}
+
+.rating{
+
+    color:#ffd700;
+
+    font-weight:bold;
+
+}
+
+.description{
+
+    color:#ccc;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+
+}
+
+.info{
+
+    color:#aaa;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.detail-body{
+
+    margin-top:50px;
+
+    padding-top:30px;
+
+    border-top:1px solid #333;
+
+}
+
+.detail-body h2{
+
+    margin-bottom:20px;
+
+}
+
+.stars{
+
+    display:flex;
+
+    gap:8px;
+
+    margin-bottom:35px;
+
+}
+
+.star{
+
+    font-size:32px;
+
+    color:#444;
+
+    cursor:pointer;
+
+}
+
+.star.selected{
+
+    color:#ffd700;
+
+}
+
+.comment-box{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+}
+
+.comment-box input{
+
+    flex:1;
+
+    background:#222;
+
+    border:1px solid #444;
+
+    color:white;
+
+    padding:13px;
+
+    border-radius:5px;
+
+}
+
+.comment{
+
+    background:#1b1b1b;
+
+    padding:15px;
+
+    border-radius:5px;
+
+    margin-bottom:12px;
+
+}
+
+.comment strong{
+
+    display:block;
+
+    margin-bottom:7px;
+
+}
+
+.comment p{
+
+    color:#aaa;
+
+}
+
+@media(max-width:600px){
+
+    .detail-container{
+
+        padding:30px 20px;
+
+    }
+
+    .detail-content h1{
+
+        font-size:38px;
+
+    }
+
+}
     </style>
 </head>
 
@@ -602,28 +846,27 @@
         🔥 Tendencias
     </h2>
 
-    <div class="movie-grid">
+  <div
+    class="movie-card"
+    onclick="openMovie(2)"
+>
 
-        <div class="movie-card">
+    <div class="poster poster2">
+        <div class="poster-info">
 
-            <div class="poster poster1">
+            <h3>
+                La Gran Aventura Dominicana
+            </h3>
 
-                <div class="poster-info">
-
-                    <h3>
-                        La Gran Aventura Dominicana
-                    </h3>
-
-                    <small>
-                        2025 · Aventura
-                    </small>
-
-                </div>
-
-            </div>
+            <small>
+                2025 · Aventura
+            </small>
 
         </div>
 
+    </div>
+
+</div>
 
         <div class="movie-card">
 
@@ -646,9 +889,12 @@
         </div>
 
 
-        <div class="movie-card">
+       <div
+    class="movie-card"
+    onclick="openMovie(3)"
+>
 
-            <div class="poster poster3">
+    <div class="poster poster3">
 
                 <div class="poster-info">
 
@@ -667,10 +913,12 @@
         </div>
 
 
-        <div class="movie-card">
+       <div
+    class="movie-card"
+    onclick="openMovie(4)"
+>
 
-            <div class="poster poster4">
-
+    <div class="poster poster4">
                 <div class="poster-info">
 
                     <h3>
@@ -688,10 +936,12 @@
         </div>
 
 
-        <div class="movie-card">
+        <div
+    class="movie-card"
+    onclick="openMovie(5)"
+>
 
-            <div class="poster poster5">
-
+    <div class="poster poster5">
                 <div class="poster-info">
 
                     <h3>
@@ -711,6 +961,188 @@
     </div>
 
 </section>
+
+    <!-- =========================
+     FICHA DE PELÍCULA
+========================= -->
+
+<div
+    id="movieDetail"
+    class="movie-detail"
+>
+
+    <div class="detail-container">
+
+        <button
+            class="close-detail"
+            onclick="closeMovie()"
+        >
+            ×
+        </button>
+
+
+        <div class="detail-content">
+
+            <span class="badge">
+                🇩🇴 CINE DOMINICANO
+            </span>
+
+            <h1 id="detailTitle">
+                Película
+            </h1>
+
+
+            <div class="metadata">
+
+                <span id="detailYear">
+                    2025
+                </span>
+
+                <span>•</span>
+
+                <span id="detailGenre">
+                    Drama
+                </span>
+
+                <span>•</span>
+
+                <span id="detailDuration">
+                    1h 40min
+                </span>
+
+                <span class="rating">
+                    ⭐ <span id="detailRating">8.7</span>
+                </span>
+
+            </div>
+
+
+            <p
+                class="description"
+                id="detailDescription"
+            >
+                Descripción de la película.
+            </p>
+
+
+            <p class="info">
+
+                🎬 Director:
+                <span id="detailDirector">
+                    Director
+                </span>
+
+                <br>
+
+                👥 Reparto:
+                <span id="detailCast">
+                    Reparto
+                </span>
+
+            </p>
+
+
+            <div class="buttons">
+
+                <button
+                    class="play"
+                    onclick="openPlayer()"
+                >
+                    ▶ Ver película
+                </button>
+
+                <button
+                    class="list"
+                    onclick="openTrailer()"
+                >
+                    🎬 Ver tráiler
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="detail-body">
+
+            <h2>
+                ⭐ Valoración
+            </h2>
+
+            <div class="stars">
+
+                <span
+                    class="star"
+                    onclick="rate(1)"
+                >★</span>
+
+                <span
+                    class="star"
+                    onclick="rate(2)"
+                >★</span>
+
+                <span
+                    class="star"
+                    onclick="rate(3)"
+                >★</span>
+
+                <span
+                    class="star"
+                    onclick="rate(4)"
+                >★</span>
+
+                <span
+                    class="star"
+                    onclick="rate(5)"
+                >★</span>
+
+            </div>
+
+
+            <h2>
+                💬 Comentarios
+            </h2>
+
+
+            <div class="comment-box">
+
+                <input
+                    id="commentInput"
+                    type="text"
+                    placeholder="Escribe un comentario..."
+                >
+
+                <button
+                    class="play"
+                    onclick="addComment()"
+                >
+                    Publicar
+                </button>
+
+            </div>
+
+
+            <div id="comments">
+
+                <div class="comment">
+
+                    <strong>
+                        Carlos
+                    </strong>
+
+                    <p>
+                        Me encantó esta película 🔥
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
     <script>
 function entrar() {
@@ -741,6 +1173,209 @@ document.getElementById("name").addEventListener(
 
     }
 );
+        const movies = {
+
+    1: {
+        title: "La Gran Aventura Dominicana",
+        year: "2025",
+        genre: "Aventura",
+        duration: "1h 42min",
+        rating: "8.7",
+        director: "Director Dominicano",
+        cast: "Actor 1, Actor 2, Actor 3",
+        description:
+            "Una emocionante aventura ambientada en República Dominicana."
+    },
+
+    2: {
+        title: "Santo Domingo",
+        year: "2024",
+        genre: "Drama",
+        duration: "1h 38min",
+        rating: "8.2",
+        director: "Director Dominicano",
+        cast: "Actor 1, Actor 2",
+        description:
+            "Una historia de familia, sueños y decisiones que cambian una vida."
+    },
+
+    3: {
+        title: "Un Día en RD",
+        year: "2025",
+        genre: "Comedia",
+        duration: "1h 35min",
+        rating: "8.5",
+        director: "Director Dominicano",
+        cast: "Actor 1, Actor 2, Actor 3",
+        description:
+            "Una divertida historia llena de situaciones que solamente podrían pasar en República Dominicana."
+    },
+
+    4: {
+        title: "Historias del Caribe",
+        year: "2023",
+        genre: "Drama",
+        duration: "1h 50min",
+        rating: "8.9",
+        director: "Director Dominicano",
+        cast: "Actor 1, Actor 2",
+        description:
+            "Una historia sobre familia, identidad y las raíces del Caribe."
+    },
+
+    5: {
+        title: "Mi Barrio",
+        year: "2024",
+        genre: "Drama",
+        duration: "1h 40min",
+        rating: "8.1",
+        director: "Director Dominicano",
+        cast: "Actor 1, Actor 2",
+        description:
+            "Las historias y personajes de un barrio dominicano."
+    }
+
+};
+
+
+let currentMovie = null;
+
+
+function openMovie(id){
+
+    const movie = movies[id];
+
+    if(!movie){
+        return;
+    }
+
+    currentMovie = id;
+
+
+    document.getElementById("detailTitle").textContent =
+        movie.title;
+
+    document.getElementById("detailYear").textContent =
+        movie.year;
+
+    document.getElementById("detailGenre").textContent =
+        movie.genre;
+
+    document.getElementById("detailDuration").textContent =
+        movie.duration;
+
+    document.getElementById("detailRating").textContent =
+        movie.rating;
+
+    document.getElementById("detailDirector").textContent =
+        movie.director;
+
+    document.getElementById("detailCast").textContent =
+        movie.cast;
+
+    document.getElementById("detailDescription").textContent =
+        movie.description;
+
+
+    document.getElementById("movieDetail")
+        .classList.add("active");
+
+}
+
+
+function closeMovie(){
+
+    document.getElementById("movieDetail")
+        .classList.remove("active");
+
+}
+
+
+function openPlayer(){
+
+    alert(
+        "Aquí conectaremos el vídeo de la película."
+    );
+
+}
+
+
+function openTrailer(){
+
+    alert(
+        "Aquí conectaremos el tráiler."
+    );
+
+}
+
+
+function rate(number){
+
+    const stars =
+        document.querySelectorAll(".star");
+
+    stars.forEach(
+        (star,index)=>{
+
+            if(index < number){
+
+                star.classList.add("selected");
+
+            }else{
+
+                star.classList.remove("selected");
+
+            }
+
+        }
+    );
+
+}
+
+
+function addComment(){
+
+    const input =
+        document.getElementById("commentInput");
+
+    const text =
+        input.value.trim();
+
+    if(!text){
+        return;
+    }
+
+
+    const comment =
+        document.createElement("div");
+
+    comment.className = "comment";
+
+
+    const name =
+        document.createElement("strong");
+
+    name.textContent = "Tú";
+
+
+    const message =
+        document.createElement("p");
+
+    message.textContent = text;
+
+
+    comment.appendChild(name);
+
+    comment.appendChild(message);
+
+
+    document.getElementById("comments")
+        .appendChild(comment);
+
+
+    input.value = "";
+
+}
         
     </script>
 
